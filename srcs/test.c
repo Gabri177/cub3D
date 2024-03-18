@@ -183,7 +183,7 @@ int     key_release(int keycode, t_info *vars) {
 
 void drawRays3D(t_info *info)
 {
-	int r,mx,my,mp,dof,side; float vx,vy,rx,ry,ra,xo,yo,disV,disH; 
+	int r,mx,my,mp,dof,side; float vx,vy,hx, hy, rx,ry,ra,xo,yo,disV,disH; 
 	
 	ra=FixAng(pa+30);//ray set back 30 degrees
 	
@@ -199,10 +199,10 @@ void drawRays3D(t_info *info)
 	while(dof<8) 
 	{ 
 	mx=(int)(rx)>>6; my=(int)(ry)>>6; mp=my*mapX+mx;                     
-	if(mp>0 && mp<mapX*mapY && map[mp]==1){ dof=8; disV=cos(degToRad(ra))*(rx-(info->pos_x))-sin(degToRad(ra))*(ry-(info->pos_y));}//hit         
+	if(mp>0 && mp<mapX*mapY && map[mp]==1){ vx=rx; vy=ry;dof=8; disV=cos(degToRad(ra))*(rx-(info->pos_x))-sin(degToRad(ra))*(ry-(info->pos_y));}//hit         
 	else{ rx+=xo; ry+=yo; dof+=1;}                                               //check next horizontal
 	} 
-	vx=rx; vy=ry;
+	
 
 	//---Horizontal---
 	dof=0; disH=100000;
@@ -214,20 +214,41 @@ void drawRays3D(t_info *info)
 	while(dof<8) 
 	{ 
 	mx=(int)(rx)>>6; my=(int)(ry)>>6; mp=my*mapX+mx;                          
-	if(mp>0 && mp<mapX*mapY && map[mp]==1){ dof=8; disH=cos(degToRad(ra))*(rx-(info->pos_x))-sin(degToRad(ra))*(ry-(info->pos_y));}//hit         
+	if(mp>0 && mp<mapX*mapY && map[mp]==1){hx = rx; hy = ry; dof=8; disH=cos(degToRad(ra))*(rx-(info->pos_x))-sin(degToRad(ra))*(ry-(info->pos_y));}//hit         
 	else{ rx+=xo; ry+=yo; dof+=1;}                                               //check next horizontal
 	} 
 	
-	if(disV<disH){ rx=vx; ry=vy; disH=disV;}                  //horizontal hit first
+
+	if(disV<disH)
+	{ 
+		rx=vx; ry=vy; disH=disV;                  //horizontal hit first
+		draw_line(info->pos_x + BLOCK_SIZE / 2,(info->pos_y) + BLOCK_SIZE / 2, rx,ry, info, 0xFFD700);
+		
+
+		int ca=FixAng(pa-ra); disH=disH*cos(degToRad(ca));                            //fix fisheye 
+		int lineH = (mapS*320)/(disH); if(lineH>320){ lineH=320;}                     //line height and limit
+		int lineOff = 160 - (lineH>>1);   
+		for (int k = 0; k < 10; k ++)
+			draw_line(r*8+530 + k, lineOff, r*8+530 + k, lineOff+lineH, info, 0xFFD700);
+	}
+	else if(disV>disH)
+	{
+		rx=hx; ry=hy; disH=disH;
+		draw_line(info->pos_x + BLOCK_SIZE / 2,(info->pos_y) + BLOCK_SIZE / 2, rx,ry, info, 0xFF8C00);
+
+
+		int ca=FixAng(pa-ra); disH=disH*cos(degToRad(ca));                            //fix fisheye 
+		int lineH = (mapS*320)/(disH); if(lineH>320){ lineH=320;}                     //line height and limit
+		int lineOff = 160 - (lineH>>1);   
+		for (int k = 0; k < 10; k ++)
+			draw_line(r*8+530 + k, lineOff, r*8+530 + k, lineOff+lineH, info, 0xFF8C00);
+	}
 	//draw 2D ray
-	draw_line(info->pos_x + BLOCK_SIZE / 2,(info->pos_y) + BLOCK_SIZE / 2, rx,ry, info, 0xFF8C00);
-	int ca=FixAng(pa-ra); disH=disH*cos(degToRad(ca));                            //fix fisheye 
-	int lineH = (mapS*320)/(disH); if(lineH>320){ lineH=320;}                     //line height and limit
-	int lineOff = 160 - (lineH>>1);                                               //line offset
+	
+	                                            //line offset
 	
 	//draw vertical wall  
-	for (int k = 0; k < 10; k ++)
-		draw_line(r*8+530 + k, lineOff, r*8+530 + k, lineOff+lineH, info, 0xFF8C00);
+
 	ra=FixAng(ra-1);                                                              //go to next ray
  	}
 }
