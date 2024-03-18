@@ -10,7 +10,7 @@
 #define BLOCK_SIZE 10
 #define PI 3.1415926
 
-int mapX=8, mapY=8, mapS=64;
+int mapX=8, mapY=8, mapS=70;
 float pdx, pdy, pa;
 
 
@@ -184,8 +184,8 @@ void normalizeAngle(float *angle) {
 void castRay(t_info *info, float ra) {
 	float distToWall = 0; // iniciar la direccon entre la pared y la personaje
 	bool hitWall = false; // indicador si hit la pared
-	float stepSize = 0.1; // 射线步进大小，可调整以优化性能与准确性
-
+	float stepSize = 0.1; // El tamaño del paso del rayo se puede ajustar para optimizar el rendimiento y la precisión.
+	int disT;
 	float rayX = info->pos_x + BLOCK_SIZE / 2; // x incical de rayas
 	float rayY = info->pos_y + BLOCK_SIZE / 2; // y inicial de rayas
 	float rayAngle  = ra; // cambiar el angulo con ra + PI
@@ -202,7 +202,7 @@ void castRay(t_info *info, float ra) {
 		if (mapXIdx >= 0 && mapXIdx < mapX && mapYIdx >= 0 && mapYIdx < mapY) {
 			if (map[mapYIdx * mapX + mapXIdx] == 1) { // detecta la pared
 				hitWall = true;
-				draw_line(info->pos_x + BLOCK_SIZE / 2, info->pos_y + BLOCK_SIZE / 2, rayX, rayY, info, 0x000000); // dibujar rayas
+				draw_line(info->pos_x + BLOCK_SIZE / 2, info->pos_y + BLOCK_SIZE / 2, rayX, rayY, info, 0xFF8C00); // dibujar rayas
 			}
 		}
 	}
@@ -211,7 +211,26 @@ void castRay(t_info *info, float ra) {
 void drawRays3D(t_info *info)	//dibujar una raya
 {
 	normalizeAngle(&pa);
+	//for (int i = pa - PI / 6; i < pa + PI / 6 ; i += PI / 10)
+	/* castRay(info, pa - PI / 6);
+	castRay(info, pa - PI / 9);
+	castRay(info, pa - PI / 18);
 	castRay(info, pa);
+	castRay(info, pa + PI / 18);
+	castRay(info, pa + PI / 9);
+	castRay(info, pa + PI / 6); */
+	normalizeAngle(&pa); // confirmar que PI esta dentro de  0 a 2*PI 
+	int numRays = 30; // el numero de rayos que vamos a lanzar
+	float startAngle = pa - PI / 6; // angulo de rayos iniciales
+	normalizeAngle(&startAngle); // confirmar que PI esta dentro de  0 a 2*PI 
+	float angleIncrement = PI / 3 / numRays; // Basado en la cantidad de rayos, calcula el incremento del ángulo.
+
+	for (int i = 0; i <= numRays; i++)
+	{
+		float currentAngle = startAngle + i * angleIncrement;
+		normalizeAngle(&currentAngle); // confirmar que PI esta dentro de  0 a 2*PI 
+		castRay(info, currentAngle);
+	}
 }
 
 int	main(void)

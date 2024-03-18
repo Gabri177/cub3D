@@ -6,7 +6,7 @@
 #    By: javgao <yugao@student.42madrid.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/16 21:42:20 by yugao             #+#    #+#              #
-#    Updated: 2024/03/17 19:08:51 by javgao           ###   ########.fr        #
+#    Updated: 2024/03/18 02:44:25 by javgao           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ OFILE = $(CFILE:.c=.o)
 CFLAG = 
 LDFLAGS = -framework OpenGL -framework AppKit 
 LIBS = -L minilibx -lmlx 
-NAME = so_long
+NAME = cub3d
 
 all:libft $(NAME)
 
