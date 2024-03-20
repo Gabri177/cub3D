@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 21:39:58 by yugao             #+#    #+#             */
-/*   Updated: 2024/02/23 19:37:03 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/20 02:54:38 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <limits.h>
 # include <string.h>
 # include <fcntl.h>
+# include <math.h>
 
 # include "../minilibx/mlx.h"
 # include "../libft/libft.h"

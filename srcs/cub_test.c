@@ -8,9 +8,8 @@
 #define BLOCK_SIZE 10
 #define PI 3.1415926
 
-int mapX=8, mapY=8, mapS=64;
-float pdx, pdy, pa;
-
+int		mapX=8, mapY=8, mapS=64;
+float	pdx, pdy, pa;
 
 int map[] =
 {
@@ -24,33 +23,54 @@ int map[] =
 	1, 1, 1, 1, 1, 1, 1, 1,
 };
 
-typedef struct s_info {
-	void    *mlx;
-	void    *win;
-	void	*background;
-	int     pos_x;
-	int     pos_y;
-	int     move_up;
-	int     move_down;
-	int     move_left;
-	int     move_right;
-}              t_info;
-
-
-void drawRays3D(t_info *info); //decclaracion de una funcion
-float degToRad(int a) { return a*M_PI/180.0;}
-int FixAng(int a){ if(a>359){ a-=360;} if(a<0){ a+=360;} return a;}
-float distance(ax,ay,bx,by,ang){ return cos(degToRad(ang))*(bx-ax)-sin(degToRad(ang))*(by-ay);}
-
-double dist(double x1, double y1, double x2, double y2)
+typedef struct s_info
 {
-	return sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+	void	*mlx;
+	void	*win;
+	void	*background;
+	int		pos_x;
+	int		pos_y;
+	int		move_up;
+	int		move_down;
+	int		move_left;
+	int		move_right;
+}	t_info;
+
+
+void	drawRays3D(t_info *info); //decclaracion de una funcion
+
+float	degToRad(int a)
+{
+	return (a * M_PI / 180.0);
+}
+
+int	FixAng(int a)
+{
+	if (a > 359)
+	{
+		a -= 360;
+	}
+	if (a < 0)
+	{
+		a += 360;
+	}
+	return (a);
+}
+float	distance(ax,ay,bx,by,ang)
+{
+	return (cos (degToRad (ang)) * (bx - ax) - sin (degToRad (ang)) * (by - ay));
+}
+
+double	dist(double x1, double y1, double x2, double y2)
+{
+	return (sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)));
 }
 
 
 void	draw_line(int x1, int y1, int x2, int y2, t_info *vars, int color) // dibujar una linea desde punto x1, y1 hasta x2, y2
 {
-	double dx, dy, e, x, y;
+	double	dx, dy, e, x, y;
+
 	dx = x2 - x1;
 	dy = y2 - y1;
 	e = (fabs (dx) > fabs (dy)) ? fabs (dx) : fabs (dy);
@@ -88,13 +108,13 @@ void	apoyo_draw_map(int x, int y, int color, t_info *vars) // dibujar un cuadrad
 
 void	draw_map(t_info *vars) // dibujar el background 
 {
-	int x,y,x0,y0;
+	int x, y, x0, y0;
 
 	for (y = 0; y < mapY; y ++)
 	{
 		for (x = 0; x < mapX; x ++)
 		{
-			if (map[y*mapX+x] == 1)
+			if (map[y * mapX + x] == 1)
 				apoyo_draw_map (x*mapS, y*mapS, 0x2E8B57,  vars);
 			else
 				apoyo_draw_map (x*mapS, y*mapS, 0xF0FFF0,  vars);
@@ -106,7 +126,7 @@ void	draw_map(t_info *vars) // dibujar el background
 
 void    draw_square(t_info *vars) // dibujar caracter (personaje)
 {
-	mlx_clear_window(vars->mlx, vars->win);
+	mlx_clear_window (vars->mlx, vars->win);
 	draw_map (vars);
 	for (int y = vars->pos_y; y < vars->pos_y + BLOCK_SIZE; y++)
 	{
@@ -183,24 +203,55 @@ int     key_release(int keycode, t_info *vars) {
 
 void drawRays3D(t_info *info)
 {
-	int r,mx,my,mp,dof,side; float vx,vy,hx, hy, rx,ry,ra,xo,yo,disV,disH; 
-	
-	ra=FixAng(pa+30);//ray set back 30 degrees
-	
-	for(r=0;r<60;r++)
+	int 	r , mx, my, mp, dof, side;
+	float	vx, vy, hx, hy, rx, ry, ra, xo, yo, disV, disH; 
+
+	ra  FixAng (pa + 30);//ray set back 30 degrees
+	for(r = 0; r < 60; r ++)
 	{
 		//---Vertical--- 
-	dof=0; side=0; disV=100000;
-	float Tan=tan(degToRad(ra));
-		if(cos(degToRad(ra))> 0.001){ rx=(((int)(info->pos_x)>>6)<<6)+64;      ry=((info->pos_x)-rx)*Tan+(info->pos_y); xo= 64; yo=-xo*Tan;}//looking left
-	else if(cos(degToRad(ra))<-0.001){ rx=(((int)(info->pos_x)>>6)<<6) -0.0001; ry=((info->pos_x)-rx)*Tan+(info->pos_y); xo=-64; yo=-xo*Tan;}//looking right
-	else { rx=(info->pos_x); ry=(info->pos_y); dof=8;}                                                  //looking up or down. no hit  
-
+	dof = 0;
+	side = 0;
+	disV = 100000;
+	float Tan = tan (degToRad (ra));
+	if(cos(degToRad(ra))> 0.001)
+	{
+		rx= (((int)(info->pos_x)>>6)<<6)+64;
+		ry= ((info->pos_x)-rx)*Tan+(info->pos_y);
+		xo= 64;
+		yo=-xo * Tan;
+	}//looking left
+	else if(cos(degToRad(ra))<-0.001)
+	{
+		rx = (((int)(info->pos_x)>>6)<<6) -0.0001;
+		ry = ((info->pos_x)-rx) * Tan + (info->pos_y);
+		xo = -64;
+		yo= -xo * Tan;
+	}//looking right
+	else
+	{
+		rx=(info->pos_x);
+		ry=(info->pos_y);
+		dof=8;
+	}                                                  //looking up or down. no hit  
 	while(dof<8) 
 	{ 
-	mx=(int)(rx)>>6; my=(int)(ry)>>6; mp=my*mapX+mx;                     
-	if(mp>0 && mp<mapX*mapY && map[mp]==1){ vx=rx; vy=ry;dof=8; disV=cos(degToRad(ra))*(rx-(info->pos_x))-sin(degToRad(ra))*(ry-(info->pos_y));}//hit         
-	else{ rx+=xo; ry+=yo; dof+=1;}                                               //check next horizontal
+		mx = (int)(rx)>>6;
+		my=(int)(ry)>>6;
+		mp=my * mapX + mx;
+		if(mp>0 && mp<mapX*mapY && map[mp]==1)
+		{
+			vx=rx;
+			vy=ry;
+			dof=8;
+			disV = cos(degToRad(ra))*(rx-(info->pos_x))-sin(degToRad(ra))*(ry-(info->pos_y));
+		}//hit         
+		else
+		{
+			rx+=xo;
+			ry+=yo;
+			dof+=1;
+		}                                               //check next horizontal
 	} 
 	
 
@@ -253,74 +304,37 @@ void drawRays3D(t_info *info)
  	}
 }
 
-/* void normalizeAngle(float *angle) {
-	while (*angle < 0) *angle += 2 * PI;
-	while (*angle >= 2 * PI) *angle -= 2 * PI;
-}
-
-void castRay(t_info *info, float ra) {
-	float distToWall = 0; // iniciar la direccon entre la pared y la personaje
-	bool hitWall = false; // indicador si hit la pared
-	float stepSize = 0.1; // El tamaño del paso del rayo se puede ajustar para optimizar el rendimiento y la precisión.
-	float rayX = info->pos_x + BLOCK_SIZE / 2; // x incical de rayas
-	float rayY = info->pos_y + BLOCK_SIZE / 2; // y inicial de rayas
-	float rayAngle  = ra; // cambiar el angulo con ra + PI
-
-	while (!hitWall && distToWall < mapS * mapX) {
-		rayX += cos(rayAngle) * stepSize;
-		rayY += sin(rayAngle) * stepSize;
-		distToWall += stepSize;
-
-		int mapXIdx = (int)rayX / mapS;
-		int mapYIdx = (int)rayY / mapS;
-		float disT = dist (info->pos_x + BLOCK_SIZE / 2, info->pos_y + BLOCK_SIZE / 2, rayX, rayY);
-
-		// 边界检查
-		if (mapXIdx >= 0 && mapXIdx < mapX && mapYIdx >= 0 && mapYIdx < mapY) {
-			if (map[mapYIdx * mapX + mapXIdx] == 1) { // detecta la pared
-				hitWall = true;
-				draw_line(info->pos_x + BLOCK_SIZE / 2, info->pos_y + BLOCK_SIZE / 2, rayX, rayY, info, 0xFF8C00); // dibujar rayas
-			}
-		}
-
-		//3d
-		float lineH = (mapS * 320) / disT;
-		if (lineH > 320)
-			lineH = 320;
-
-	}
-}
-
-void drawRays3D(t_info *info)	//dibujar una raya
+void	dda(double x1, double y1, double x2, double y2, t_info *vars)
 {
-	normalizeAngle(&pa);
-	//for (int i = pa - PI / 6; i < pa + PI / 6 ; i += PI / 10)
-	castRay(info, pa - PI / 6);
-	castRay(info, pa - PI / 9);
-	castRay(info, pa - PI / 18);
-	castRay(info, pa);
-	castRay(info, pa + PI / 18);
-	castRay(info, pa + PI / 9);
-	castRay(info, pa + PI / 6); 
-	normalizeAngle(&pa); // confirmar que PI esta dentro de  0 a 2*PI 
-	int numRays = 30; // el numero de rayos que vamos a lanzar
-	float startAngle = pa - PI / 6; // angulo de rayos iniciales
-	normalizeAngle(&startAngle); // confirmar que PI esta dentro de  0 a 2*PI 
-	float angleIncrement = PI / 3 / numRays; // Basado en la cantidad de rayos, calcula el incremento del ángulo.
+	double	k;
+	double	i;
 
-	for (int i = 0; i <= numRays; i++)
+	i = 0;
+	k = (y2 - y1) / (x2 - x1);
+	if (fabs(k) < 1)
 	{
-		float currentAngle = startAngle + i * angleIncrement;
-		normalizeAngle(&currentAngle); // confirmar que PI esta dentro de  0 a 2*PI 
-		castRay(info, currentAngle);
+		while (x1 < x2)
+		{
+			x1 ++;
+			mlx_pixel_put(vars->mlx, vars->win, (int)x1, (int)(x1 * k), 0xFF8C00);
+		}
 	}
-} */
+	else
+	{
+		while (y1 < y2)
+		{
+			x1 ++;
+			mlx_pixel_put(vars->mlx, vars->win, (int)x1, (int)(x1 * k), 0xFF8C00);
+		}
+	}
+}
+
 
 int	main(void)
 {
 	t_info	vars;
 
-	pa =  0;
+	pa = 0;
 	pdx = cos(pa) * 15;
 	pdy = -sin(pa) * 15;
 	vars.mlx = mlx_init();
