@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 21:39:58 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/20 02:54:38 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/20 04:39:38 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,36 +72,36 @@ typedef struct s_data
 	t_ary	mrx;
 }					t_data;
 
-typedef struct s_pos
+typedef struct s_poss
 {
 	int	x;
 	int	y;
-}					t_pos;
+}					t_poss;
 
-//--------draw---------
-t_bool	dw_bk(t_data info, t_ary m);
-t_bool	dw_ctr(t_data *info, int x, int y);
-t_bool	dw_mov(t_data *i, int x, int y, t_ary *m);
-t_bool	dw_canmov(t_data *i, t_ary m, int x, int y);
+// //--------draw---------
+// t_bool	dw_bk(t_data info, t_ary m);
+// t_bool	dw_ctr(t_data *info, int x, int y);
+// t_bool	dw_mov(t_data *i, int x, int y, t_ary *m);
+// t_bool	dw_canmov(t_data *i, t_ary m, int x, int y);
 
-//--------matrix-------
-t_bool	m_init(t_ary *l, t_data info);
-void	m_print(t_ary l, t_data info, t_bool is_obj);
-t_bool	m_clr(t_ary *m, t_data info);
-t_bool	m_check(t_ary m, t_data *info);
-t_pos	*m_grep(t_ary m, t_data info, char c);
+// //--------matrix-------
+// t_bool	m_init(t_ary *l, t_data info);
+// void	m_print(t_ary l, t_data info, t_bool is_obj);
+// t_bool	m_clr(t_ary *m, t_data info);
+// t_bool	m_check(t_ary m, t_data *info);
+// t_pos	*m_grep(t_ary m, t_data info, char c);
 
-void	m_can_out(t_ary *m, int x, int y);
-void	m_check_out(t_ary l, t_data info);
-//--------error_control-----------
-void	e_exit(int tp);
-void	s_exit(int tp);
-//--------read_file---------------
-int		r_fd(char *dir);
-t_bool	r_size(t_data *info, int fd);
-t_bool	r_to_mrx(t_data *info, int fd, t_ary *m);
+// void	m_can_out(t_ary *m, int x, int y);
+// void	m_check_out(t_ary l, t_data info);
+// //--------error_control-----------
+// void	e_exit(int tp);
+// void	s_exit(int tp);
+// //--------read_file---------------
+// int		r_fd(char *dir);
+// t_bool	r_size(t_data *info, int fd);
+// t_bool	r_to_mrx(t_data *info, int fd, t_ary *m);
 
-//--------main---------
-void	info_init(t_data *info);
+// //--------main---------
+// void	info_init(t_data *info);
 
 #endif

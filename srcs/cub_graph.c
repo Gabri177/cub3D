@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 02:51:23 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/20 04:28:49 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/20 04:38:34 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,25 @@
 
 typedef int	t_bool;
 
+typedef struct s_pos
+{
+	double x;
+	double y;
+}   		t_pos;
+
+typedef struct s_vec
+{
+    double  vx;
+    double  vy;
+}   t_vec;
+
 typedef struct s_info
 {
 	void	*mlx;
 	void	*win;
 	double	v_ang;
-	double	v_ang_x;
-	double	v_ang_y;
-	int		p_x;
-	int		p_y;
+	t_vec	ang;
+	t_pos	ctr;
 	int		map2d_x;
 	int		map2d_y;
 	int		map2d_size_unit;
@@ -34,13 +44,7 @@ typedef struct s_info
 }			t_info;
 
 
-typedef struct s_point
-{
-	double x;
-	double y;
-}   		t_point;
-
-static void	graph_line(void *info, t_point p1, t_point p2)
+static void	graph_line(void *info, t_pos p1, t_pos p2)
 {
 	double	dx;
 	double	dy;
@@ -64,7 +68,7 @@ static void	graph_line(void *info, t_point p1, t_point p2)
 	}
 }
 
-void	graph_thick_line(void *info, t_point p1, t_point p2, double thick)
+void	graph_thick_line(void *info, t_pos p1, t_pos p2, double thick)
 {
 	double	mid;
 	int		i;
@@ -75,24 +79,24 @@ void	graph_thick_line(void *info, t_point p1, t_point p2, double thick)
 	i = 0;
 	while (i < 2 * mid)
 	{
-		graph_line (info,(t_point){p1.x - mid + i, p1.y - mid}, (t_point){p2.x - mid + i, p2.y - mid});
+		graph_line (info,(t_pos){p1.x - mid + i, p1.y - mid}, (t_pos){p2.x - mid + i, p2.y - mid});
 		i ++;
 	}
 }
 
-void	graph_square(void *info, t_point p_center, int len_side)
+void	graph_square(void *info, t_pos p_center, int len_side)
 {
-	graph_thick_line (info, (t_point){p_center.x, p_center.y - (int)(len_side / 2 + 0.5)}, (t_point){p_center.x, p_center.y + (int)(len_side / 2 + 0.5)}, len_side);
+	graph_thick_line (info, (t_pos){p_center.x, p_center.y - (int)(len_side / 2 + 0.5)}, (t_pos){p_center.x, p_center.y + (int)(len_side / 2 + 0.5)}, len_side);
 }
 
-void	graph_rectangle(void *info, t_point p_low_left, t_point p_up_right)
+void	graph_rectangle(void *info, t_pos p_low_left, t_pos p_up_right)
 {
 	int	i;
 
 	i = p_low_left.x;
 	while (i <= p_up_right.x)
 	{
-		graph_thick_line (info, (t_point){p_low_left.x + i, p_low_left.y}, (t_point){p_low_left.x + i, p_up_right.y}, 1);
+		graph_thick_line (info, (t_pos){p_low_left.x + i, p_low_left.y}, (t_pos){p_low_left.x + i, p_up_right.y}, 1);
 		i ++;
 	}
 }
@@ -102,9 +106,9 @@ int main() {
 	info.mlx = mlx_init();
 	info.win = mlx_new_window(info.mlx, 800, 600, "Line Drawing");
 
-	graph_thick_line(&info, (t_point){250, 100}, (t_point){400, 600}, 10);
-	graph_line(&info, (t_point){0, 0}, (t_point){500, 600});
-	//graph_square(&info, (t_point){50, 100}, 50);
-	graph_rectangle(&info, (t_point){50, 50}, (t_point){300, 300});
+	graph_thick_line(&info, (t_pos){250, 100}, (t_pos){400, 600}, 10);
+	graph_line(&info, (t_pos){0, 0}, (t_pos){500, 600});
+	//graph_square(&info, (t_pos){50, 100}, 50);
+	graph_rectangle(&info, (t_pos){50, 50}, (t_pos){300, 300});
 	mlx_loop(info.mlx);
 }
