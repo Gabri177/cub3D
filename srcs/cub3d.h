@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 04:45:47 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/20 04:53:45 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/20 05:01:11 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,26 +60,27 @@ typedef struct s_info
 {
 	void	*mlx;
 	void	*win;
-	t_vec	ang;
-	t_pos	ctr;
-	t_map2d	map;
+	t_vec	ctr_ang;
+	t_pos	ctr_pos;
+	t_map2d	map_info;
 	t_key	key;
 	int		color;
 }			t_info;
 
-//======graph.h======
+//======cub_graph.c======
 void	graph_thick_line(void *info, t_pos p1, t_pos p2, double thick);
 void	graph_square(void *info, t_pos p_center, int len_side);
 void	graph_rectangle(void *info, t_pos p_low_left, t_pos p_up_right);
-//======fix.h========
+//======cub_fix.c========
 int		fix_ang(int a);
 double	fix_rad(double rad);
 int		fix_rad_to_ang(double rad);
 double	fix_ang_to_rad(int ang);
-//======vec.h========
+//======cub_vec.c========
 double	ang_2vec_2D(t_vec v1, t_vec v2);
 void	vec_rotate(t_vec *v_ori, double ang);
 void	vec_scale(t_vec *v_ori, double scale_x, double scale_y);
 void	vec_trans(t_vec *v_ori, double trans_x, double trans_y);
-
+//======cub_math.c========
+double	math_dist2p(t_pos p1, t_pos p2);
 #endif
