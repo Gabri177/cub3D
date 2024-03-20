@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector.c                                           :+:      :+:    :+:   */
+/*   cub_vector.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 01:32:20 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/20 02:40:21 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/20 04:22:53 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,11 @@ double  ang_2vec_2D(t_vec v1, t_vec v2)
 //将向量坐标进行旋转变换
 void   vec_rotate(t_vec *v_ori, double ang)
 {
+    double  vx_tem;
+
+    vx_tem = v_ori->vx;
     v_ori->vx = cos (ang) * v_ori->vx - sin (ang) * v_ori->vy;
-    v_ori->vy = sin (ang) * v_ori->vx - sin (ang) * v_ori->vy;
+    v_ori->vy = sin (ang) * vx_tem + cos (ang) * v_ori->vy;
 }
 
 //将向量坐标进行缩放
