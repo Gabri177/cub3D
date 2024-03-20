@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 02:51:23 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/20 04:11:15 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/20 04:28:49 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	graph_rectangle(void *info, t_point p_low_left, t_point p_up_right)
 	int	i;
 
 	i = p_low_left.x;
-	while (i < p_up_right.x)
+	while (i <= p_up_right.x)
 	{
 		graph_thick_line (info, (t_point){p_low_left.x + i, p_low_left.y}, (t_point){p_low_left.x + i, p_up_right.y}, 1);
 		i ++;
