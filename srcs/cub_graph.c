@@ -6,43 +6,11 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 02:51:23 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/20 04:38:34 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/20 04:49:44 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/so_long.h"
-
-typedef int	t_bool;
-
-typedef struct s_pos
-{
-	double x;
-	double y;
-}   		t_pos;
-
-typedef struct s_vec
-{
-    double  vx;
-    double  vy;
-}   t_vec;
-
-typedef struct s_info
-{
-	void	*mlx;
-	void	*win;
-	double	v_ang;
-	t_vec	ang;
-	t_pos	ctr;
-	int		map2d_x;
-	int		map2d_y;
-	int		map2d_size_unit;
-	int		color;
-	t_bool	up;
-	t_bool	down;
-	t_bool	left;
-	t_bool	right;
-}			t_info;
-
+#include "cub3d.h"
 
 static void	graph_line(void *info, t_pos p1, t_pos p2)
 {
@@ -100,15 +68,15 @@ void	graph_rectangle(void *info, t_pos p_low_left, t_pos p_up_right)
 		i ++;
 	}
 }
-int main() {
-	t_info info;
+// int main() {
+// 	t_info info;
 	
-	info.mlx = mlx_init();
-	info.win = mlx_new_window(info.mlx, 800, 600, "Line Drawing");
+// 	info.mlx = mlx_init();
+// 	info.win = mlx_new_window(info.mlx, 800, 600, "Line Drawing");
 
-	graph_thick_line(&info, (t_pos){250, 100}, (t_pos){400, 600}, 10);
-	graph_line(&info, (t_pos){0, 0}, (t_pos){500, 600});
-	//graph_square(&info, (t_pos){50, 100}, 50);
-	graph_rectangle(&info, (t_pos){50, 50}, (t_pos){300, 300});
-	mlx_loop(info.mlx);
-}
+// 	graph_thick_line(&info, (t_pos){250, 100}, (t_pos){400, 600}, 10);
+// 	graph_line(&info, (t_pos){0, 0}, (t_pos){500, 600});
+// 	//graph_square(&info, (t_pos){50, 100}, 50);
+// 	graph_rectangle(&info, (t_pos){50, 50}, (t_pos){300, 300});
+// 	mlx_loop(info.mlx);
+// }

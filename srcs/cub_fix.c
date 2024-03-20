@@ -6,12 +6,12 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 03:20:38 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/20 03:27:29 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/20 04:48:53 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/so_long.h"
-# define PI 3.1415926
+#include "cub3d.h"
+
 
 int fix_ang(int a)
 {
