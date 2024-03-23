@@ -6,12 +6,13 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 02:51:23 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/20 04:49:44 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/23 20:52:50 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+//这里传入的是一个t_info类型的 但是必须要求t_info里的img_info已经通过new_img函数进行初始化才可以
 static void	graph_line(void *info, t_pos p1, t_pos p2)
 {
 	double	dx;
@@ -30,7 +31,8 @@ static void	graph_line(void *info, t_pos p1, t_pos p2)
 	dy = dy / e;
 	while (++ i < e)
 	{
-		mlx_pixel_put(((t_info *)(info))->mlx, ((t_info *)(info))->win, (int)(p1.x + 0.5), (int)(p1.y + 0.5), 0x2E8B57);
+		img_put_pixel(info, (int)(p1.x + 0.5), (int)(p1.y + 0.5), 0x2E8B57);
+		//mlx_pixel_put(((t_info *)(info))->mlx, ((t_info *)(info))->win, (int)(p1.x + 0.5), (int)(p1.y + 0.5), 0x2E8B57);
 		p1.x += dx;
 		p1.y += dy;
 	}
@@ -47,7 +49,7 @@ void	graph_thick_line(void *info, t_pos p1, t_pos p2, double thick)
 	i = 0;
 	while (i < 2 * mid)
 	{
-		graph_line (info,(t_pos){p1.x - mid + i, p1.y - mid}, (t_pos){p2.x - mid + i, p2.y - mid});
+		graph_line (info, (t_pos){p1.x - mid + i, p1.y - mid}, (t_pos){p2.x - mid + i, p2.y - mid});
 		i ++;
 	}
 }
@@ -68,15 +70,3 @@ void	graph_rectangle(void *info, t_pos p_low_left, t_pos p_up_right)
 		i ++;
 	}
 }
-// int main() {
-// 	t_info info;
-	
-// 	info.mlx = mlx_init();
-// 	info.win = mlx_new_window(info.mlx, 800, 600, "Line Drawing");
-
-// 	graph_thick_line(&info, (t_pos){250, 100}, (t_pos){400, 600}, 10);
-// 	graph_line(&info, (t_pos){0, 0}, (t_pos){500, 600});
-// 	//graph_square(&info, (t_pos){50, 100}, 50);
-// 	graph_rectangle(&info, (t_pos){50, 50}, (t_pos){300, 300});
-// 	mlx_loop(info.mlx);
-// }

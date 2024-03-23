@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 04:45:47 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/20 05:01:11 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/23 21:00:54 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,15 @@
 # define PI 3.1415926
 
 typedef int	t_bool;
+
+typedef struct s_img_info
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		len_line;
+	int		endian;
+}			t_img_info;
 
 typedef struct s_pos
 {
@@ -58,13 +67,14 @@ typedef struct s_key
 
 typedef struct s_info
 {
-	void	*mlx;
-	void	*win;
-	t_vec	ctr_ang;
-	t_pos	ctr_pos;
-	t_map2d	map_info;
-	t_key	key;
-	int		color;
+	void		*mlx;
+	void		*win;
+	t_vec		ctr_ang;
+	t_pos		ctr_pos;
+	t_map2d		map_info;
+	t_img_info	img_info;
+	t_key		key;
+	int			color;
 }			t_info;
 
 //======cub_graph.c======
@@ -83,4 +93,13 @@ void	vec_scale(t_vec *v_ori, double scale_x, double scale_y);
 void	vec_trans(t_vec *v_ori, double trans_x, double trans_y);
 //======cub_math.c========
 double	math_dist2p(t_pos p1, t_pos p2);
+//======cub_img.c=========
+void	img_new(void *info);
+void	img_put_pixel(void *info, int x, int y, int color);
+//======cub_key.c=========
+void    key_move(void *info);
+int		key_press(int keycode, void *info);
+int		key_release(int keycode, void *info);
+//======cub_init.c=========
+void	init_info(t_info *info, t_pos ori_pos, t_vec ori_ang, t_map2d map);
 #endif
