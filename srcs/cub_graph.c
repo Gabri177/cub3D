@@ -6,11 +6,11 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 02:51:23 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/23 22:39:18 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/23 23:05:32 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../include/cub3d.h"
 
 //这里传入的是一个t_info类型的 但是必须要求t_info里的img_info已经通过new_img函数进行初始化才可以
 static void	graph_line(void *info, t_pos p1, t_pos p2)

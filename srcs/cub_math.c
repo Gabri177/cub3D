@@ -6,11 +6,11 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 04:58:10 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/23 22:16:05 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/23 23:05:32 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../include/cub3d.h"
 
 double	math_dist2p(t_pos p1, t_pos p2)
 {

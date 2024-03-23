@@ -6,11 +6,11 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 19:56:09 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/23 22:42:37 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/23 23:05:32 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../include/cub3d.h"
 
 //这个是初始化t_info参数中的img_info类型的函数
 void	img_new(void *info)

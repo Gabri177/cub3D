@@ -6,11 +6,11 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 03:20:38 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/23 21:09:41 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/23 23:05:32 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../include/cub3d.h"
 
 
 int fix_ang(int a)

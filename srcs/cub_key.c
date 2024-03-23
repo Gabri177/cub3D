@@ -6,11 +6,11 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 20:32:37 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/23 22:45:58 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/23 23:05:32 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../include/cub3d.h"
 
 void    key_move(void *info)
 {
@@ -52,7 +52,7 @@ int	key_press(int keycode, void *info)
 	t_info	*tem;
 
 	tem = (t_info *)info;
-	if (keycode == 53) // Esc key to quit
+	if (keycode == 53)// Esc key to quit
 		exit(0);
 	if (keycode == 126) // Up arrow
 		tem->key.up = 1;
