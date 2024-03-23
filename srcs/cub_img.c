@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 19:56:09 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/23 21:27:08 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/23 22:42:37 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	img_put_pixel(void *info, int x, int y, int color)
 	t_info	*tem;
 
 	tem = (t_info *)info;
+	if (x < 0 || x >= tem->map_info.x || y < 0 || y >= tem->map_info.y)
+    	return	;
 	dst = tem->img_info.addr + (y * tem->img_info.len_line + x * (tem->img_info.bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }
@@ -54,4 +56,12 @@ void	img_end_draw(void *info)
 	mlx_put_image_to_window (tem->mlx, tem->win, tem->img_info.img, 0, 0);
 	mlx_destroy_image (tem->mlx, tem->img_info.img);
 	tem->img_info.img = NULL;
+}
+
+void	img_set_color(void *info, int new_color)
+{
+	t_info	*tem;
+	
+	tem = (t_info *)info;
+	tem->color = new_color;
 }

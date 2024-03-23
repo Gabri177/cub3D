@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 04:45:47 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/23 21:21:36 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/23 22:42:49 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,15 @@ void	vec_scale(t_vec *v_ori, double scale_x, double scale_y);
 void	vec_trans(t_vec *v_ori, double trans_x, double trans_y);
 //======cub_math.c========
 double	math_dist2p(t_pos p1, t_pos p2);
+double	math_k2p(t_pos p1, t_pos p2);
+double	math_b2p(t_pos p, double k);
+t_pos	math_line_offset(t_pos p_esp, t_pos p1, t_pos p2, double b_offset);
 //======cub_img.c=========
 void	img_new(void *info);
 void	img_put_pixel(void *info, int x, int y, int color);
 void	img_start_draw(void *info);
 void	img_end_draw(void *info);
+void	img_set_color(void *info, int new_color);
 //======cub_key.c=========
 void    key_move(void *info);
 int		key_press(int keycode, void *info);

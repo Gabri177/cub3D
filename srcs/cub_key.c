@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 20:32:37 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/23 21:24:17 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/23 22:45:58 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ void    key_move(void *info)
 		tem->ctr_ang.vy = - sin (fix_ang_to_rad (tem->ctr_ang.ang)) * 15;
 	}
 	img_start_draw (info);
+	img_set_color (info, 0x00FF7F);
 	graph_square(info, tem->ctr_pos, 10);
+	img_set_color (info, 0x48D1CC);
+	graph_thick_line (info, tem->ctr_pos, (t_pos){tem->ctr_pos.x + tem->ctr_ang.vx * 1.5, tem->ctr_pos.y + tem->ctr_ang.vy * 1.5}, 2);
 	img_end_draw (info);
 }
 
