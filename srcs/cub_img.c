@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 19:56:09 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/23 20:29:48 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/23 21:27:08 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,25 @@ void	img_put_pixel(void *info, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
+//画任何东西的时候, 必须以这个函数为开始, 否则会出错
+void	img_start_draw(void *info)
+{
+	t_info	*tem;
+	
+	tem = (t_info *)info;
+	if (tem->img_info.img)
+		mlx_put_image_to_window (tem->mlx, tem->win, tem->img_info.img, 0, 0);
+	img_new (info);
+}
 
+
+//在结束一张画布的时候, 必须以这个函数为结束, 这样才能将画的内容推送到窗口并销毁图像
+void	img_end_draw(void *info)
+{
+	t_info	*tem;
+	
+	tem = (t_info *)info;
+	mlx_put_image_to_window (tem->mlx, tem->win, tem->img_info.img, 0, 0);
+	mlx_destroy_image (tem->mlx, tem->img_info.img);
+	tem->img_info.img = NULL;
+}

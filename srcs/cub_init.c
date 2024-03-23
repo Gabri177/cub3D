@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 20:53:08 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/23 20:59:43 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/23 21:21:43 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,5 @@ void	init_info(t_info *info, t_pos ori_pos, t_vec ori_ang, t_map2d map)
 	info->key.down = 0;
 	info->key.left = 0;
 	info->key.right = 0;
-	img_new (info);
 	info->color = -1;
 }

@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 03:20:38 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/20 04:48:53 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/23 21:09:41 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int fix_ang(int a)
 		return (a - 360);
 	if (a < 0)
 		return (a + 360);
+	return (a);
 }
 
 double  fix_rad(double rad)
@@ -27,6 +28,7 @@ double  fix_rad(double rad)
 		return (rad - 2 * PI);
 	if (rad < 0)
 		return (rad + 2 * PI);
+	return (rad);
 }
 
 int	fix_rad_to_ang(double rad)

@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 20:32:37 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/23 20:51:28 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/23 21:24:17 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ void    key_move(void *info)
 		tem->ctr_ang.vx = cos (fix_ang_to_rad (tem->ctr_ang.ang)) * 15;
 		tem->ctr_ang.vy = - sin (fix_ang_to_rad (tem->ctr_ang.ang)) * 15;
 	}
+	img_start_draw (info);
+	graph_square(info, tem->ctr_pos, 10);
+	img_end_draw (info);
 }
 
 int	key_press(int keycode, void *info)

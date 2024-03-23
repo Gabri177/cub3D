@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 04:45:47 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/23 21:00:54 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/23 21:21:36 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ double	math_dist2p(t_pos p1, t_pos p2);
 //======cub_img.c=========
 void	img_new(void *info);
 void	img_put_pixel(void *info, int x, int y, int color);
+void	img_start_draw(void *info);
+void	img_end_draw(void *info);
 //======cub_key.c=========
 void    key_move(void *info);
 int		key_press(int keycode, void *info);
