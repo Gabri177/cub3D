@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 00:20:44 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/24 00:50:59 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/24 03:47:33 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,9 @@ t_vec	math_projection_vec(t_vec v_ori, double change_ang, int vec_len)
 		vec_len = 1;
 	new_ang = fix_ang (v_ori.ang + change_ang);
 	return ((t_vec){cos (fix_ang_to_rad(new_ang)) * vec_len, -sin (fix_ang_to_rad(new_ang)) * vec_len, new_ang});	
+}
+
+t_pos	math_coordinate(t_pos pos)
+{
+	return ((t_pos){pos.x / UNIDAD, pos.y / UNIDAD});
 }

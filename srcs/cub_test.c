@@ -1,4 +1,4 @@
-#include "../header/so_long.h"
+#include "../include/so_long.h"
 #include <math.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -217,7 +217,7 @@ void drawRays3D(t_info *info)
 	if(cos(degToRad(ra))> 0.001)
 	{
 		rx= (((int)(info->pos_x)>>6)<<6)+64;
-		ry= ((info->pos_x)-rx)*Tan+(info->pos_y);
+		ry= ((info->pos_x) - rx)*Tan+(info->pos_y);
 		xo= 64;
 		yo=-xo * Tan;
 	}//looking left
@@ -244,7 +244,7 @@ void drawRays3D(t_info *info)
 			vx=rx;
 			vy=ry;
 			dof=8;
-			disV = cos(degToRad(ra))*(rx-(info->pos_x))-sin(degToRad(ra))*(ry-(info->pos_y));
+			disV = dist (rx, ry, info->pos_x, info->pos_y);
 		}//hit         
 		else
 		{
@@ -265,7 +265,7 @@ void drawRays3D(t_info *info)
 	while(dof<8) 
 	{ 
 	mx=(int)(rx)>>6; my=(int)(ry)>>6; mp=my*mapX+mx;                          
-	if(mp>0 && mp<mapX*mapY && map[mp]==1){hx = rx; hy = ry; dof=8; disH=cos(degToRad(ra))*(rx-(info->pos_x))-sin(degToRad(ra))*(ry-(info->pos_y));}//hit         
+	if(mp>0 && mp<mapX*mapY && map[mp]==1){hx = rx; hy = ry; dof=8;  disH = dist (rx, ry, info->pos_x, info->pos_y);}//hit         
 	else{ rx+=xo; ry+=yo; dof+=1;}                                               //check next horizontal
 	} 
 	

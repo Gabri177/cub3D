@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 04:45:47 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/24 00:55:27 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/24 03:49:02 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ double	math_k2p(t_pos p1, t_pos p2);
 double	math_b2p(t_pos p, double k);
 t_pos	math_line_offset(t_pos p_esp, t_pos p1, t_pos p2, double b_offset);
 t_vec	math_projection_vec(t_vec v_ori, double change_ang, int vec_len);
+t_pos	math_coordinate(t_pos pos);
 //======cub_img.c=========
 void	img_new(void *info);
 void	img_put_pixel(void *info, int x, int y, int color);
