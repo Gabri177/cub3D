@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 20:32:37 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/23 23:05:32 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/24 00:56:39 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,33 +18,23 @@ void    key_move(void *info)
 
 	tem = ((t_info *)info);
 	if (tem->key.up)
-	{
-		tem->ctr_pos.x += tem->ctr_ang.vx;
-		tem->ctr_pos.y += tem->ctr_ang.vy;
-	}
+		tem->ctr_pos = vec_trans (tem->ctr_pos, tem->ctr_ang);
 	if (tem->key.down)
-	{
-		tem->ctr_pos.x -= tem->ctr_ang.vx;
-		tem->ctr_pos.y -= tem->ctr_ang.vy;
-	}
+		tem->ctr_pos = vec_trans (tem->ctr_pos, tem->ctr_ang);
 	if (tem->key.left)
-	{
-		tem->ctr_ang.ang = fix_ang (tem->ctr_ang.ang + 5);
-		tem->ctr_ang.vx = cos (fix_ang_to_rad (tem->ctr_ang.ang)) * 15;
-		tem->ctr_ang.vy = - sin (fix_ang_to_rad (tem->ctr_ang.ang)) * 15;
-	}
+		tem->ctr_ang = math_projection_vec (tem->ctr_ang, 5, 15);
 	if (tem->key.right)
+		tem->ctr_ang = math_projection_vec (tem->ctr_ang, -5, 15);
+	if (tem->key.up || tem->key.down || tem->key.left || tem->key.right)
 	{
-		tem->ctr_ang.ang = fix_ang (tem->ctr_ang.ang - 5);
-		tem->ctr_ang.vx = cos (fix_ang_to_rad (tem->ctr_ang.ang)) * 15;
-		tem->ctr_ang.vy = - sin (fix_ang_to_rad (tem->ctr_ang.ang)) * 15;
+		img_start_draw (info);
+		bk_map (info);
+		img_set_color (info, 0xF08080);
+		graph_square(info, tem->ctr_pos, 10);
+		img_set_color (info, 0x2F4F4F);
+		graph_thick_line (info, tem->ctr_pos, (t_pos){tem->ctr_pos.x + tem->ctr_ang.vx * 1.5, tem->ctr_pos.y + tem->ctr_ang.vy * 1.5}, 2);
+		img_end_draw (info);
 	}
-	img_start_draw (info);
-	img_set_color (info, 0x00FF7F);
-	graph_square(info, tem->ctr_pos, 10);
-	img_set_color (info, 0x48D1CC);
-	graph_thick_line (info, tem->ctr_pos, (t_pos){tem->ctr_pos.x + tem->ctr_ang.vx * 1.5, tem->ctr_pos.y + tem->ctr_ang.vy * 1.5}, 2);
-	img_end_draw (info);
 }
 
 int	key_press(int keycode, void *info)
@@ -73,9 +63,9 @@ int	key_release(int keycode, void *info)
 	if (keycode == 126) // Up arrow
 		tem->key.up = 0;
 	if (keycode == 125) // Down arrow
-		tem->key.down = 0;
+ 		tem->key.down = 0;
 	if (keycode == 123) // Left arrow
-		tem->key.left = 0;
+ 		tem->key.left = 0;
 	if (keycode == 124) // Right arrow
 		tem->key.right = 0;
 	return (0);

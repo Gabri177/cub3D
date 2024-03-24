@@ -1,42 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_fix.c                                          :+:      :+:    :+:   */
+/*   cub_math2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/20 03:20:38 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/23 23:09:12 by yugao            ###   ########.fr       */
+/*   Created: 2024/03/24 00:20:44 by yugao             #+#    #+#             */
+/*   Updated: 2024/03/24 00:50:59 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-
-int fix_ang(int a)
+t_vec	math_projection_vec(t_vec v_ori, double change_ang, int vec_len)
 {
-	if (a >= 360)
-		return (a - 360);
-	if (a < 0)
-		return (a + 360);
-	return (a);
-}
+	double	new_ang;
 
-double  fix_rad(double rad)
-{
-	if (rad >= 2 * PI)
-		return (rad - 2 * PI);
-	if (rad < 0)
-		return (rad + 2 * PI);
-	return (rad);
-}
-
-int	fix_rad_to_ang(double rad)
-{
-	return ((int)(rad / 2 / PI * 360));
-}
-
-double	fix_ang_to_rad(int ang)
-{
-	return ((double)ang / 360.0 * 2 * PI);
+	if (vec_len <= 0)
+		vec_len = 1;
+	new_ang = fix_ang (v_ori.ang + change_ang);
+	return ((t_vec){cos (fix_ang_to_rad(new_ang)) * vec_len, -sin (fix_ang_to_rad(new_ang)) * vec_len, new_ang});	
 }

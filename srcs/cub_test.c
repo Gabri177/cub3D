@@ -206,7 +206,7 @@ void drawRays3D(t_info *info)
 	int 	r , mx, my, mp, dof, side;
 	float	vx, vy, hx, hy, rx, ry, ra, xo, yo, disV, disH; 
 
-	ra  FixAng (pa + 30);//ray set back 30 degrees
+	ra = FixAng (pa + 30);//ray set back 30 degrees
 	for(r = 0; r < 60; r ++)
 	{
 		//---Vertical--- 

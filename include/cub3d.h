@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 04:45:47 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/23 22:42:49 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/24 00:55:27 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include "../minilibx/mlx.h"
 # include "../libft/libft.h"
 
+# define UNIDAD 64
 # define TRUE 1
 # define FALSE 0
 # define PI 3.1415926
@@ -50,12 +51,11 @@ typedef struct s_vec
 	double	ang;
 }   		t_vec;
 
-typedef struct s_map2d
+typedef struct s_map
 {
 	int	x;
 	int	y;
-	int	size_unit;
-}  			t_map2d;
+}  			t_map;
 
 typedef struct s_key
 {
@@ -71,7 +71,7 @@ typedef struct s_info
 	void		*win;
 	t_vec		ctr_ang;
 	t_pos		ctr_pos;
-	t_map2d		map_info;
+	t_map		map_info;
 	t_img_info	img_info;
 	t_key		key;
 	int			color;
@@ -90,12 +90,13 @@ double	fix_ang_to_rad(int ang);
 double	ang_2vec_2D(t_vec v1, t_vec v2);
 void	vec_rotate(t_vec *v_ori, double ang);
 void	vec_scale(t_vec *v_ori, double scale_x, double scale_y);
-void	vec_trans(t_vec *v_ori, double trans_x, double trans_y);
+t_pos	vec_trans(t_pos p_ori, t_vec v_direction);
 //======cub_math.c========
 double	math_dist2p(t_pos p1, t_pos p2);
 double	math_k2p(t_pos p1, t_pos p2);
 double	math_b2p(t_pos p, double k);
 t_pos	math_line_offset(t_pos p_esp, t_pos p1, t_pos p2, double b_offset);
+t_vec	math_projection_vec(t_vec v_ori, double change_ang, int vec_len);
 //======cub_img.c=========
 void	img_new(void *info);
 void	img_put_pixel(void *info, int x, int y, int color);
@@ -107,5 +108,7 @@ void    key_move(void *info);
 int		key_press(int keycode, void *info);
 int		key_release(int keycode, void *info);
 //======cub_init.c=========
-void	init_info(t_info *info, t_pos ori_pos, t_vec ori_ang, t_map2d map);
+void	init_info(t_info *info, t_pos ori_pos, t_vec ori_ang, t_map map);
+//======cub_2d_bk.c=========
+void	bk_map(void *info);
 #endif
