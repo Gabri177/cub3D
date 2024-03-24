@@ -1,0 +1,135 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub_matrix.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/24 19:33:20 by yugao             #+#    #+#             */
+/*   Updated: 2024/03/24 20:57:03 by yugao            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../include/cub3d.h"
+
+static void	apoyo_matrix_init(t_node *node)
+{
+	node->obj = '#';
+	node->stp = -1;
+}
+
+t_mtx	matrix_init(t_vec size)
+{
+	t_mtx	new;
+	size_t	x;
+	size_t	y;
+
+	new = malloc (sizeof (t_node **) * ((int)(size.vx) + 1));
+	if (!new)
+		return NULL;	
+	x = -1;
+	while (++x < size.vx)
+	{
+		new[x] = malloc (sizeof (t_node*) * (((int)size.vy) + 1));
+		if (!new[x])
+			return NULL;
+		y = -1;
+		while (++y < size.vy)
+		{
+			new[x][y] = malloc (sizeof (t_node));
+			if (!new[x][y])
+				return NULL;
+			apoyo_matrix_init (new[x][y]);
+		}
+		new[x][y] = NULL;
+	}
+	new[x] = NULL;
+	return new;
+}
+
+void	matrix_display(t_mtx matrix, t_bool	is_obj)
+{
+	int	x;
+	int	y;
+	
+	if (!matrix)
+		return ;
+	y = 0;
+	while (matrix[0][y])
+	{
+		x = 0;
+		while (matrix[x] && matrix[x][y])
+		{
+			if (is_obj)
+				printf ("(%d, %d) %c\t", x, y, matrix[x][y]->obj);
+			else
+				printf ("(%d, %d)%d\t", x, y, matrix[x][y]->stp);
+			x ++;
+		}
+		printf ("\n");
+		y ++;
+	}
+}
+
+void	matrix_destory(t_mtx *matrix)
+{
+	t_mtx	trash;
+	int		x;
+	int		y;
+
+	trash = *matrix;
+	x = 0;
+	while (trash[x])
+	{
+		y = 0;
+		while (trash[x][y])\
+		{
+			free (trash[x][y]);
+			trash[x][y] = NULL;
+			y ++;
+		}
+		free (trash[x]);
+		trash[x] = NULL;
+		x ++;
+	}
+	free (trash);
+	trash = NULL;
+}
+
+//需要传入一个纯文本的字符串 不可以有换行符号, 与如果有的话 换行符也会被加入到矩阵中
+void	matrix_push(t_mtx *mtx_ori, char *context)
+{
+	int		i;
+	int		leny;
+	int		lenx;
+	t_mtx	mtx;
+
+	mtx = *mtx_ori;
+	leny = 0;
+	while (mtx[0][leny])
+		leny ++;
+	lenx = 0;
+	while (mtx[lenx])
+		lenx ++;
+	printf ("%d %d \n", lenx, leny );
+	i = 0;
+	while (context[i])
+	{
+		if (i < lenx * leny)
+			mtx[i % lenx][i / lenx]->obj = context[i];
+		else
+			return ;
+		i ++;
+	}
+}
+
+// int main(void)
+// {
+// 	t_mtx	test;
+
+// 	test = matrix_init ((t_vec){2, 3});
+// 	matrix_push (&test, "123456789");
+// 	matrix_display (test, TRUE);
+// 	matrix_destory (&test);
+// 	return 0;
+// }

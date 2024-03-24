@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 04:45:47 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/24 03:49:02 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/24 20:58:16 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,14 @@
 # define PI 3.1415926
 
 typedef int	t_bool;
+
+typedef struct s_node
+{
+	char	obj;
+	int		stp;
+}			t_node;
+
+typedef t_node***	t_mtx;
 
 typedef struct s_img_info
 {
@@ -77,16 +85,16 @@ typedef struct s_info
 	int			color;
 }			t_info;
 
-//======cub_graph.c======
+//======cub_graph.c=======
 void	graph_thick_line(void *info, t_pos p1, t_pos p2, double thick);
 void	graph_square(void *info, t_pos p_center, int len_side);
 void	graph_rectangle(void *info, t_pos p_low_left, t_pos p_up_right);
-//======cub_fix.c========
+//======cub_fix.c=========
 int		fix_ang(int a);
 double	fix_rad(double rad);
 int		fix_rad_to_ang(double rad);
 double	fix_ang_to_rad(int ang);
-//======cub_vec.c========
+//======cub_vec.c=========
 double	ang_2vec_2D(t_vec v1, t_vec v2);
 void	vec_rotate(t_vec *v_ori, double ang);
 void	vec_scale(t_vec *v_ori, double scale_x, double scale_y);
@@ -110,6 +118,11 @@ int		key_press(int keycode, void *info);
 int		key_release(int keycode, void *info);
 //======cub_init.c=========
 void	init_info(t_info *info, t_pos ori_pos, t_vec ori_ang, t_map map);
-//======cub_2d_bk.c=========
+//======cub_2d_bk.c========
 void	bk_map(void *info);
+//======cub_matrix.c=======
+t_mtx	matrix_init(t_vec size);
+void	matrix_display(t_mtx matrix, t_bool	is_obj);
+void	matrix_destory(t_mtx *matrix);
+void	matrix_push(t_mtx *mtx_ori, char *context);
 #endif

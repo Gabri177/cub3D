@@ -6,12 +6,12 @@
 #    By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/16 21:42:20 by yugao             #+#    #+#              #
-#    Updated: 2024/03/24 00:21:38 by yugao            ###   ########.fr        #
+#    Updated: 2024/03/24 20:57:12 by yugao            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CFILE = $(addprefix ./srcs/, cub_2d_bk.c cub_fix.c cub_graph_base.c cub_img.c \
-					cub_math2.c \
+					cub_math2.c  cub_matrix.c \
 					 cub_init.c cub_key.c cub_main.c cub_math1.c cub_vec.c)
 					
 OFILE = $(CFILE:.c=.o)
