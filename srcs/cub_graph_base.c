@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 02:51:23 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/24 00:18:03 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/25 19:27:15 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static void	graph_line(void *info, t_pos p1, t_pos p2)
 	}
 }
 
+//画一个有厚度的直线, 这里处理的是当直线的斜率绝对值大于1的情况
 static void	graph_thick_line_plumb(void *info, t_pos p1, t_pos p2, double thick)
 {
 	double	i;
@@ -52,6 +53,7 @@ static void	graph_thick_line_plumb(void *info, t_pos p1, t_pos p2, double thick)
 	}
 }
 
+//画一个有厚度的直线, 这里处理的是当直线的斜率小于1的情况
 void	graph_thick_line(void *info, t_pos p1, t_pos p2, double thick)
 {
 	double	i;
@@ -69,7 +71,7 @@ void	graph_thick_line(void *info, t_pos p1, t_pos p2, double thick)
 	}
 }
 
-
+//画一个正方形, 需要提供中心点的坐标和边长
 void	graph_square(void *info, t_pos p_center, int len_side)
 {
 	if (len_side % 2 == 0)
@@ -78,6 +80,7 @@ void	graph_square(void *info, t_pos p_center, int len_side)
 		graph_thick_line (info, (t_pos){p_center.x, p_center.y - len_side / 2}, (t_pos){p_center.x, p_center.y + len_side - len_side / 2}, len_side);
 }
 
+//画一个长方形, 这里需要提供左下角和右上角的坐标
 void	graph_rectangle(void *info, t_pos p_low_left, t_pos p_up_right)
 {
 	int	i;

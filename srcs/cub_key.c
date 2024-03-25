@@ -6,12 +6,13 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 20:32:37 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/24 00:56:39 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/25 19:22:04 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
+//上下左右箭头 左右箭头控制视角, 上下箭头控制前进和后退
 void    key_move(void *info)
 {
 	t_info	*tem;
@@ -37,6 +38,7 @@ void    key_move(void *info)
 	}
 }
 
+//触发按下的事件
 int	key_press(int keycode, void *info)
 {
 	t_info	*tem;
@@ -55,6 +57,7 @@ int	key_press(int keycode, void *info)
 	return (0);
 }
 
+//触发松开按键的事件
 int	key_release(int keycode, void *info)
 {
 	t_info	*tem;

@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 19:33:20 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/24 20:57:03 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/25 19:28:29 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static void	apoyo_matrix_init(t_node *node)
 	node->stp = -1;
 }
 
+//创建一个对应大小的矩阵, 矩阵每个点都可以存储一个char和一个int
 t_mtx	matrix_init(t_vec size)
 {
 	t_mtx	new;
@@ -47,6 +48,7 @@ t_mtx	matrix_init(t_vec size)
 	return new;
 }
 
+//显示矩阵, 用来查看矩阵的存储信息
 void	matrix_display(t_mtx matrix, t_bool	is_obj)
 {
 	int	x;
@@ -71,6 +73,7 @@ void	matrix_display(t_mtx matrix, t_bool	is_obj)
 	}
 }
 
+//对创建的矩阵进行销毁
 void	matrix_destory(t_mtx *matrix)
 {
 	t_mtx	trash;

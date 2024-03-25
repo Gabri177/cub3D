@@ -6,13 +6,13 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 03:20:38 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/23 23:09:12 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/25 19:30:07 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-
+//对角度值进行修复, 确保角度在0 - 360之间
 int fix_ang(int a)
 {
 	if (a >= 360)
@@ -22,6 +22,7 @@ int fix_ang(int a)
 	return (a);
 }
 
+//对用pi表示的角度进行修复, 确保值在0 - 2PI之间
 double  fix_rad(double rad)
 {
 	if (rad >= 2 * PI)
@@ -31,6 +32,7 @@ double  fix_rad(double rad)
 	return (rad);
 }
 
+//将角度值转换为用PI表示的方法
 int	fix_rad_to_ang(double rad)
 {
 	return ((int)(rad / 2 / PI * 360));

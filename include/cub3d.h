@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 04:45:47 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/24 20:58:16 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/25 19:20:48 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef struct s_info
 	t_map		map_info;
 	t_img_info	img_info;
 	t_key		key;
+	t_mtx		mtx;
 	int			color;
 }			t_info;
 

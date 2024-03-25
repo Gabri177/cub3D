@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 19:56:09 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/23 23:05:32 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/25 19:25:42 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	img_end_draw(void *info)
 	tem->img_info.img = NULL;
 }
 
+//在画任何东西之前, 如果想要改变颜色, 可以通过这个函数改变颜色
+//默认颜色为白色
 void	img_set_color(void *info, int new_color)
 {
 	t_info	*tem;
