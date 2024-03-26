@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 00:29:57 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/26 01:45:02 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/26 02:44:37 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,38 @@ void	graph_ray_to_wall(void *info, int range_ang)
 	int		ca;
 	int		lineh;
 	int		lineoff;
-	t_pos	hit;
+	t_posx	hit;
 	
 
 	i = - range_ang / 2;
 	while (i < range_ang / 2)
 	{
 		hit = biu_hit_pos (info, i);
-		img_set_color (info, 0x666666);
-		graph_draw_ray (info, hit);
-		ca = fix_ang (((t_info *)info)->ctr_ang.ang + i);
-		dis = math_dist2p (((t_info *)info)->ctr_pos, hit) ;
-		lineh = (UNIDAD * 320) / dis;
-		if (lineh > 320)
-			lineh = 320;
-		lineoff = 160 - (lineh >> 1);
-		printf ("dis:%f hit:(%f, %f), lineoff %d\n", dis, hit.x, hit.y, lineoff);
-		img_set_color (info, 0xFFCC33);
-		graph_thick_line(info, (t_pos){1024 / 3 * 2 + i * 8, lineoff}, (t_pos){1024 / 3 * 2 + i * 8, lineoff + lineh}, 8);
+		if (hit.side == UPSIDE)
+			img_set_color (info, 0xFFB6C1);
+		else if (hit.side == DOWNSIDE)
+			img_set_color (info, 0x800080);
+		else if (hit.side == LEFTSIDE)
+			img_set_color (info, 0x4169E1);
+		else
+			img_set_color (info, 0x3CB371);
+		graph_draw_ray (info, trans_posx_to_pos(hit));
+		ca = fix_ang (i);
+		dis = math_dist2p (((t_info *)info)->ctr_pos, trans_posx_to_pos(hit)) * cos (fix_ang_to_rad(ca));
+		lineh = (UNIDAD * 500) / dis;
+		if (lineh > 500)
+			lineh = 500;
+		lineoff = 250 - (lineh >> 1);
+		//printf ("dis:%f hit:(%f, %f), lineoff %d\n", dis, hit.x, hit.y, lineoff);
+		if (hit.side == UPSIDE)
+			img_set_color (info, 0xFFB6C1);
+		else if (hit.side == DOWNSIDE)
+			img_set_color (info, 0x800080);
+		else if (hit.side == LEFTSIDE)
+			img_set_color (info, 0x4169E1);
+		else
+			img_set_color (info, 0x3CB371);
+		graph_thick_line(info, trans_2num_to_pos(530 + (i + range_ang / 2) * 8, lineoff), trans_2num_to_pos(530 + (i + range_ang / 2) * 8, lineoff + lineh), 8);
 		i += 1;
 	}
 }

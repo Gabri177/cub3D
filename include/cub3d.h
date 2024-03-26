@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 04:45:47 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/26 00:53:37 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/26 03:10:32 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,11 @@
 # include "../minilibx/mlx.h"
 # include "../libft/libft.h"
 
-# define UNIDAD 64
+# define UNIDAD 20
+# define UPSIDE 1
+# define DOWNSIDE 2
+# define LEFTSIDE 3
+# define RIGHTSIDE 4
 # define TRUE 1
 # define FALSE 0
 # define PI 3.1415926
@@ -48,9 +52,16 @@ typedef struct s_img_info
 
 typedef struct s_pos
 {
-	double x;
-	double y;
+	double	x;
+	double	y;
 }   		t_pos;
+
+typedef struct s_posx
+{
+	double	x;
+	double	y;
+	t_bool	side;
+}   		t_posx;
 
 typedef struct s_vec
 {
@@ -133,11 +144,13 @@ void	matrix_display(t_mtx matrix, t_bool	is_obj);
 void	matrix_destory(t_mtx *matrix);
 void	matrix_push(t_mtx *mtx_ori, char *context);
 t_bool	matrix_range_check(void *info, int x, int y);
-
-
-//t_pos	biu_hit_pos(void *info, int setoff_ang);
-t_pos	biu_hit_pos(void *info, int setoff_ang);
+//======cub_biubiu.c=======
+t_posx	biu_hit_pos(void *info, int setoff_ang);
+//======cub_graph_ray.c====
 void	graph_draw_ray(void *info, t_pos end);
-
 void	graph_ray_to_wall(void *info, int range_ang);
+//======cub_trans.c=========
+t_pos	trans_posx_to_pos(t_posx posx);
+t_pos	trans_2num_to_pos(double n1, double n2);
+t_posx	trans_pos_to_posx(t_pos pos, t_bool side);
 #endif

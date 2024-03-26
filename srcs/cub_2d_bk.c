@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 23:11:55 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/25 19:29:04 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/26 02:48:34 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@ void	bk_map(void *info)
 		{
 			if (((t_info *)info)->mtx[x][y]->obj == '1')
 				img_set_color (info, 0x2E8B57);
-			else
+			else if(((t_info *)info)->mtx[x][y]->obj == '0')
 				img_set_color (info, 0xF0FFF0);
+			else
+				img_set_color (info, 0x000000);
 			graph_square (info, (t_pos){x * UNIDAD + UNIDAD / 2, y * UNIDAD + UNIDAD / 2}, UNIDAD - 1);
 		}
 	}

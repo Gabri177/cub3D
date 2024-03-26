@@ -35,7 +35,7 @@ void    key_move(void *info)
 		// for (int i = -30; i <= 30; i += 3)
 		// {
 		// 	img_set_color (info, 0x666666);
-		// 	graph_draw_ray (info, biu_hit_pos (info, i));
+		// 	graph_draw_ray (info, (t_pos){biu_hit_pos (info, i).x, biu_hit_pos (info, i).y});
 		// }
 		graph_ray_to_wall (info, 60);
 		img_set_color (info, 0xFFCC00);
