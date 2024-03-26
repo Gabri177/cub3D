@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 04:45:47 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/25 19:20:48 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/26 00:53:37 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef struct s_vec
 {
 	double  vx;
 	double  vy;
-	double	ang;
+	int		ang;
 }   		t_vec;
 
 typedef struct s_map
@@ -72,6 +72,12 @@ typedef struct s_key
 	t_bool	left;
 	t_bool	right;
 }  			t_key;
+
+typedef	struct s_ray
+{
+	t_pos	start;
+	t_pos	end;
+}			t_ray;
 
 typedef struct s_info
 {
@@ -99,7 +105,7 @@ double	fix_ang_to_rad(int ang);
 double	ang_2vec_2D(t_vec v1, t_vec v2);
 void	vec_rotate(t_vec *v_ori, double ang);
 void	vec_scale(t_vec *v_ori, double scale_x, double scale_y);
-t_pos	vec_trans(t_pos p_ori, t_vec v_direction);
+t_pos	vec_trans(t_pos p_ori, t_vec v_direction, t_bool is_forward);
 //======cub_math.c========
 double	math_dist2p(t_pos p1, t_pos p2);
 double	math_k2p(t_pos p1, t_pos p2);
@@ -126,4 +132,12 @@ t_mtx	matrix_init(t_vec size);
 void	matrix_display(t_mtx matrix, t_bool	is_obj);
 void	matrix_destory(t_mtx *matrix);
 void	matrix_push(t_mtx *mtx_ori, char *context);
+t_bool	matrix_range_check(void *info, int x, int y);
+
+
+//t_pos	biu_hit_pos(void *info, int setoff_ang);
+t_pos	biu_hit_pos(void *info, int setoff_ang);
+void	graph_draw_ray(void *info, t_pos end);
+
+void	graph_ray_to_wall(void *info, int range_ang);
 #endif

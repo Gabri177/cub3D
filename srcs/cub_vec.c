@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 01:32:20 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/24 00:57:29 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/25 20:26:30 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ void	vec_scale(t_vec *v_ori, double scale_x, double scale_y)
 }
 
 //将原坐标点像向量方向进行位移, 向量不是单位向量
-t_pos	vec_trans(t_pos p_ori, t_vec v_direction)
+t_pos	vec_trans(t_pos p_ori, t_vec v_direction, t_bool is_forward)
 {
-	return ((t_pos){p_ori.x + v_direction.vx, p_ori.y + v_direction.vy});
+	if (is_forward)
+		return ((t_pos){p_ori.x + v_direction.vx, p_ori.y + v_direction.vy});
+	else
+		return ((t_pos){p_ori.x - v_direction.vx, p_ori.y - v_direction.vy});
 }

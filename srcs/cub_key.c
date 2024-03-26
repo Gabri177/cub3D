@@ -4,9 +4,9 @@
 /*   cub_key.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                               +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 20:32:37 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/25 19:22:04 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/26 00:22:22 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,27 @@ void    key_move(void *info)
 
 	tem = ((t_info *)info);
 	if (tem->key.up)
-		tem->ctr_pos = vec_trans (tem->ctr_pos, tem->ctr_ang);
+		tem->ctr_pos = vec_trans (tem->ctr_pos, tem->ctr_ang, TRUE);
 	if (tem->key.down)
-		tem->ctr_pos = vec_trans (tem->ctr_pos, tem->ctr_ang);
+		tem->ctr_pos = vec_trans (tem->ctr_pos, tem->ctr_ang, FALSE);
 	if (tem->key.left)
-		tem->ctr_ang = math_projection_vec (tem->ctr_ang, 5, 15);
+		tem->ctr_ang = math_projection_vec (tem->ctr_ang, -5, 5);
 	if (tem->key.right)
-		tem->ctr_ang = math_projection_vec (tem->ctr_ang, -5, 15);
+		tem->ctr_ang = math_projection_vec (tem->ctr_ang, +5, 5);
 	if (tem->key.up || tem->key.down || tem->key.left || tem->key.right)
 	{
 		img_start_draw (info);
 		bk_map (info);
 		img_set_color (info, 0xF08080);
 		graph_square(info, tem->ctr_pos, 10);
-		img_set_color (info, 0x2F4F4F);
-		graph_thick_line (info, tem->ctr_pos, (t_pos){tem->ctr_pos.x + tem->ctr_ang.vx * 1.5, tem->ctr_pos.y + tem->ctr_ang.vy * 1.5}, 2);
+		// for (int i = -30; i <= 30; i += 3)
+		// {
+		// 	img_set_color (info, 0x666666);
+		// 	graph_draw_ray (info, biu_hit_pos (info, i));
+		// }
+		graph_ray_to_wall (info, 60);
+		img_set_color (info, 0xFFCC00);
+		graph_thick_line (info, tem->ctr_pos, (t_pos){tem->ctr_pos.x + tem->ctr_ang.vx * 3, tem->ctr_pos.y + tem->ctr_ang.vy * 3}, 2);
 		img_end_draw (info);
 	}
 }

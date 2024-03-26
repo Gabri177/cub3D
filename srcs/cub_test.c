@@ -209,98 +209,123 @@ void drawRays3D(t_info *info)
 	ra = FixAng (pa + 30);//ray set back 30 degrees
 	for(r = 0; r < 60; r ++)
 	{
-		//---Vertical--- 
-	dof = 0;
-	side = 0;
-	disV = 100000;
-	float Tan = tan (degToRad (ra));
-	if(cos(degToRad(ra))> 0.001)
-	{
-		rx= (((int)(info->pos_x)>>6)<<6)+64;
-		ry= ((info->pos_x) - rx)*Tan+(info->pos_y);
-		xo= 64;
-		yo=-xo * Tan;
-	}//looking left
-	else if(cos(degToRad(ra))<-0.001)
-	{
-		rx = (((int)(info->pos_x)>>6)<<6) -0.0001;
-		ry = ((info->pos_x)-rx) * Tan + (info->pos_y);
-		xo = -64;
-		yo= -xo * Tan;
-	}//looking right
-	else
-	{
-		rx=(info->pos_x);
-		ry=(info->pos_y);
-		dof=8;
-	}                                                  //looking up or down. no hit  
-	while(dof<8) 
-	{ 
-		mx = (int)(rx)>>6;
-		my=(int)(ry)>>6;
-		mp=my * mapX + mx;
-		if(mp>0 && mp<mapX*mapY && map[mp]==1)
+			//---Vertical--- 
+		dof = 0;
+		side = 0;
+		disV = 100000;
+		float Tan = tan (degToRad (ra));
+		if(cos(degToRad(ra))> 0.001)
 		{
-			vx=rx;
-			vy=ry;
-			dof=8;
-			disV = dist (rx, ry, info->pos_x, info->pos_y);
-		}//hit         
+			rx= (((int)(info->pos_x)>>6)<<6)+64;
+			ry= ((info->pos_x) - rx)*Tan+(info->pos_y);
+			xo= 64;
+			yo=-xo * Tan;
+		}//looking left
+		else if(cos(degToRad(ra))<-0.001)
+		{
+			rx = (((int)(info->pos_x)>>6)<<6) -0.0001;
+			ry = ((info->pos_x)-rx) * Tan + (info->pos_y);
+			xo = -64;
+			yo= -xo * Tan;
+		}//looking right
 		else
 		{
-			rx+=xo;
-			ry+=yo;
-			dof+=1;
-		}                                               //check next horizontal
-	} 
-	
-
-	//---Horizontal---
-	dof=0; disH=100000;
-	Tan=1.0/Tan; 
-		if(sin(degToRad(ra))> 0.001){ ry=(((int)(info->pos_y)>>6)<<6) -0.0001; rx=((info->pos_y)-ry)*Tan+(info->pos_x); yo=-64; xo=-yo*Tan;}//looking up 
-	else if(sin(degToRad(ra))<-0.001){ ry=(((int)(info->pos_y)>>6)<<6)+64;      rx=((info->pos_y)-ry)*Tan+(info->pos_x); yo= 64; xo=-yo*Tan;}//looking down
-	else{ rx=(info->pos_x); ry=(info->pos_y); dof=8;}                                                   //looking straight left or right
-	
-	while(dof<8) 
-	{ 
-	mx=(int)(rx)>>6; my=(int)(ry)>>6; mp=my*mapX+mx;                          
-	if(mp>0 && mp<mapX*mapY && map[mp]==1){hx = rx; hy = ry; dof=8;  disH = dist (rx, ry, info->pos_x, info->pos_y);}//hit         
-	else{ rx+=xo; ry+=yo; dof+=1;}                                               //check next horizontal
-	} 
-	
-
-	if(disV<disH)
-	{ 
-		rx=vx; ry=vy; disH=disV;                  //horizontal hit first
-		draw_line(info->pos_x + BLOCK_SIZE / 2,(info->pos_y) + BLOCK_SIZE / 2, rx,ry, info, 0xFFD700);
+			rx=(info->pos_x);
+			ry=(info->pos_y);
+			dof=8;
+		}                                                  //looking up or down. no hit  
+		while(dof<8) 
+		{ 
+			mx = (int)(rx)>>6;
+			my=(int)(ry)>>6;
+			mp=my * mapX + mx;
+			if(mp>0 && mp<mapX*mapY && map[mp]==1)
+			{
+				vx=rx;
+				vy=ry;
+				dof=8;
+				disV = dist (rx, ry, info->pos_x, info->pos_y);
+			}//hit         
+			else
+			{
+				rx+=xo;
+				ry+=yo;
+				dof+=1;
+			}                                               //check next horizontal
+		} 
 		
 
-		int ca=FixAng(pa-ra); disH=disH*cos(degToRad(ca));                            //fix fisheye 
-		int lineH = (mapS*320)/(disH); if(lineH>320){ lineH=320;}                     //line height and limit
-		int lineOff = 160 - (lineH>>1);   
-		for (int k = 0; k < 10; k ++)
-			draw_line(r*8+530 + k, lineOff, r*8+530 + k, lineOff+lineH, info, 0xFFD700);
-	}
-	else if(disV>disH)
-	{
-		rx=hx; ry=hy; disH=disH;
-		draw_line(info->pos_x + BLOCK_SIZE / 2,(info->pos_y) + BLOCK_SIZE / 2, rx,ry, info, 0xFF8C00);
+		//---Horizontal---
+		dof=0; disH=100000;
+		Tan=1.0/Tan; 
+			if(sin(degToRad(ra))> 0.001)
+			{
+				ry=(((int)(info->pos_y)>>6)<<6) -0.0001;
+				rx=((info->pos_y)-ry)*Tan+(info->pos_x);
+				yo=-64; xo=-yo*Tan;
+			}//looking up 
+		else if(sin(degToRad(ra))<-0.001)
+		{
+			ry=(((int)(info->pos_y)>>6)<<6)+64;
+			rx=((info->pos_y)-ry)*Tan+(info->pos_x);
+			yo= 64; xo=-yo*Tan;
+		}//looking down
+		else
+		{
+			rx=(info->pos_x);
+			ry=(info->pos_y);
+			dof=8;
+		}                                                   //looking straight left or right
+		while(dof<8) 
+		{ 
+			mx=(int)(rx)>>6;
+			my=(int)(ry)>>6;
+			mp=my*mapX+mx;                          
+			if(mp>0 && mp<mapX*mapY && map[mp]==1)
+			{
+				hx = rx; hy = ry; dof=8;
+				disH = dist (rx, ry, info->pos_x, info->pos_y);
+			}//hit         
+			else
+			{
+				rx+=xo;
+				ry+=yo;
+				dof+=1;
+			}                                               //check next horizontal
+		} 
+		
+
+		if(disV<disH)
+		{ 
+			rx=vx; ry=vy; disH=disV;                  //horizontal hit first
+			draw_line(info->pos_x + BLOCK_SIZE / 2,(info->pos_y) + BLOCK_SIZE / 2, rx,ry, info, 0xFFD700);
+			
+
+			int ca=FixAng(pa-ra); disH=disH*cos(degToRad(ca));                            //fix fisheye 
+			int lineH = (mapS*320)/(disH); if(lineH>320){ lineH=320;}                     //line height and limit
+			int lineOff = 160 - (lineH>>1);   
+			for (int k = 0; k < 10; k ++)
+				draw_line(r*8+530 + k, lineOff, r*8+530 + k, lineOff+lineH, info, 0xFFD700);
+		}
+		else if(disV>disH)
+		{
+			rx=hx; ry=hy; disH=disH;
+			draw_line(info->pos_x + BLOCK_SIZE / 2,(info->pos_y) + BLOCK_SIZE / 2, rx,ry, info, 0xFF8C00);
 
 
-		int ca=FixAng(pa-ra); disH=disH*cos(degToRad(ca));                            //fix fisheye 
-		int lineH = (mapS*320)/(disH); if(lineH>320){ lineH=320;}                     //line height and limit
-		int lineOff = 160 - (lineH>>1);   
-		for (int k = 0; k < 10; k ++)
-			draw_line(r*8+530 + k, lineOff, r*8+530 + k, lineOff+lineH, info, 0xFF8C00);
-	}
-	//draw 2D ray
-	
-	                                            //line offset
-	
-	//draw vertical wall  
+			int ca=FixAng(pa-ra); disH=disH*cos(degToRad(ca));                            //fix fisheye 
+			int lineH = (mapS*320)/(disH); if(lineH>320){ lineH=320;}                     //line height and limit
+			int lineOff = 160 - (lineH>>1);   
+			for (int k = 0; k < 10; k ++)
+				draw_line(r*8+530 + k, lineOff, r*8+530 + k, lineOff+lineH, info, 0xFF8C00);
+		}
+		//draw 2D ray
+		
+													//line offset
+		
+		//draw vertical wall  
 
-	ra=FixAng(ra-1);                                                              //go to next ray
+		ra=FixAng(ra-1);                                                              //go to next ray
  	}
 }
 
