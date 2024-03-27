@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 04:45:47 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/26 03:10:32 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/27 23:32:19 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include "../minilibx/mlx.h"
 # include "../libft/libft.h"
 
-# define UNIDAD 20
+# define UNIDAD 64
 # define UPSIDE 1
 # define DOWNSIDE 2
 # define LEFTSIDE 3
@@ -100,6 +100,10 @@ typedef struct s_info
 	t_img_info	img_info;
 	t_key		key;
 	t_mtx		mtx;
+	t_img_info	tex_up;
+	t_img_info	tex_down;
+	t_img_info	tex_left;
+	t_img_info	tex_right;
 	int			color;
 }			t_info;
 
@@ -148,7 +152,7 @@ t_bool	matrix_range_check(void *info, int x, int y);
 t_posx	biu_hit_pos(void *info, int setoff_ang);
 //======cub_graph_ray.c====
 void	graph_draw_ray(void *info, t_pos end);
-void	graph_ray_to_wall(void *info, int range_ang);
+void	graph_ray_to_wall(void *info, int fov);
 //======cub_trans.c=========
 t_pos	trans_posx_to_pos(t_posx posx);
 t_pos	trans_2num_to_pos(double n1, double n2);

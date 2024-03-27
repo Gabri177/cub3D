@@ -37,7 +37,7 @@ void    key_move(void *info)
 		// 	img_set_color (info, 0x666666);
 		// 	graph_draw_ray (info, (t_pos){biu_hit_pos (info, i).x, biu_hit_pos (info, i).y});
 		// }
-		graph_ray_to_wall (info, 60);
+		graph_ray_to_wall (info, 66);
 		img_set_color (info, 0xFFCC00);
 		graph_thick_line (info, tem->ctr_pos, (t_pos){tem->ctr_pos.x + tem->ctr_ang.vx * 3, tem->ctr_pos.y + tem->ctr_ang.vy * 3}, 2);
 		img_end_draw (info);

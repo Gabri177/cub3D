@@ -6,7 +6,7 @@
 #    By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/16 21:42:20 by yugao             #+#    #+#              #
-#    Updated: 2024/03/26 02:17:37 by yugao            ###   ########.fr        #
+#    Updated: 2024/03/27 23:01:32 by yugao            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFILE = $(addprefix ./srcs/, cub_2d_bk.c cub_fix.c cub_graph_base.c cub_img.c  c
 OFILE = $(CFILE:.c=.o)
 CFLAG = 
 LDFLAGS = -framework OpenGL -framework AppKit 
-LIBS = -L minilibx -lmlx 
+LIBS = -L minilibx -lmlx -lz
 NAME = cub3d
 
 #all:libft $(NAME)
