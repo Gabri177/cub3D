@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 00:29:57 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/28 01:22:31 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/28 01:41:15 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ void graph_ray_to_wall(void *info_ptr, int fov) {
 
         // 对每个垂直线段的每个像素应用纹理
         for (int y = 0; y < lineH; y++) {
-             int texY = (int)(((double)y / lineH) * 64); 
+            int texY = (int)(((double)y / lineH) * 64); 
             int textureX;
             if (hit.side == LEFTSIDE || hit.side == RIGHTSIDE) {
                 textureX = (int)(hit.y) % textureSize;
