@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 00:29:57 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/27 23:50:01 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/28 01:05:16 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void graph_ray_to_wall(void *info_ptr, int fov) {
     int i, screenX;
     double dis, lineH, lineOff;
     t_posx hit;
+	int	textureX;
     
     for (i = -range_ang / 2; i <= range_ang / 2; i++) {
         hit = biu_hit_pos(info, i); // 获取射线击中的位置和方向
@@ -88,6 +89,14 @@ void graph_ray_to_wall(void *info_ptr, int fov) {
         else if (hit.side == LEFTSIDE) tex = &info->tex_left;
         else tex = &info->tex_right; // RIGHTSIDE
 
+		if (hit.side == LEFTSIDE || hit.side == RIGHTSIDE) {
+        // 对于左面和右面的墙体，使用hit.y计算纹理X坐标
+        textureX = (int)(hit.y) % UNIDAD;
+   		} else {
+        // 对于上面和下面的墙体，使用hit.x计算纹理X坐标
+        textureX = (int)(hit.x) % UNIDAD;
+    	}
+		graph_draw_ray (info, trans_posx_to_pos(hit));
         // 计算射线在屏幕上的X坐标
         screenX = (int)((i + range_ang / 2.0) * pixelPerDegree);
 
@@ -96,12 +105,22 @@ void graph_ray_to_wall(void *info_ptr, int fov) {
         lineH = (UNIDAD / dis) * ((screenWidth / 2) / tan(fov / 2.0 * PI / 180));
         lineOff = (screenWidth / 2) - (lineH / 2);
 
-        // 对每个垂直线段的每个像素应用纹理
-        for (int y = 0; y < lineH; y++) {
-            int texY = (int)(((double)y / lineH) * 64);
-            uint32_t color = *(uint32_t *)(tex->addr + (texY * tex->len_line) + (int)hit.x % UNIDAD * (tex->bits_per_pixel / 8));
-            img_put_pixel(info, screenX + 530, lineOff + y, color);
-        }
+        //对每个垂直线段的每个像素应用纹理
+        // for (int y = 0; y < lineH; y++) {
+        //     int texY = (int)(((double)y / lineH) * 64);
+        //     for(int j= 0; j< 9; j++)
+		// 	{
+		// 		uint32_t color = *(uint32_t *)(tex->addr + (texY * tex->len_line) + (textureX) * (tex->bits_per_pixel / 8));
+        //     	img_put_pixel(info, screenX + 530 + j, lineOff + y, color);
+		// 	}
+        // }
+		for (int y = 0; y < lineH; y++)
+		{
+			int texY = (int)(((double)y / lineH) * 64); // 使用纹理的实际高度
+			uint32_t color = *(uint32_t *)(tex->addr + (texY * tex->len_line) + textureX * (tex->bits_per_pixel / 8));
+			img_put_pixel(info, 530 + screenX, lineOff + y, color); // 直接使用screenX而不是扩展到多个像素
+		}
+
     }
 }
 

@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 05:03:30 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/27 23:20:00 by yugao            ###   ########.fr       */
+/*   Updated: 2024/03/28 00:49:18 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int main()
 	matrix_push (&info.mtx, "1111111110100001101000011010000110000001100010011010000111111111");
 	matrix_display (info.mtx, TRUE);
 	info.tex_down.img = mlx_png_file_to_image (info.mlx, "./texture/wood.png", &x, &y);
-	info.tex_up.img = mlx_png_file_to_image (info.mlx, "./texture/mossy.png", &x, &y);
-	info.tex_left.img = mlx_png_file_to_image (info.mlx, "./texture/greystone.png", &x, &y);
+	info.tex_up.img = mlx_png_file_to_image (info.mlx, "./texture/eagle.png", &x, &y);
+	info.tex_left.img = mlx_png_file_to_image (info.mlx, "./texture/colorstone.png", &x, &y);
 	info.tex_right.img = mlx_png_file_to_image (info.mlx, "./texture/redbrick.png", &x, &y);
 	// info.tex_down.img = mlx_xpm_file_to_image(info.mlx, "./texture/blue_stone.xpm", &x, &y);
 	// info.tex_up.img = mlx_xpm_file_to_image(info.mlx, "./texture/grey_stone.xpm", &x, &y);
