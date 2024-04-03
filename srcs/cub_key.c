@@ -12,6 +12,19 @@
 
 #include "../include/cub3d.h"
 
+//用来防止碰撞墙体的函数, 如果检测到前方有墙, 则不会更新位置
+static t_pos	key_check_wall(void *info, t_bool is_ahead)
+{
+	t_info	*tem;
+
+	tem = (t_info *)info;
+	if (is_ahead && tem->mtx[(int)((tem->ctr_pos.x + tem->ctr_ang.vx * 3) / UNIDAD)][(int)((tem->ctr_pos.y + tem->ctr_ang.vy * 3) / UNIDAD)]->obj == '1')
+		return (tem->ctr_pos);
+	if (!is_ahead && tem->mtx[(int)((tem->ctr_pos.x - tem->ctr_ang.vx * 3) / UNIDAD)][(int)((tem->ctr_pos.y - tem->ctr_ang.vy * 3) / UNIDAD)]->obj == '1')
+		return (tem->ctr_pos);
+	return (vec_trans (tem->ctr_pos, tem->ctr_ang, is_ahead));
+}
+
 //上下左右箭头 左右箭头控制视角, 上下箭头控制前进和后退
 void    key_move(void *info)
 {
@@ -19,9 +32,11 @@ void    key_move(void *info)
 
 	tem = ((t_info *)info);
 	if (tem->key.up)
-		tem->ctr_pos = vec_trans (tem->ctr_pos, tem->ctr_ang, TRUE);
+		tem->ctr_pos = key_check_wall (info, TRUE);
+		//tem->ctr_pos = vec_trans (tem->ctr_pos, tem->ctr_ang, TRUE);
 	if (tem->key.down)
-		tem->ctr_pos = vec_trans (tem->ctr_pos, tem->ctr_ang, FALSE);
+		tem->ctr_pos = key_check_wall (info, FALSE);
+		//tem->ctr_pos = vec_trans (tem->ctr_pos, tem->ctr_ang, FALSE);
 	if (tem->key.left)
 		tem->ctr_ang = math_projection_vec (tem->ctr_ang, -5, 5);
 	if (tem->key.right)
@@ -29,17 +44,12 @@ void    key_move(void *info)
 	if (tem->key.up || tem->key.down || tem->key.left || tem->key.right)
 	{
 		img_start_draw (info);
-		bk_map (info);
+		/* bk_map (info);
 		img_set_color (info, 0xF08080);
-		graph_square(info, tem->ctr_pos, 10);
-		// for (int i = -30; i <= 30; i += 3)
-		// {
-		// 	img_set_color (info, 0x666666);
-		// 	graph_draw_ray (info, (t_pos){biu_hit_pos (info, i).x, biu_hit_pos (info, i).y});
-		// }
+		graph_square(info, tem->ctr_pos, 10); */
 		graph_ray_to_wall (info, 66);
-		img_set_color (info, 0xFFCC00);
-		graph_thick_line (info, tem->ctr_pos, (t_pos){tem->ctr_pos.x + tem->ctr_ang.vx * 3, tem->ctr_pos.y + tem->ctr_ang.vy * 3}, 2);
+		//img_set_color (info, 0xFFCC00);
+		//graph_thick_line (info, tem->ctr_pos, (t_pos){tem->ctr_pos.x + tem->ctr_ang.vx * 3, tem->ctr_pos.y + tem->ctr_ang.vy * 3}, 2);
 		img_end_draw (info);
 	}
 }
