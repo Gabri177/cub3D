@@ -3,34 +3,38 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+         #
+#    By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/16 21:42:20 by yugao             #+#    #+#              #
-#    Updated: 2024/03/27 23:01:32 by yugao            ###   ########.fr        #
+#    Updated: 2024/04/03 14:05:23 by jjuarez-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFILE = $(addprefix ./srcs/, cub_2d_bk.c cub_fix.c cub_graph_base.c cub_img.c  cub_transfer.c\
-					cub_math2.c  cub_matrix1.c cub_biubiu.c cub_matrix2.c cub_graph_ray.c\
-					 cub_init.c cub_key.c cub_main.c cub_math1.c cub_vec.c)
+NAME	= cub3d
+PARSE	= map_parsing.c
+HASH	= hash_list.c hash_utils.c hash.c arr_utils.c arr_utils2.c
+CFILE	= $(addprefix ./srcs/, $(PARSE)) $(addprefix ./srcs/hash_map/, $(HASH)) \
+				$(addprefix ./srcs/, cub_2d_bk.c cub_fix.c cub_graph_base.c \
+				cub_img.c cub_transfer.c cub_math2.c  cub_matrix1.c cub_biubiu.c cub_matrix2.c \
+				cub_graph_ray.c cub_init.c cub_key.c cub_main.c cub_math1.c cub_vec.c)
 					
-OFILE = $(CFILE:.c=.o)
-CFLAG = 
-LDFLAGS = -framework OpenGL -framework AppKit 
-LIBS = -L minilibx -lmlx -lz
-NAME = cub3d
+OFILE	= $(CFILE:.c=.o)
+CFLAG	= #-Wall -Werror -Wextra
+LDFLAGS	= -framework OpenGL -framework AppKit 
+LIBS	= -L minilibx -lmlx -lz
+LIBFT	= libft/libft.a
+INCLUDE	= ./include/
 
-#all:libft $(NAME)
 all: $(NAME)
 
-$(NAME):$(OFILE)
-#	gcc $(OFILE) $(LIBS)  -fsanitize=address -L libft -lft $(LDFLAGS)  -o $@
-	gcc $(OFILE) $(LIBS)  -fsanitize=address $(LDFLAGS)  -o $@
+$(NAME):$(OFILE) libft
+#	gcc $(OFILE) $(LIBS) -g3 -fsanitize=address -L libft -lft $(LDFLAGS)  -o $@
+	gcc $(OFILE) $(LIBFT) $(LIBS) $(LDFLAGS) -I $(INCLUDE) -o $(NAME)
 %.o:%.c
 	gcc $(CFLAG) -c -Imlx -DGL_SILENCE_DEPRECATION $< -o $@ 
 
-#libft:
-#	$(MAKE) -C libft
+libft:
+	$(MAKE) -C libft
 
 clean:
 	rm -f $(OFILE)

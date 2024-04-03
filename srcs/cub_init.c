@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cub_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
+/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 20:53:08 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/25 21:10:18 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/03 14:40:50 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	init_info(t_info *info, t_pos ori_pos, t_vec ori_ang, t_map map)
+void	init_info(t_info *info, t_pos ori_pos, t_vec ori_ang, t_map map, t_parse *parse)
 {
 	info->mlx = mlx_init ();
 	info->win = mlx_new_window (info->mlx, map.x, map.y, "cub3D");
@@ -27,4 +27,65 @@ void	init_info(t_info *info, t_pos ori_pos, t_vec ori_ang, t_map map)
 	info->key.right = 0;
 	info->mtx = NULL;
 	info->color = 0xFFFFFF;
+}
+
+void	init_is_valid(t_parse *parse)
+{
+	parse->hash_elements = hash_init();
+	parse->is_valid[0] = "NO";		//Esto hay que hacer un ft_strncmp hasta lentoequal o algo así
+	parse->is_valid[1] = "SO";
+	parse->is_valid[2] = "WE";
+	parse->is_valid[3] = "EA";
+	parse->is_valid[4] = "F";
+	parse->is_valid[5] = "C";
+	parse->is_valid[6] = NULL;
+	parse->num = 0;
+}
+
+int	is_valid(char *line, t_parse *parse)
+{
+	int	i;
+
+	i = 0;
+	while (parse->is_valid[i] != NULL)
+	{
+		if ((ft_strcmp (line, parse->is_valid[i]) == 0))
+			return (TRUE);
+		i++;
+	}
+	return (FALSE);
+}
+
+int	init_elements(t_parse *parse, char *filename)
+{
+	char	*line;
+	char	*temp;
+	int		len_to_space;
+	int		fd;
+	char	*value;
+
+	init_is_valid(parse);
+	fd = open(filename, O_RDONLY);
+	while (parse->num != ELEMENTS_MAP)
+	{
+		line = get_next_line(fd);
+		if (line == NULL)
+			return (close(fd), -1);
+		len_to_space = ft_strchrlen(line, ' ');
+		temp = ft_substr(line, 0, len_to_space);
+		if (is_valid(temp, parse) == TRUE)
+			parse->num++;
+		value = ft_substr(line, len_to_space, ft_strlen(line));
+		hash_push(parse->hash_elements, temp, value);
+		free (value);
+		free(temp);
+		if (is_valid(temp, parse) == FALSE && is_space(line) != 0)
+			return (close(fd), free(line), hash_destory(parse->hash_elements), -1);
+		free(line);
+	}
+	if (map_read(parse, fd) == -1)
+		return (close(fd) , -1);
+	// despues si todo esta bien que esta función llame a otracomo is_valid pero que vaya guardando en la estrucutra
+	close (fd);
+	return (TRUE);
 }

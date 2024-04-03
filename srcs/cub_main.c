@@ -3,23 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   cub_main.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
+/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 05:03:30 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/28 01:34:09 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/03 14:17:18 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-
-int main()
+void	leaks()
 {
-	t_info info;
+	//Borrar función,incumple la norminette
+	system("leaks -q cub3d");
+}
+
+int main(int argc, char **argv)
+{
+	t_info	info;
+	t_parse	parse;
 	int	x, y;
-	
-	init_info(&info, (t_pos){300, 100}, (t_vec){0, 0, 270}, (t_map){1024, 510});
-	
+	atexit(leaks);		//Borrar, incumple la norminette
+	if (argc != 2)		//Importante descomentar flags al makefile
+		return (printf("Error: Wrong number of arguments, only 1 expected\n"));
+	if (map_parsing(&parse, argv[1]) == -1)
+		return (-1);
+	init_info(&info, (t_pos){300, 100}, (t_vec){0, 0, 270}, (t_map){1024, 510}, &parse);
 	//在读取地图时, 确定地图的长宽, 从而创建matrix
 	//!! 有必要多加一个地图维度向量, 在求交点的时候用来设置循环的深度
 	//info.mtx = matrix_init ((t_vec){33, 14});
@@ -59,5 +68,6 @@ int main()
 	mlx_loop_hook (info.mlx, (void *)key_move, &info);
 	mlx_loop(info.mlx);
 	matrix_destory (&info.mtx);
+	hash_destory(parse.hash_elements);
 	return 0;
 }

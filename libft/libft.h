@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
+/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:38:26 by yugao             #+#    #+#             */
-/*   Updated: 2024/02/20 00:18:09 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/03 09:52:54 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,8 @@ size_t			count_arg(const char *str);
 size_t			asistant_print(int type, va_list arg);
 int				ft_printf(char const *str, ...);
 
+//Extras
+int				ft_strcmp(char *s1, char *s2);
+size_t			ft_strchrlen(const char *len, char c);
+int				is_space(char *str);
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_graph_ray.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
+/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 00:29:57 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/28 01:41:15 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/02 20:40:28 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,8 +127,8 @@ void	graph_draw_ray(void *info, t_pos endpoint)
 void graph_ray_to_wall(void *info_ptr, int fov) {
     t_info *info = (t_info *)info_ptr;
     int screenWidth = 530; // 屏幕宽度
-    double pixelPerDegree = screenWidth / (double)fov; // 每度对应的像素数
-    int range_ang = fov; // 视场角（FOV）
+    // UNUSED VARIABLE double pixelPerDegree = screenWidth / (double)fov; // 每度对应的像素数
+    // UNUSED VARIABLE int range_ang = fov; // 视场角（FOV）
     double angleStep = fov / (double)screenWidth; // 每个像素对应的角度步长
     int textureSize = 64; // 纹理的大小
 
