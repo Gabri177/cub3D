@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cub_2d_bk.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 23:11:55 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/03 13:59:21 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/04 00:42:34 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
+// Draw a small 2d background, based on the incoming matrix data  (t_info *)info->mtx.
 //画一个2d的小背景, 根据传入的矩阵数据进行绘画
 void	bk_map(void *info)
 {

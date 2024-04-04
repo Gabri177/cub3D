@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 19:33:20 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/26 03:06:46 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/04 01:44:06 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void	apoyo_matrix_init(t_node *node)
 }
 
 //创建一个对应大小的矩阵, 矩阵每个点都可以存储一个char和一个int
+// Create a matrix of the corresponding size, each point of the matrix can store a char and an int.
 t_mtx	matrix_init(t_vec size)
 {
 	t_mtx	new;
@@ -49,6 +50,7 @@ t_mtx	matrix_init(t_vec size)
 }
 
 //显示矩阵, 用来查看矩阵的存储信息
+//Display matrix, used to view the storage information of the matrix.
 void	matrix_display(t_mtx matrix, t_bool	is_obj)
 {
 	int	x;
@@ -74,6 +76,7 @@ void	matrix_display(t_mtx matrix, t_bool	is_obj)
 }
 
 //对创建的矩阵进行销毁
+// Destruction of created matrices
 void	matrix_destory(t_mtx *matrix)
 {
 	t_mtx	trash;
@@ -100,6 +103,7 @@ void	matrix_destory(t_mtx *matrix)
 }
 
 //需要传入一个纯文本的字符串 不可以有换行符号, 与如果有的话 换行符也会被加入到矩阵中
+// need to pass a plain text string without line breaks, and if there are line breaks, they will be added to the matrix.
 void	matrix_push(t_mtx *mtx_ori, char *context)
 {
 	int		i;

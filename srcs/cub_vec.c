@@ -6,13 +6,14 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 01:32:20 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/25 20:26:30 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/04 01:47:51 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
 //求两个向量的夹角
+//Find the angle between two vectors(no used)
 double  ang_2vec_2D(t_vec v1, t_vec v2)
 {
 	double  doc_multi;
@@ -25,6 +26,7 @@ double  ang_2vec_2D(t_vec v1, t_vec v2)
 }
 
 //将向量坐标进行旋转变换
+// Rotate the vector coordinates. (no used)
 void    vec_rotate(t_vec *v_ori, double ang)
 {
 	double  vx_tem;
@@ -35,6 +37,7 @@ void    vec_rotate(t_vec *v_ori, double ang)
 }
 
 //将向量坐标进行缩放
+// Scale the vector coordinates (no used)
 void	vec_scale(t_vec *v_ori, double scale_x, double scale_y)
 {
 	v_ori->vx = v_ori->vx * scale_x;
@@ -42,6 +45,7 @@ void	vec_scale(t_vec *v_ori, double scale_x, double scale_y)
 }
 
 //将原坐标点像向量方向进行位移, 向量不是单位向量
+//Displace the original coordinate point in the direction of the vector, which is not a unit vector.
 t_pos	vec_trans(t_pos p_ori, t_vec v_direction, t_bool is_forward)
 {
 	if (is_forward)

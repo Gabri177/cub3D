@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: javgao <yugao@student.42madrid.com>        +#+  +:+       +#+        */
+/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 04:45:47 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/03 22:37:06 by javgao           ###   ########.fr       */
+/*   Updated: 2024/04/04 02:51:02 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ typedef struct s_img_info
 	int		bits_per_pixel;
 	int		len_line;
 	int		endian;
+	int		tex_x;
+	int		tex_y;
 }			t_img_info;
 
 typedef struct s_pos
@@ -92,6 +94,12 @@ typedef	struct s_ray
 	t_pos	end;
 }			t_ray;
 
+typedef struct s_size
+{
+	int	x;
+	int	y;
+}			t_size;
+
 typedef struct s_info
 {
 	void		*mlx;
@@ -102,6 +110,7 @@ typedef struct s_info
 	t_img_info	img_info;
 	t_key		key;
 	t_mtx		mtx;
+	t_size		mtx_size;
 	t_img_info	tex_up;
 	t_img_info	tex_down;
 	t_img_info	tex_left;

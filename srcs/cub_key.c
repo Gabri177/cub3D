@@ -13,6 +13,7 @@
 #include "../include/cub3d.h"
 
 //用来防止碰撞墙体的函数, 如果检测到前方有墙, 则不会更新位置
+// function to prevent collision with walls, does not update position if a wall is detected in front of it.
 static t_pos	key_check_wall(void *info, t_bool is_ahead)
 {
 	t_info	*tem;
@@ -26,6 +27,7 @@ static t_pos	key_check_wall(void *info, t_bool is_ahead)
 }
 
 //上下左右箭头 左右箭头控制视角, 上下箭头控制前进和后退
+//Up/down/right/left/right/left arrows to control the angle of view, up/down arrows to control forward and backward.
 void    key_move(void *info)
 {
 	t_info	*tem;
@@ -44,17 +46,18 @@ void    key_move(void *info)
 	if (tem->key.up || tem->key.down || tem->key.left || tem->key.right)
 	{
 		img_start_draw (info);
-		/* bk_map (info);
+		bk_map (info);
 		img_set_color (info, 0xF08080);
-		graph_square(info, tem->ctr_pos, 10); */
+		graph_square(info, tem->ctr_pos, 10);
 		graph_ray_to_wall (info, 66);
-		//img_set_color (info, 0xFFCC00);
-		//graph_thick_line (info, tem->ctr_pos, (t_pos){tem->ctr_pos.x + tem->ctr_ang.vx * 3, tem->ctr_pos.y + tem->ctr_ang.vy * 3}, 2);
+		img_set_color (info, 0xFFCC00);
+		graph_thick_line (info, tem->ctr_pos, (t_pos){tem->ctr_pos.x + tem->ctr_ang.vx * 3, tem->ctr_pos.y + tem->ctr_ang.vy * 3}, 2);
 		img_end_draw (info);
 	}
 }
 
 //触发按下的事件
+//Trigger the press event
 int	key_press(int keycode, void *info)
 {
 	t_info	*tem;
@@ -74,6 +77,7 @@ int	key_press(int keycode, void *info)
 }
 
 //触发松开按键的事件
+//Trigger the release of a key
 int	key_release(int keycode, void *info)
 {
 	t_info	*tem;

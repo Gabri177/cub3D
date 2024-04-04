@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_main.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: javgao <yugao@student.42madrid.com>        +#+  +:+       +#+        */
+/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 05:03:30 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/03 22:38:41 by javgao           ###   ########.fr       */
+/*   Updated: 2024/04/04 02:52:39 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,27 @@ int main(int argc, char **argv)
 {
 	t_info	info;
 	t_parse	parse;
-	int	x, y;
+	
 	atexit(leaks);		//Borrar, incumple la norminette
-	if (argc != 2)		//Importante descomentar flags al makefile
-		return (printf("Error: Wrong number of arguments, only 1 expected\n"));
-	if (map_parsing(&parse, argv[1]) == -1)
-		return (-1);
-	init_info(&info, (t_pos){600, 100}, (t_vec){0, 0, 270}, (t_map){1024, 510}, &parse);
-	//在读取地图时, 确定地图的长宽, 从而创建matrix
-	//!! 有必要多加一个地图维度向量, 在求交点的时候用来设置循环的深度
-	info.mtx = matrix_init ((t_vec){33, 14});
-	//info.mtx = matrix_init ((t_vec){8, 8});
+	//if (argc != 2)		//Importante descomentar flags al makefile
+	// 	return (printf("Error: Wrong number of arguments, only 1 expected\n"));
+	// if (map_parsing(&parse, argv[1]) == -1)
+	// 	return (-1);
+	//下面的t_pos是人物的初始位置, t_vec 是人物的初始方向(前两个参数刚开始我们用来传递地图的长宽, 第三个参数是角度, 而且y轴坐标朝下) t_map是窗口的大小
+	// the following t_pos is the initial position of the character, t_vec is the initial direction of the character (the first two parameters are used to pass the length and 
+	//width of the map at first, the third is the angle, and the y-axis coordinates are facing down) t_map is the size of the window
+	//init_info(&info, (t_pos){700, 100}, (t_vec){33, 14, 270}, (t_map){1024, 510}, &parse);
+	init_info(&info, (t_pos){100, 100}, (t_vec){8, 8, 270}, (t_map){1024, 510}, &parse);
 	//一般在读取地图数据以后, 以这种方式存储地图的数据
-	matrix_push (&info.mtx, "        1111111111111111111111111        1000000000110000000000001        1011000001110000000000001        100100000000000000000000111111111101100000111000000000000110000000001100000111011111111111111110111111111011100000010001    11110111111111011101010010001    11000000110101011100000010001    10000000000000001100000010001    10000000000000001101010010001    11000001110101011111011110N0111  11110111 1110101 101111010001    11111111 1111111 111111111111    ");
-	//matrix_push (&info.mtx, "1111111110100001101000011010000110000001100010011010000111111111");
+	//Generally after reading the map data, the map data is stored in this way.
+	//matrix_push (&info.mtx, "        1111111111111111111111111        1000000000110000000000001        1011000001110000000000001        100100000000000000000000111111111101100000111000000000000110000000001100000111011111111111111110111111111011100000010001    11110111111111011101010010001    11000000110101011100000010001    10000000000000001100000010001    10000000000000001101010010001    11000001110101011111011110N0111  11110111 1110101 101111010001    11111111 1111111 111111111111    ");
+	matrix_push (&info.mtx, "1111111110100001101000011010000110000001100010011010000111111111");
 	//matrix_push (&info.mtx, parse.map);
 	matrix_display (info.mtx, TRUE);
-	info.tex_down.img = mlx_png_file_to_image (info.mlx, "./texture/wood.png", &x, &y);
-	info.tex_up.img = mlx_png_file_to_image (info.mlx, "./texture/eagle.png", &x, &y);
-	info.tex_left.img = mlx_png_file_to_image (info.mlx, "./texture/colorstone.png", &x, &y);
-	info.tex_right.img = mlx_png_file_to_image (info.mlx, "./texture/redbrick.png", &x, &y);
+	info.tex_down.img = mlx_png_file_to_image (info.mlx, "./texture/wood.png", &info.tex_down.tex_x, &info.tex_down.tex_y);
+	info.tex_up.img = mlx_png_file_to_image (info.mlx, "./texture/eagle.png", &info.tex_up.tex_x, &info.tex_up.tex_y);
+	info.tex_left.img = mlx_png_file_to_image (info.mlx, "./texture/colorstone.png", &info.tex_left.tex_x, &info.tex_left.tex_y);
+	info.tex_right.img = mlx_png_file_to_image (info.mlx, "./texture/redbrick.png", &info.tex_right.tex_x, &info.tex_right.tex_y);
 	// info.tex_down.img = mlx_xpm_file_to_image(info.mlx, "./texture/blue_stone.xpm", &x, &y);
 	// info.tex_up.img = mlx_xpm_file_to_image(info.mlx, "./texture/grey_stone.xpm", &x, &y);
 	// info.tex_left.img = mlx_xpm_file_to_image(info.mlx, "./texture/purple_stone.xpm", &x, &y);

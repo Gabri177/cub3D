@@ -6,13 +6,14 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 02:51:23 by yugao             #+#    #+#             */
-/*   Updated: 2024/03/25 19:27:15 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/04 00:48:53 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
 //这里传入的是一个t_info类型的 但是必须要求t_info里的img_info已经通过new_img函数进行初始化才可以
+//There is a t_info type passed in, but only if the img_info in the t_info has been initialized with the new_img function.
 static void	graph_line(void *info, t_pos p1, t_pos p2)
 {
 	double	dx;
@@ -39,6 +40,7 @@ static void	graph_line(void *info, t_pos p1, t_pos p2)
 }
 
 //画一个有厚度的直线, 这里处理的是当直线的斜率绝对值大于1的情况
+// draws a straight line with a thickness, here we are dealing with the case when the absolute value of the slope of the line is greater than 1.
 static void	graph_thick_line_plumb(void *info, t_pos p1, t_pos p2, double thick)
 {
 	double	i;
@@ -54,6 +56,7 @@ static void	graph_thick_line_plumb(void *info, t_pos p1, t_pos p2, double thick)
 }
 
 //画一个有厚度的直线, 这里处理的是当直线的斜率小于1的情况
+// draws a straight line with a thickness, here it deals with the case when the slope of the line is less than 1.
 void	graph_thick_line(void *info, t_pos p1, t_pos p2, double thick)
 {
 	double	i;
@@ -72,6 +75,7 @@ void	graph_thick_line(void *info, t_pos p1, t_pos p2, double thick)
 }
 
 //画一个正方形, 需要提供中心点的坐标和边长
+//Draw a square, you need to provide the coordinates of the center point and the length of the side.
 void	graph_square(void *info, t_pos p_center, int len_side)
 {
 	if (len_side % 2 == 0)
@@ -81,6 +85,7 @@ void	graph_square(void *info, t_pos p_center, int len_side)
 }
 
 //画一个长方形, 这里需要提供左下角和右上角的坐标
+//Draw a rectangle, here you need to provide the coordinates of the lower left and upper right corners.
 void	graph_rectangle(void *info, t_pos p_low_left, t_pos p_up_right)
 {
 	int	i;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: javgao <yugao@student.42madrid.com>        +#+  +:+       +#+        */
+/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 20:53:08 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/03 20:24:37 by javgao           ###   ########.fr       */
+/*   Updated: 2024/04/04 02:09:25 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	init_info(t_info *info, t_pos ori_pos, t_vec ori_ang, t_map map, t_parse *p
 {
 	info->mlx = mlx_init ();
 	info->win = mlx_new_window (info->mlx, map.x, map.y, "cub3D");
+	info->mtx = matrix_init (ori_ang);
+	info->mtx_size = (t_size){(int)ori_ang.vx, (int)ori_ang.vy};
 	info->map_info = map;
 	info->ctr_ang = ori_ang;
 	info->ctr_ang.vx = cos (fix_ang_to_rad (ori_ang.ang)) * 15;
@@ -25,7 +27,8 @@ void	init_info(t_info *info, t_pos ori_pos, t_vec ori_ang, t_map map, t_parse *p
 	info->key.down = 0;
 	info->key.left = 0;
 	info->key.right = 0;
-	info->mtx = NULL;
+	info->img_info.img = NULL;
+	//info->mtx = NULL;
 	info->color = 0xFFFFFF;
 	(void)parse;
 }
