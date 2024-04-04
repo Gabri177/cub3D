@@ -12,6 +12,28 @@
 
 #include "../include/cub3d.h"
 
+void draw_ceiling_and_floor_from_middle(void *info, int colorCeiling, int colorFloor)
+{
+    int screenWidth = 1060; // 假设屏幕宽度为1060
+    int screenHeight = 510; // 屏幕高度，根据实际情况调整
+    int halfScreenHeight = screenHeight / 2; // 屏幕高度的一半
+    int startX = 530; // 从屏幕的中间开始绘制
+
+    // 绘制天花板
+    for (int y = 0; y < halfScreenHeight; y++) {
+        for (int x = startX; x < screenWidth; x++) {
+            img_put_pixel(info, x, y, colorCeiling); // 使用天花板颜色
+        }
+    }
+
+    // 绘制地面
+    for (int y = halfScreenHeight; y < screenHeight; y++) {
+        for (int x = startX; x < screenWidth; x++) {
+            img_put_pixel(info, x, y, colorFloor); // 使用地面颜色
+        }
+    }
+}
+
 //用来防止碰撞墙体的函数, 如果检测到前方有墙, 则不会更新位置
 // function to prevent collision with walls, does not update position if a wall is detected in front of it.
 static t_pos	key_check_wall(void *info, t_bool is_ahead)
@@ -49,6 +71,7 @@ void    key_move(void *info)
 		bk_map (info);
 		img_set_color (info, 0xF08080);
 		graph_square(info, tem->ctr_pos, 10);
+		draw_ceiling_and_floor_from_middle (info, 0xF08080, 0xFFCC00);
 		graph_ray_to_wall (info, 66);
 		img_set_color (info, 0xFFCC00);
 		graph_thick_line (info, tem->ctr_pos, (t_pos){tem->ctr_pos.x + tem->ctr_ang.vx * 3, tem->ctr_pos.y + tem->ctr_ang.vy * 3}, 2);
