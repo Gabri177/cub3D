@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 05:03:30 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/06 00:26:34 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/06 00:30:06 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,10 @@ int main(int argc, char **argv)
 	mlx_loop(info.mlx);
 	matrix_destory (&info.mtx);
 	hash_destory(parse.hash_elements);
+	mlx_destroy_image (info.mlx, info.tex_down.img);
+	mlx_destroy_image (info.mlx, info.tex_up.img);
+	mlx_destroy_image (info.mlx, info.tex_left.img);
+	mlx_destroy_image (info.mlx, info.tex_right.img);
 	mlx_destroy_window (info.mlx, info.win);
 	return 0;
 }
