@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 19:35:36 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/04 02:52:02 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/06 00:23:35 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,14 +115,28 @@ t_posx	biu_hit_pos(void *info, int setoff_ang)
 	t_pos	hori;
 	t_pos	veri;
 	t_pos	ctr;
-	double	dis_hori;
-	double	dis_veri;
+	double	dis_hori = 0;
+	double	dis_veri = 0;
 
 	hori = biu_hit_pos_hori (info, setoff_ang);
 	veri = biu_hit_pos_veri (info, setoff_ang);
 	ctr = ((t_info *)info)->ctr_pos;
 	dis_hori = math_dist2p(ctr, hori);
 	dis_veri = math_dist2p(ctr, veri);
+	if (fix_ang (setoff_ang + ((t_info *)info)->ctr_ang.ang) == 0 || fix_ang (setoff_ang + ((t_info *)info)->ctr_ang.ang) == 180)
+	{
+		if (veri.x < ctr.x)
+			return (trans_pos_to_posx (veri, RIGHTSIDE));
+		else
+			return (trans_pos_to_posx (veri, LEFTSIDE));
+	}
+	if (fix_ang (setoff_ang + ((t_info *)info)->ctr_ang.ang) == 90 || fix_ang (setoff_ang + ((t_info *)info)->ctr_ang.ang) == 270)
+	{
+		if (hori.y < ctr.y)
+			return (trans_pos_to_posx (hori, DOWNSIDE));
+		else
+			return (trans_pos_to_posx (hori, UPSIDE));
+	}
 	if (dis_hori < dis_veri)
 	{
 		if (hori.y < ctr.y)
@@ -130,12 +144,12 @@ t_posx	biu_hit_pos(void *info, int setoff_ang)
 		else
 			return (trans_pos_to_posx (hori, UPSIDE));
 	}
-	else
+	else if (dis_hori > dis_veri)
 	{
 		if (veri.x < ctr.x)
-			return (trans_pos_to_posx (veri, LEFTSIDE));
-		else
 			return (trans_pos_to_posx (veri, RIGHTSIDE));
+		else
+			return (trans_pos_to_posx (veri, LEFTSIDE));
 	}
 }
 
