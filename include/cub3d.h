@@ -6,7 +6,7 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 04:45:47 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/06 02:34:34 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/06 04:53:36 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,9 +228,11 @@ void	arry_destroy(char **ary);
 int			map_parsing(t_parse *parse, char *filename);
 int			check_cub_extension_and_file(char *filename);
 int			map_read(t_parse *parse, int fd);
-int			check_invalid_characters(char *line);
+int			check_invalid_characters(char *line, int print);
 
 /*	-------------------------- DIMENSIONS --------------------------*/
+void	get_dimension(t_parse *parse, char *filename);
 void	get_width(t_parse *parse, char *line);
+char	*add_space(t_parse *parse, char *line);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 19:57:42 by jjuarez-          #+#    #+#             */
-/*   Updated: 2024/04/06 02:43:44 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/06 05:04:01 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	check_duplicated_starting_position(t_parse *parse)
 	return (0);
 }
 
-int	check_invalid_characters(char *line)
+int	check_invalid_characters(char *line, int print)
 {
 	int		i;
 
@@ -62,7 +62,8 @@ int	check_invalid_characters(char *line)
 			i++;
 		else
 		{
-			perror("Error: data file contains invalid characters:");
+			if (print == 1)
+				perror("Error: data file contains invalid characters:");
 			return (-1);
 		}
 	}
@@ -76,19 +77,19 @@ int	map_read(t_parse *parse, int fd)
 	char	*join;
 	char	*temp;
 	char	*out_nl;
+	char	*with_spaces;
 
 	join = ft_strdup("");
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
-		if (is_space(line) != 0)
-			parse->height++;
-		if (check_invalid_characters(line) == -1)
+		if (check_invalid_characters(line, 1) == -1)
 			return (free(line), free(join), hash_destory(parse->hash_elements), -1);
 		out_nl = ft_strtrim(line, "\n");
-		get_width(parse, out_nl);
-		temp = ft_strjoin(join, out_nl);
+		with_spaces = add_space(parse, out_nl);
 		free(out_nl);
+		temp = ft_strjoin(join, with_spaces);
+		free(with_spaces);
 		free (join);
 		join = ft_strdup(temp);
 		free (temp);
@@ -97,7 +98,7 @@ int	map_read(t_parse *parse, int fd)
 	}
 	parse->map = ft_strdup(join);
 	free(join);
-	if (check_duplicated_starting_position(parse) == -1)			//Esto genera leaks si falla
+	if (check_duplicated_starting_position(parse) == -1)
 		return (hash_destory(parse->hash_elements), free(parse->map), -1);
 	return (0);
 }

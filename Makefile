@@ -6,12 +6,12 @@
 #    By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/16 21:42:20 by yugao             #+#    #+#              #
-#    Updated: 2024/04/06 02:37:15 by jjuarez-         ###   ########.fr        #
+#    Updated: 2024/04/06 04:56:30 by jjuarez-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= cub3d
-PARSE	= map_parsing.c dimensions.c
+PARSE	= map_parsing.c dimensions.c parse_utils.c
 HASH	= hash_list.c hash_utils.c hash.c arr_utils.c arr_utils2.c
 CFILE	= $(addprefix ./srcs/, $(PARSE)) $(addprefix ./srcs/hash_map/, $(HASH)) \
 				$(addprefix ./srcs/, cub_2d_bk.c cub_fix.c cub_graph_base.c \

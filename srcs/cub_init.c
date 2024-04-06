@@ -6,7 +6,7 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 20:53:08 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/06 02:41:30 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/06 04:34:41 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ void	init_is_valid(t_parse *parse)
 	parse->is_valid[5] = "C";
 	parse->is_valid[6] = NULL;
 	parse->num = 0;
-	parse->height = 0;
-	parse->width = 0;
 }
 
 int	is_valid(char *line, t_parse *parse)
