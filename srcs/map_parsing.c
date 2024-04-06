@@ -6,7 +6,7 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 19:57:42 by jjuarez-          #+#    #+#             */
-/*   Updated: 2024/04/03 15:53:49 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/06 02:43:44 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,28 @@ int	check_cub_extension_and_file(char *filename)
 	if (fd == -1)
 		return (-2);
 	close (fd);
+	return (0);
+}
+
+int	check_duplicated_starting_position(t_parse *parse)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (parse->map[i])
+	{
+		if (parse->map[i] == 'N' || parse->map[i] == 'S'
+		|| parse->map[i] == 'E' || parse->map[i] == 'W')
+		{
+			count++;
+			parse->starting_position = parse->map[i];
+		}
+		i++;
+	}
+	if (count != 1)
+		return (-1);
 	return (0);
 }
 
@@ -59,20 +81,24 @@ int	map_read(t_parse *parse, int fd)
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
+		if (is_space(line) != 0)
+			parse->height++;
 		if (check_invalid_characters(line) == -1)
-			return (free(line), free(join), -1);
+			return (free(line), free(join), hash_destory(parse->hash_elements), -1);
 		out_nl = ft_strtrim(line, "\n");
+		get_width(parse, out_nl);
 		temp = ft_strjoin(join, out_nl);
 		free(out_nl);
 		free (join);
 		join = ft_strdup(temp);
-		// Si todo esta bien ir guardando en un char * todo el mapa
 		free (temp);
 		free(line);
 		line = get_next_line(fd);
 	}
 	parse->map = ft_strdup(join);
 	free(join);
+	if (check_duplicated_starting_position(parse) == -1)			//Esto genera leaks si falla
+		return (hash_destory(parse->hash_elements), free(parse->map), -1);
 	return (0);
 }
 
@@ -89,6 +115,9 @@ int	map_parsing(t_parse *parse, char *filename)
 	printf("Map:%s\n\n", parse->map);
 	hash_display(*parse->hash_elements);
 	hash_destory(parse->hash_elements);
+	printf("Player starting position: %c\n", parse->starting_position);
+	printf("HEIGHT :.%d.\n", parse->height);
+	printf("WIDTH :.%d.\n", parse->width);
 	// Borrar hasta aquí
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
+/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 04:45:47 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/06 01:45:28 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/06 02:34:34 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,10 +224,13 @@ char	**arry_cpy(char **ary);
 int		arry_add(char ***arys, char *val);
 void	arry_destroy(char **ary);
 
-/*	--------------------------- PARSE ----------------------------*/
+/*	--------------------------- PARSE -----------------------------*/
 int			map_parsing(t_parse *parse, char *filename);
 int			check_cub_extension_and_file(char *filename);
 int			map_read(t_parse *parse, int fd);
 int			check_invalid_characters(char *line);
+
+/*	-------------------------- DIMENSIONS --------------------------*/
+void	get_width(t_parse *parse, char *line);
 
 #endif

@@ -77,7 +77,7 @@ void	key_move(void *info)
 		img_set_color (info, 0xF08080);
 		graph_square(info, tem->ctr_pos, 10);
 		draw_ceiling_and_floor_from_middle (info, 0xF08080, 0xFFCC00);
-		graph_ray_to_wall (info, 66);
+		graph_ray_to_wall (info);
 		img_set_color (info, 0xFFCC00);
 		graph_thick_line (info, tem->ctr_pos, (t_pos){tem->ctr_pos.x
 			+ tem->ctr_ang.vx * 3, tem->ctr_pos.y + tem->ctr_ang.vy * 3}, 2);

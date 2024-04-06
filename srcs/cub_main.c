@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_main.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
+/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 05:03:30 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/06 00:50:55 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/06 02:11:53 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ int main(int argc, char **argv)
 	t_parse	parse;
 	
 	atexit(leaks);		//Borrar, incumple la norminette
-	//if (argc != 2)		//Importante descomentar flags al makefile
-	// 	return (printf("Error: Wrong number of arguments, only 1 expected\n"));
-	// if (map_parsing(&parse, argv[1]) == -1)
-	// 	return (-1);
+	if (argc != 2)		//Importante descomentar flags al makefile
+		return (printf("Error: Wrong number of arguments, only 1 expected\n"));
+	if (map_parsing(&parse, argv[1]) == -1)
+		return (-1);
 	//下面的t_pos是人物的初始位置, t_vec 是人物的初始方向(前两个参数刚开始我们用来传递地图的长宽, 第三个参数是角度, 而且y轴坐标朝下) t_map是窗口的大小
 	// the following t_pos is the initial position of the character, t_vec is the initial direction of the character (the first two parameters are used to pass the length and 
 	//width of the map at first, the third is the angle, and the y-axis coordinates are facing down) t_map is the size of the window
