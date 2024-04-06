@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 04:45:47 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/06 00:01:19 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/06 01:45:28 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include "../minilibx/mlx.h"
 # include "../libft/libft.h"
 
-# define UNIDAD 64
+# define UNI 64
 # define UPSIDE 1
 # define DOWNSIDE 2
 # define LEFTSIDE 3
@@ -32,6 +32,8 @@
 # define ELEMENTS_MAP 6
 # define PI 3.1415926
 # define HASH_SIZE 200
+# define SCREENWITH 530
+# define FOV 60
 
 typedef int	t_bool;
 
@@ -152,7 +154,7 @@ double		fix_rad(double rad);
 int			fix_rad_to_ang(double rad);
 double		fix_ang_to_rad(int ang);
 //======cub_vec.c=========
-double		ang_2vec_2D(t_vec v1, t_vec v2);
+double		ang_2vec_2d(t_vec v1, t_vec v2);
 void		vec_rotate(t_vec *v_ori, double ang);
 void		vec_scale(t_vec *v_ori, double scale_x, double scale_y);
 t_pos		vec_trans(t_pos p_ori, t_vec v_direction, t_bool is_forward);
@@ -190,7 +192,7 @@ t_bool		matrix_range_check(void *info, int x, int y);
 t_posx		biu_hit_pos(void *info, int setoff_ang);
 //======cub_graph_ray.c====
 void		graph_draw_ray(void *info, t_pos end);
-void		graph_ray_to_wall(void *info, int fov);
+void		graph_ray_to_wall(void *info);
 //======cub_trans.c=========
 t_pos		trans_posx_to_pos(t_posx posx);
 t_pos		trans_2num_to_pos(double n1, double n2);

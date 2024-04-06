@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 19:33:20 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/04 01:44:06 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/06 01:23:50 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ static void	apoyo_matrix_init(t_node *node)
 }
 
 //创建一个对应大小的矩阵, 矩阵每个点都可以存储一个char和一个int
-// Create a matrix of the corresponding size, each point of the matrix can store a char and an int.
+// Create a matrix of the corresponding size, each 
+//point of the matrix can store a char and an int.
 t_mtx	matrix_init(t_vec size)
 {
 	t_mtx	new;
@@ -28,25 +29,25 @@ t_mtx	matrix_init(t_vec size)
 
 	new = malloc (sizeof (t_node **) * ((int)(size.vx) + 1));
 	if (!new)
-		return NULL;	
+		return (NULL);
 	x = -1;
 	while (++x < size.vx)
 	{
 		new[x] = malloc (sizeof (t_node*) * (((int)size.vy) + 1));
 		if (!new[x])
-			return NULL;
+			return (NULL);
 		y = -1;
 		while (++y < size.vy)
 		{
 			new[x][y] = malloc (sizeof (t_node));
 			if (!new[x][y])
-				return NULL;
+				return (NULL);
 			apoyo_matrix_init (new[x][y]);
 		}
 		new[x][y] = NULL;
 	}
 	new[x] = NULL;
-	return new;
+	return (new);
 }
 
 //显示矩阵, 用来查看矩阵的存储信息
@@ -55,7 +56,7 @@ void	matrix_display(t_mtx matrix, t_bool	is_obj)
 {
 	int	x;
 	int	y;
-	
+
 	if (!matrix)
 		return ;
 	y = 0;
@@ -88,7 +89,7 @@ void	matrix_destory(t_mtx *matrix)
 	while (trash[x])
 	{
 		y = 0;
-		while (trash[x][y])\
+		while (trash[x][y])
 		{
 			free (trash[x][y]);
 			trash[x][y] = NULL;
@@ -103,7 +104,8 @@ void	matrix_destory(t_mtx *matrix)
 }
 
 //需要传入一个纯文本的字符串 不可以有换行符号, 与如果有的话 换行符也会被加入到矩阵中
-// need to pass a plain text string without line breaks, and if there are line breaks, they will be added to the matrix.
+// need to pass a plain text string without line breaks, 
+//and if there are line breaks, they will be added to the matrix.
 void	matrix_push(t_mtx *mtx_ori, char *context)
 {
 	int		i;
@@ -118,7 +120,7 @@ void	matrix_push(t_mtx *mtx_ori, char *context)
 	lenx = 0;
 	while (mtx[lenx])
 		lenx ++;
-	printf ("%d %d \n", lenx, leny );
+	printf ("%d %d \n", lenx, leny);
 	i = 0;
 	while (context[i])
 	{

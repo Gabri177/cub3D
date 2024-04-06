@@ -6,14 +6,15 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 23:40:20 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/04 01:44:59 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/06 01:24:05 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
 // 用在条件判断中, 查看x , y 是不是超过数组下标, 从而避免seg问题
-// Used in conditional judgment to see if x , y exceeds the array subscripts, thus avoiding the seg problem.
+// Used in conditional judgment to see if x , y 
+//exceeds the array subscripts, thus avoiding the seg problem.
 t_bool	matrix_range_check(void *info, int x, int y)
 {
 	int		lenx;
@@ -27,7 +28,6 @@ t_bool	matrix_range_check(void *info, int x, int y)
 		leny ++;
 	while (tem[lenx])
 		lenx ++;
-	//printf ("lenx :%d, leny : %d \n", lenx, leny);
 	if (x < lenx && y < leny && x >= 0 && y >= 0)
 		return (TRUE);
 	else

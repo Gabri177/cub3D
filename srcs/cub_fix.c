@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 03:20:38 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/04 00:47:05 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/06 01:09:50 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int fix_ang(int a)
 
 //对用pi表示的角度进行修复, 确保值在0 - 2PI之间
 // Fix the angle in pi, making sure the value is between 0 and 2PI.
-double  fix_rad(double rad)
+double	fix_rad(double rad)
 {
 	if (rad >= 2 * PI)
 		return (rad - 2 * PI);

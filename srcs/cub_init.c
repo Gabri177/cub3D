@@ -6,13 +6,14 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 20:53:08 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/04 02:09:25 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/06 01:18:30 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	init_info(t_info *info, t_pos ori_pos, t_vec ori_ang, t_map map, t_parse *parse)
+void	init_info(t_info *info, t_pos ori_pos,
+	t_vec ori_ang, t_map map, t_parse *parse)
 {
 	info->mlx = mlx_init ();
 	info->win = mlx_new_window (info->mlx, map.x, map.y, "cub3D");
@@ -36,7 +37,7 @@ void	init_info(t_info *info, t_pos ori_pos, t_vec ori_ang, t_map map, t_parse *p
 void	init_is_valid(t_parse *parse)
 {
 	parse->hash_elements = hash_init();
-	parse->is_valid[0] = "NO";		//Esto hay que hacer un ft_strncmp hasta lentoequal o algo así
+	parse->is_valid[0] = "NO";
 	parse->is_valid[1] = "SO";
 	parse->is_valid[2] = "WE";
 	parse->is_valid[3] = "EA";
