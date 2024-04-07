@@ -3,35 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   cub_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 20:53:08 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/06 04:34:41 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/07 17:39:39 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	init_info(t_info *info, t_pos ori_pos,
-	t_vec ori_ang, t_map map, t_parse *parse)
+void	init_info(t_info *info, t_parse prase,
+	t_vec ori_ang, t_map map)
 {
 	info->mlx = mlx_init ();
 	info->win = mlx_new_window (info->mlx, map.x, map.y, "cub3D");
 	info->mtx = matrix_init (ori_ang);
+	matrix_push (&info->mtx, prase.map);
 	info->mtx_size = (t_size){(int)ori_ang.vx, (int)ori_ang.vy};
 	info->map_info = map;
 	info->ctr_ang = ori_ang;
 	info->ctr_ang.vx = cos (fix_ang_to_rad (ori_ang.ang)) * 15;
 	info->ctr_ang.vy = sin (fix_ang_to_rad (ori_ang.ang)) * 15;
-	info->ctr_pos = ori_pos;
+	info->ctr_pos = init_ctr_pos (info->mtx);
+	//init_ctr_pos (info->mtx)
 	info->key.up = 0;
 	info->key.down = 0;
 	info->key.left = 0;
 	info->key.right = 0;
+	info->key.to_left = 0;
+	info->key.to_right = 0;
 	info->img_info.img = NULL;
-	//info->mtx = NULL;
 	info->color = 0xFFFFFF;
-	(void)parse;
 }
 
 void	init_is_valid(t_parse *parse)

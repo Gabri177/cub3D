@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 04:45:47 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/06 19:29:52 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/07 17:45:50 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include "../minilibx/mlx.h"
 # include "../libft/libft.h"
 
-# define UNI 20
+# define UNI 64
 # define UPSIDE 1
 # define DOWNSIDE 2
 # define LEFTSIDE 3
@@ -34,6 +34,13 @@
 # define HASH_SIZE 200
 # define SCREENWITH 530
 # define FOV 60
+# define W_CODE 13
+# define S_CODE 1
+# define A_CODE 0
+# define D_CODE 2
+# define L_ARROW 123
+# define R_ARROW 124
+
 
 typedef int	t_bool;
 
@@ -88,6 +95,8 @@ typedef struct s_key
 	t_bool	down;
 	t_bool	left;
 	t_bool	right;
+	t_bool	to_left;
+	t_bool	to_right;
 }  			t_key;
 
 typedef	struct s_ray
@@ -176,9 +185,10 @@ void		key_move(void *info);
 int			key_press(int keycode, void *info);
 int			key_release(int keycode, void *info);
 //======cub_init.c=========
-void		init_info(t_info *info, t_pos ori_pos, t_vec ori_ang, t_map map, t_parse *parse);
+void		init_info(t_info *info, t_parse prase, t_vec ori_ang, t_map map);
 void		init_is_valid(t_parse *parse);
 int			init_elements(t_parse *parse, char *filename);
+t_pos		init_ctr_pos(t_mtx matrix);
 int			is_valid(char *line, t_parse *parse);
 //======cub_2d_bk.c========
 void		bk_map(void *info);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_main.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 05:03:30 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/06 04:37:10 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/07 17:48:07 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,44 @@ void	leaks()
 {
 	//Borrar función,incumple la norminette
 	system("leaks -q cub3d");
+}
+
+static t_vec	init_vec(t_parse parse)
+{
+	int	ang;
+
+	ang = 0;
+	if (parse.starting_position == 'N')
+		ang = 270;
+	if (parse.starting_position == 'S')
+		ang = 90;
+	if (parse.starting_position == 'W')
+		ang = 180;
+	return ((t_vec){parse.width - 1, parse.height, ang}); // menos unos hay que corregir lo sobre parser
+}
+
+t_pos	init_ctr_pos(t_mtx matrix)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (matrix[0][y])
+	{
+		x = 0;
+		while (matrix[x] && matrix[x][y])
+		{
+			if (matrix[x][y]->obj == 'N' || matrix[x][y]->obj == 'S' || matrix[x][y]->obj == 'W' || matrix[x][y]->obj == 'E')
+			{
+				matrix[x][y]->obj = '0';
+				printf ("==========(x : %d, y %d)========\n", x * UNI - UNI / 2, y * UNI - UNI / 2);
+				return ((t_pos){x * UNI + UNI / 2, y * UNI + UNI / 2});
+			}
+			x ++;
+		}
+		y ++;
+	}
+	return ((t_pos){0, 0});
 }
 
 int main(int argc, char **argv)
@@ -32,14 +70,11 @@ int main(int argc, char **argv)
 	//下面的t_pos是人物的初始位置, t_vec 是人物的初始方向(前两个参数刚开始我们用来传递地图的长宽, 第三个参数是角度, 而且y轴坐标朝下) t_map是窗口的大小
 	// the following t_pos is the initial position of the character, t_vec is the initial direction of the character (the first two parameters are used to pass the length and 
 	//width of the map at first, the third is the angle, and the y-axis coordinates are facing down) t_map is the size of the window
-	init_info(&info, (t_pos){700, 100}, (t_vec){33, 14, 270}, (t_map){1024, 510}, &parse);
+	printf ("w:%d h:%d start_pos: %c\n", parse.width, parse.height, parse.starting_position);
+	init_info(&info, parse, init_vec (parse), (t_map){1024, 510});
 	//init_info(&info, (t_pos){100, 100}, (t_vec){8, 8, 270}, (t_map){1024, 510}, &parse);
-	//一般在读取地图数据以后, 以这种方式存储地图的数据
-	//Generally after reading the map data, the map data is stored in this way.
-	//matrix_push (&info.mtx, "        1111111111111111111111111        1000000000110000000000001        1011000001110000000000001        100100000000000000000000111111111101100000111000000000000110000000001100000111011111111111111110111111111011100000010001    11110111111111011101010010001    11000000110101011100000010001    10000000000000001100000010001    10000000000000001101010010001    11000001110101011111011110N0111  11110111 1110101 101111010001    11111111 1111111 111111111111    ");
-	//matrix_push (&info.mtx, "1111111110100001101000011010000110000001100010011010000111111111");
-	matrix_push (&info.mtx, parse.map);
-	matrix_display (info.mtx, TRUE);
+
+	//matrix_display (info.mtx, TRUE);
 	info.tex_down.img = mlx_png_file_to_image (info.mlx, "./texture/wood.png", &info.tex_down.tex_x, &info.tex_down.tex_y);
 	info.tex_up.img = mlx_png_file_to_image (info.mlx, "./texture/eagle.png", &info.tex_up.tex_x, &info.tex_up.tex_y);
 	info.tex_left.img = mlx_png_file_to_image (info.mlx, "./texture/colorstone.png", &info.tex_left.tex_x, &info.tex_left.tex_y);
@@ -65,11 +100,11 @@ int main(int argc, char **argv)
 	img_end_draw (&info);//||
 	//=======================
 
-	
 	mlx_hook (info.win, 2, 1L<<0, key_press, &info);
 	mlx_hook (info.win, 3, 1L<<1, key_release, &info);
 	mlx_loop_hook (info.mlx, (void *)key_move, &info);
 	mlx_loop(info.mlx);
+	free (parse.map);
 	matrix_destory (&info.mtx);
 	hash_destory(parse.hash_elements);
 	mlx_destroy_image (info.mlx, info.tex_down.img);
@@ -78,5 +113,5 @@ int main(int argc, char **argv)
 	mlx_destroy_image (info.mlx, info.tex_right.img);
 	mlx_destroy_image (info.mlx, info.img_info.img);
 	mlx_destroy_window (info.mlx, info.win);
-	return 0;
+	return (0);
 }
