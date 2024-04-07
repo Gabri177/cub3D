@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 05:03:30 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/07 19:08:08 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/07 19:57:44 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ t_pos	init_ctr_pos(t_mtx matrix)
 			if (matrix[x][y]->obj == 'N' || matrix[x][y]->obj == 'S' || matrix[x][y]->obj == 'W' || matrix[x][y]->obj == 'E')
 			{
 				matrix[x][y]->obj = '0';
-				//printf ("==========(x : %d, y %d)========\n", x * UNI - UNI / 2, y * UNI - UNI / 2);
 				return ((t_pos){x * UNI + UNI / 2, y * UNI + UNI / 2});
 			}
 			x ++;
@@ -54,6 +53,35 @@ t_pos	init_ctr_pos(t_mtx matrix)
 		y ++;
 	}
 	return ((t_pos){0, 0});
+}
+
+t_bool	map_check(t_mtx mtx, t_size size)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < size.y)
+	{
+		x = 0;
+		while (x < size.x)
+		{
+			if (mtx[x][y]->obj == '0')
+			{
+				if (!mtx[x][y - 1] || mtx[x][y - 1]->obj != '1' && mtx[x][y - 1]->obj != '0')
+					return (FALSE);
+				if (!mtx[x][y + 1] || mtx[x][y + 1]->obj != '1' && mtx[x][y + 1]->obj != '0')
+					return (FALSE);
+				if (!mtx[x - 1][y] || mtx[x - 1][y]->obj != '1' && mtx[x - 1][y]->obj != '0')
+					return (FALSE);
+				if (!mtx[x + 1][y] || mtx[x + 1][y]->obj != '1' && mtx[x + 1][y]->obj != '0')
+					return (FALSE);
+			}
+			x ++;
+		}
+		y ++;
+	}
+	return (TRUE);
 }
 
 int	main(int argc, char **argv)
@@ -71,10 +99,12 @@ int	main(int argc, char **argv)
 	// the following t_pos is the initial position of the character, t_vec is the initial direction of the character (the first two parameters are used to pass the length and 
 	//width of the map at first, the third is the angle, and the y-axis coordinates are facing down) t_map is the size of the window
 	printf ("w:%d h:%d start_pos: %c\n", parse.width, parse.height, parse.starting_position);
-	printf ("rgb: %u\n\n\n", trans_rgb_to_dig(strdup("255,204,0")));
 	init_info(&info, parse, init_vec (parse), (t_map){1024, 510});
-
-	//matrix_display (info.mtx, TRUE);
+	if (map_check (info.mtx, info.mtx_size) == FALSE)
+		printf ("=====FALSE======\n"); //distory_all(info)
+	else
+		printf ("=====TRUE======\n");
+	matrix_display (info.mtx, TRUE);
 
 	//=======================
 	img_start_draw (&info); //||

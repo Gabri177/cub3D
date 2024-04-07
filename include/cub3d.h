@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 04:45:47 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/07 18:44:25 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/07 19:56:55 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@
 # define R_ARROW 124
 
 
-typedef int	t_bool;
+typedef int			t_bool;
 
 typedef struct s_node
 {
 	char	obj;
 	int		stp;
-}			t_node;
+}					t_node;
 
 typedef t_node***	t_mtx;
 
@@ -67,27 +67,27 @@ typedef struct s_pos
 {
 	double	x;
 	double	y;
-}   		t_pos;
+}					t_pos;
 
 typedef struct s_posx
 {
 	double	x;
 	double	y;
 	t_bool	side;
-}   		t_posx;
+}					t_posx;
 
 typedef struct s_vec
 {
 	double  vx;
 	double  vy;
 	int		ang;
-}   		t_vec;
+}					t_vec;
 
 typedef struct s_map
 {
 	int	x;
 	int	y;
-}  			t_map;
+}					t_map;
 
 typedef struct s_key
 {
@@ -97,19 +97,19 @@ typedef struct s_key
 	t_bool	right;
 	t_bool	to_left;
 	t_bool	to_right;
-}  			t_key;
+}					t_key;
 
 typedef	struct s_ray
 {
 	t_pos	start;
 	t_pos	end;
-}			t_ray;
+}					t_ray;
 
 typedef struct s_size
 {
 	int	x;
 	int	y;
-}			t_size;
+}					t_size;
 
 typedef struct s_info
 {
@@ -129,19 +129,19 @@ typedef struct s_info
 	int			color;
 	int			color_sky;
 	int			color_floor;
-}			t_info;
+}					t_info;
 
 typedef struct s_node_hash
 {
 	char				*key;
 	char				*val;
 	struct s_node_hash	*next;
-}				t_node_hash;
+}					t_node_hash;
 
 typedef struct s_hash
 {
 	t_node_hash	*bucket[HASH_SIZE];
-}				t_hash;
+}					t_hash;
 
 typedef struct s_parse
 {
@@ -152,7 +152,7 @@ typedef struct s_parse
 	t_hash	*hash_elements;	//Para los valores del mapa NO, SO, WE, EA, F, C. El key es el NO y el value: ./path_to_the_north_texture
 	char	*is_valid[ELEMENTS_MAP + 1];
 	int		num;	// Este número representa los elementos encontrados en el mapa, en cuanto es 6 lo siguiente es el mapa
-}				t_parse;
+}					t_parse;
 
 
 //======cub_graph.c=======

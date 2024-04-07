@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 19:57:42 by jjuarez-          #+#    #+#             */
-/*   Updated: 2024/04/07 19:08:31 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/07 19:52:01 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,11 @@ int	map_read(t_parse *parse, int fd)
 
 	join = ft_strdup("");
 	line = get_next_line(fd);
+	while (line && *line == '\n')
+	{
+		free (line);
+		line = get_next_line(fd);
+	}
 	while (line != NULL)
 	{
 		if (check_invalid_characters(line, 1) == -1)
