@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 04:45:47 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/07 17:45:50 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/07 17:56:06 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,6 +207,7 @@ void		graph_ray_to_wall(void *info);
 t_pos		trans_posx_to_pos(t_posx posx);
 t_pos		trans_2num_to_pos(double n1, double n2);
 t_posx		trans_pos_to_posx(t_pos pos, t_bool side);
+void	draw_ceiling_and_floor_from_middle(void *info, int colorCeiling, int colorFloor);
 
 /*	------------------------- HASH LIST --------------------------*/
 t_node_hash	*list_init(void);

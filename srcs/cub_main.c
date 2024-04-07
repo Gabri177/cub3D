@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 05:03:30 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/07 17:51:57 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/07 17:56:18 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_pos	init_ctr_pos(t_mtx matrix)
 	return ((t_pos){0, 0});
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_info	info;
 	t_parse	parse;
@@ -72,7 +72,6 @@ int main(int argc, char **argv)
 	//width of the map at first, the third is the angle, and the y-axis coordinates are facing down) t_map is the size of the window
 	printf ("w:%d h:%d start_pos: %c\n", parse.width, parse.height, parse.starting_position);
 	init_info(&info, parse, init_vec (parse), (t_map){1024, 510});
-	//init_info(&info, (t_pos){100, 100}, (t_vec){8, 8, 270}, (t_map){1024, 510}, &parse);
 
 	//matrix_display (info.mtx, TRUE);
 	info.tex_down.img = mlx_png_file_to_image (info.mlx, "./texture/wood.png", &info.tex_down.tex_x, &info.tex_down.tex_y);
@@ -94,14 +93,16 @@ int main(int argc, char **argv)
 	bk_map (&info);
 	img_set_color (&info, 0xF08080);
 	graph_square(&info, info.ctr_pos, 10);
+	draw_ceiling_and_floor_from_middle (&info, 0xF08080, 0xFFCC00);
+	graph_ray_to_wall (&info);
 	img_set_color (&info, 0x2F4F4F);
 	graph_thick_line (&info, info.ctr_pos, (t_pos){info.ctr_pos.x + info.ctr_ang.vx * 1.5, info.ctr_pos.y + info.ctr_ang.vy * 1.5}, 2);
 	//=======================
 	img_end_draw (&info);//||
 	//=======================
 
-	mlx_hook (info.win, 2, 1L<<0, key_press, &info);
-	mlx_hook (info.win, 3, 1L<<1, key_release, &info);
+	mlx_hook (info.win, 2, 1L << 0, key_press, &info);
+	mlx_hook (info.win, 3, 1L << 1, key_release, &info);
 	mlx_loop_hook (info.mlx, (void *)key_move, &info);
 	mlx_loop(info.mlx);
 	free (parse.map);
