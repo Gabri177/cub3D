@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 05:03:30 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/07 17:56:18 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/07 18:13:56 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	main(int argc, char **argv)
 	// the following t_pos is the initial position of the character, t_vec is the initial direction of the character (the first two parameters are used to pass the length and 
 	//width of the map at first, the third is the angle, and the y-axis coordinates are facing down) t_map is the size of the window
 	printf ("w:%d h:%d start_pos: %c\n", parse.width, parse.height, parse.starting_position);
+	printf ("rgb: %u\n\n\n", trans_rgb_to_dig(strdup("255,204,0")));
 	init_info(&info, parse, init_vec (parse), (t_map){1024, 510});
 
 	//matrix_display (info.mtx, TRUE);
