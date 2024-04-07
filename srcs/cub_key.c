@@ -120,13 +120,13 @@ int	key_release(int keycode, void *info)
 	t_info	*tem;
 
 	tem = (t_info *)info;
-	if (keycode == W_CODE) // Up 
+	if (keycode == W_CODE)
 		tem->key.up = 0;
-	if (keycode == S_CODE) // Down
+	if (keycode == S_CODE)
  		tem->key.down = 0;
-	if (keycode == L_ARROW) // Left arrow
+	if (keycode == L_ARROW)
  		tem->key.to_left = 0;
-	if (keycode == R_ARROW) // Right arrow
+	if (keycode == R_ARROW)
 		tem->key.to_right = 0;
 	if (keycode == A_CODE)
 		tem->key.left = 0;
