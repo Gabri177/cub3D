@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 20:53:08 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/07 17:39:39 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/07 17:52:10 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	init_info(t_info *info, t_parse prase,
 	info->ctr_ang.vx = cos (fix_ang_to_rad (ori_ang.ang)) * 15;
 	info->ctr_ang.vy = sin (fix_ang_to_rad (ori_ang.ang)) * 15;
 	info->ctr_pos = init_ctr_pos (info->mtx);
-	//init_ctr_pos (info->mtx)
 	info->key.up = 0;
 	info->key.down = 0;
 	info->key.left = 0;

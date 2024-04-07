@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 05:03:30 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/07 17:51:38 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/07 17:51:57 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int main(int argc, char **argv)
 {
 	t_info	info;
 	t_parse	parse;
-	
+
 	atexit(leaks);		//Borrar, incumple la norminette
 	if (argc != 2)		//Importante descomentar flags al makefile
 		return (printf("Error: Wrong number of arguments, only 1 expected\n"));
