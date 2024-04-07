@@ -6,7 +6,7 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 04:40:59 by jjuarez-          #+#    #+#             */
-/*   Updated: 2024/04/06 04:52:54 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/06 22:19:44 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ char	*add_space(t_parse *parse, char *line)
 	int		line_len;
 	int		i;
 	char	*new_line;
-	
+
 	line_len = ft_strlen(line);
 	i = 0;
-	new_line = malloc (parse->width + 1); //Ver si tiene que ser + 1
+	new_line = malloc (parse->width + 1);
 	while (i < line_len)
 	{
 		new_line[i] = line[i];
 		i++;
 	}
-	while (i < parse->width)
+	while (i < parse->width - 1)
 	{
 		new_line[i] = ' ';
 		i++;

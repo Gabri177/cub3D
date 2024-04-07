@@ -6,7 +6,7 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 08:22:04 by jjuarez-          #+#    #+#             */
-/*   Updated: 2024/04/03 14:10:59 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/06 22:19:01 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ void	list_print(t_node_hash *l)
 
 char	**hash_to_arry(t_hash	*h)
 {
-	int		i;
+	int			i;
 	t_node_hash	*cur;
-	char	**new;
+	char		**new;
 
 	i = 0;
 	new = NULL;

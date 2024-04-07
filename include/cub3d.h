@@ -6,7 +6,7 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 04:45:47 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/06 04:53:36 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/06 19:29:52 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include "../minilibx/mlx.h"
 # include "../libft/libft.h"
 
-# define UNI 64
+# define UNI 20
 # define UPSIDE 1
 # define DOWNSIDE 2
 # define LEFTSIDE 3
