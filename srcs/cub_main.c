@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 05:03:30 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/07 17:48:07 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/07 17:51:38 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_pos	init_ctr_pos(t_mtx matrix)
 			if (matrix[x][y]->obj == 'N' || matrix[x][y]->obj == 'S' || matrix[x][y]->obj == 'W' || matrix[x][y]->obj == 'E')
 			{
 				matrix[x][y]->obj = '0';
-				printf ("==========(x : %d, y %d)========\n", x * UNI - UNI / 2, y * UNI - UNI / 2);
+				//printf ("==========(x : %d, y %d)========\n", x * UNI - UNI / 2, y * UNI - UNI / 2);
 				return ((t_pos){x * UNI + UNI / 2, y * UNI + UNI / 2});
 			}
 			x ++;
