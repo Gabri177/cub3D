@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hash_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 08:22:04 by jjuarez-          #+#    #+#             */
-/*   Updated: 2024/04/06 22:19:01 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/07 19:08:52 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	list_print(t_node_hash *l)
 	while (tem)
 	{
 		if (!is_strsame (tem->key, "?"))
-			ft_printf ("%s\n", tem->val);
+			ft_printf ("key: %s val: %s\n", tem->key, tem->val);
 		tem = tem->next;
 	}
 }

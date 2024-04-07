@@ -80,7 +80,7 @@ void	key_move(void *info)
 		bk_map (info);
 		img_set_color (info, 0xF08080);
 		graph_square(info, tem->ctr_pos, 10);
-		draw_ceiling_and_floor_from_middle (info, 0xF08080, 0xFFCC00);
+		draw_ceiling_and_floor_from_middle (info, tem->color_sky, tem->color_floor);
 		graph_ray_to_wall (info);
 		img_set_color (info, 0xFFCC00);
 		graph_thick_line (info, tem->ctr_pos, (t_pos){tem->ctr_pos.x

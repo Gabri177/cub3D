@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 19:57:42 by jjuarez-          #+#    #+#             */
-/*   Updated: 2024/04/07 18:44:34 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/07 19:08:31 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int	map_parsing(t_parse *parse, char *filename)
 	printf("--------------------- T_PARSE ---------------------\n\n");
 	printf("Map:%s\n\n", parse->map);
 	hash_display(*parse->hash_elements);
-	hash_destory(parse->hash_elements);
+	//hash_destory(parse->hash_elements);
 	printf("Player starting position: %c\n", parse->starting_position);
 	printf("HEIGHT :.%d.\n", parse->height);
 	printf("WIDTH :.%d.\n", parse->width);

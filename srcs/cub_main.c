@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_main.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 05:03:30 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/07 18:38:56 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/07 19:08:08 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,26 +75,14 @@ int	main(int argc, char **argv)
 	init_info(&info, parse, init_vec (parse), (t_map){1024, 510});
 
 	//matrix_display (info.mtx, TRUE);
-	info.tex_down.img = mlx_png_file_to_image (info.mlx, "./texture/wood.png", &info.tex_down.tex_x, &info.tex_down.tex_y);
-	info.tex_up.img = mlx_png_file_to_image (info.mlx, "./texture/eagle.png", &info.tex_up.tex_x, &info.tex_up.tex_y);
-	info.tex_left.img = mlx_png_file_to_image (info.mlx, "./texture/colorstone.png", &info.tex_left.tex_x, &info.tex_left.tex_y);
-	info.tex_right.img = mlx_png_file_to_image (info.mlx, "./texture/redbrick.png", &info.tex_right.tex_x, &info.tex_right.tex_y);
-	// info.tex_down.img = mlx_xpm_file_to_image(info.mlx, "./texture/blue_stone.xpm", &x, &y);
-	// info.tex_up.img = mlx_xpm_file_to_image(info.mlx, "./texture/grey_stone.xpm", &x, &y);
-	// info.tex_left.img = mlx_xpm_file_to_image(info.mlx, "./texture/purple_stone.xpm", &x, &y);
-	// info.tex_right.img = mlx_xpm_file_to_image(info.mlx, "./texture/wood.xpm", &x, &y);
-	
-	info.tex_down.addr = mlx_get_data_addr (info.tex_down.img, &(info.tex_down.bits_per_pixel), &(info.tex_down.len_line), &(info.tex_down.endian));
-	info.tex_up.addr = mlx_get_data_addr (info.tex_up.img, &(info.tex_up.bits_per_pixel), &(info.tex_up.len_line), &(info.tex_up.endian));
-	info.tex_left.addr = mlx_get_data_addr (info.tex_left.img, &(info.tex_left.bits_per_pixel), &(info.tex_left.len_line), &(info.tex_left.endian));
-	info.tex_right.addr = mlx_get_data_addr (info.tex_right.img, &(info.tex_right.bits_per_pixel), &(info.tex_right.len_line), &(info.tex_right.endian));
+
 	//=======================
 	img_start_draw (&info); //||
 	//=======================
 	bk_map (&info);
 	img_set_color (&info, 0xF08080);
 	graph_square(&info, info.ctr_pos, 10);
-	draw_ceiling_and_floor_from_middle (&info, 0xF08080, 0xFFCC00);
+	draw_ceiling_and_floor_from_middle (&info, info.color_sky, info.color_floor);
 	graph_ray_to_wall (&info);
 	img_set_color (&info, 0x2F4F4F);
 	graph_thick_line (&info, info.ctr_pos, (t_pos){info.ctr_pos.x + info.ctr_ang.vx * 1.5, info.ctr_pos.y + info.ctr_ang.vy * 1.5}, 2);
