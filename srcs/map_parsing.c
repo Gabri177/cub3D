@@ -6,7 +6,7 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 19:57:42 by jjuarez-          #+#    #+#             */
-/*   Updated: 2024/04/06 21:35:55 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/07 18:44:34 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,8 @@ int	map_parsing(t_parse *parse, char *filename)
 		return (perror("Error: map file doesn't exist"), -1);
 	if (init_elements(parse, filename) == -1)
 		return (perror("Erorr: invalid element on the map"), -1);
+	if (check_walls(parse, parse->map) == -1)
+		return (perror("Error: map not closed by 1"), -1);
 	// Borrar desde aquí
 	printf("--------------------- T_PARSE ---------------------\n\n");
 	printf("Map:%s\n\n", parse->map);
