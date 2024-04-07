@@ -6,23 +6,38 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 20:53:08 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/07 19:52:54 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/07 20:59:16 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-
 void	init_img(t_info *info, t_parse parse)
 {
-	info->tex_down.img = mlx_png_file_to_image (info->mlx, hash_grep (parse.hash_elements, "SO"), &info->tex_down.tex_x, &info->tex_down.tex_y);
-	info->tex_up.img = mlx_png_file_to_image (info->mlx,  hash_grep (parse.hash_elements, "NO"), &info->tex_up.tex_x, &info->tex_up.tex_y);
-	info->tex_left.img = mlx_png_file_to_image (info->mlx,  hash_grep (parse.hash_elements, "WE"), &info->tex_left.tex_x, &info->tex_left.tex_y);
-	info->tex_right.img = mlx_png_file_to_image (info->mlx,  hash_grep (parse.hash_elements, "EA"), &info->tex_right.tex_x, &info->tex_right.tex_y);
-	info->tex_down.addr = mlx_get_data_addr (info->tex_down.img, &(info->tex_down.bits_per_pixel), &(info->tex_down.len_line), &(info->tex_down.endian));
-	info->tex_up.addr = mlx_get_data_addr (info->tex_up.img, &(info->tex_up.bits_per_pixel), &(info->tex_up.len_line), &(info->tex_up.endian));
-	info->tex_left.addr = mlx_get_data_addr (info->tex_left.img, &(info->tex_left.bits_per_pixel), &(info->tex_left.len_line), &(info->tex_left.endian));
-	info->tex_right.addr = mlx_get_data_addr (info->tex_right.img, &(info->tex_right.bits_per_pixel), &(info->tex_right.len_line), &(info->tex_right.endian));
+	info->tex_down.img = mlx_png_file_to_image (info->mlx,
+			hash_grep (parse.hash_elements, "SO"),
+			&info->tex_down.tex_x, &info->tex_down.tex_y);
+	info->tex_up.img = mlx_png_file_to_image (info->mlx,
+			hash_grep (parse.hash_elements, "NO"),
+			&info->tex_up.tex_x, &info->tex_up.tex_y);
+	info->tex_left.img = mlx_png_file_to_image (info->mlx,
+			hash_grep (parse.hash_elements, "WE"),
+			&info->tex_left.tex_x, &info->tex_left.tex_y);
+	info->tex_right.img = mlx_png_file_to_image (info->mlx,
+			hash_grep (parse.hash_elements, "EA"),
+			&info->tex_right.tex_x, &info->tex_right.tex_y);
+	info->tex_down.addr = mlx_get_data_addr (info->tex_down.img,
+			&(info->tex_down.bits_per_pixel),
+			&(info->tex_down.len_line), &(info->tex_down.endian));
+	info->tex_up.addr = mlx_get_data_addr (info->tex_up.img,
+			&(info->tex_up.bits_per_pixel),
+			&(info->tex_up.len_line), &(info->tex_up.endian));
+	info->tex_left.addr = mlx_get_data_addr (info->tex_left.img,
+			&(info->tex_left.bits_per_pixel),
+			&(info->tex_left.len_line), &(info->tex_left.endian));
+	info->tex_right.addr = mlx_get_data_addr (info->tex_right.img,
+			&(info->tex_right.bits_per_pixel),
+			&(info->tex_right.len_line), &(info->tex_right.endian));
 }
 
 void	init_info(t_info *info, t_parse prase,

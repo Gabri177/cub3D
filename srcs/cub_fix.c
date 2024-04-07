@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 03:20:38 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/06 01:09:50 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/07 21:11:55 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 //对角度值进行修复, 确保角度在0 - 360之间
 // Repair the angle value to ensure that the angle is between 0 and 360.
-int fix_ang(int a)
+int	fix_ang(int a)
 {
 	if (a >= 360)
 		return (a - 360);

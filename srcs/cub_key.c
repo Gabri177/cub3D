@@ -12,26 +12,32 @@
 
 #include "../include/cub3d.h"
 
-void	draw_ceiling_and_floor_from_middle(void *info, int colorCeiling, int colorFloor)
+void	draw_sky_and_floor(t_info *in, int sky, int floor)
 {
-	int	screenWidth = 1060;
-	int	screenHeight = 510;
-	int	halfScreenHeight = screenHeight / 2;
-	int	startX = 530;
+	int		x;
+	int		y;
 
-	for (int y = 0; y < halfScreenHeight; y++)
+	y = 0;
+	while (y < in->map_info.y)
 	{
-		for (int x = startX; x < screenWidth; x++)
+		x = 530;
+		while (x < in->map_info.x)
 		{
-			img_put_pixel(info, x, y, colorCeiling); // 使用天花板颜色
+			img_put_pixel((void *)in, x, y, sky);
+			x ++;
 		}
+		y ++;
 	}
-	for (int y = halfScreenHeight; y < screenHeight; y++)
+	y = in->map_info.y / 2;
+	while (y < in->map_info.y)
 	{
-		for (int x = startX; x < screenWidth; x++)
+		x = 530;
+		while (x < in->map_info.x)
 		{
-			img_put_pixel(info, x, y, colorFloor); // 使用地面颜色
+			img_put_pixel((void *)in, x, y, floor);
+			x ++;
 		}
+		y ++;
 	}
 }
 
@@ -47,9 +53,9 @@ static t_pos	key_check_wall(void *info, t_vec v, t_bool is_ahead)
 			/ UNI)][(int)((tem->ctr_pos.y +
 				v.vy * 3) / UNI)]->obj == '1')
 		return (tem->ctr_pos);
-	if (!is_ahead && tem->mtx[(int)((tem->ctr_pos.x -
-				v.vx * 3) / UNI)][(int)((tem->ctr_pos.y -
-				v.vy * 3) / UNI)]->obj == '1')
+	if (!is_ahead && tem->mtx[(int)((tem->ctr_pos.x
+				- v.vx * 3) / UNI)][(int)((tem->ctr_pos.y
+			- v.vy * 3) / UNI)]->obj == '1')
 		return (tem->ctr_pos);
 	return (vec_trans (tem->ctr_pos, v, is_ahead));
 }
@@ -67,24 +73,27 @@ void	key_move(void *info)
 	if (tem->key.down)
 		tem->ctr_pos = key_check_wall (info, tem->ctr_ang, FALSE);
 	if (tem->key.left)
-		tem->ctr_pos = key_check_wall (info, (t_vec){-tem->ctr_ang.vy, tem->ctr_ang.vx, tem->ctr_ang.ang}, FALSE);
+		tem->ctr_pos = key_check_wall (info, (t_vec){-tem->ctr_ang.vy,
+				tem->ctr_ang.vx, tem->ctr_ang.ang}, FALSE);
 	if (tem->key.right)
-		tem->ctr_pos = key_check_wall (info, (t_vec){-tem->ctr_ang.vy, tem->ctr_ang.vx, tem->ctr_ang.ang}, TRUE);
+		tem->ctr_pos = key_check_wall (info, (t_vec){-tem->ctr_ang.vy,
+				tem->ctr_ang.vx, tem->ctr_ang.ang}, TRUE);
 	if (tem->key.to_left)
 		tem->ctr_ang = math_projection_vec (tem->ctr_ang, -5, 5);
 	if (tem->key.to_right)
 		tem->ctr_ang = math_projection_vec (tem->ctr_ang, +5, 5);
-	if (tem->key.up || tem->key.down || tem->key.left || tem->key.right || tem->key.to_left || tem->key.to_right)
+	if (tem->key.up || tem->key.down || tem->key.left || tem->key.right
+		|| tem->key.to_left || tem->key.to_right)
 	{
 		img_start_draw (info);
-		bk_map (info);
-		img_set_color (info, 0xF08080);
-		graph_square(info, tem->ctr_pos, 10);
-		draw_ceiling_and_floor_from_middle (info, tem->color_sky, tem->color_floor);
+		bk_map (info); //borrar
+		img_set_color (info, 0xF08080); //borrar
+		graph_square(info, tem->ctr_pos, 10); //borrar
+		draw_sky_and_floor ((t_info *)info, tem->color_sky, tem->color_floor);
 		graph_ray_to_wall (info);
-		img_set_color (info, 0xFFCC00);
+		img_set_color (info, 0xFFCC00); //borrar
 		graph_thick_line (info, tem->ctr_pos, (t_pos){tem->ctr_pos.x
-			+ tem->ctr_ang.vx * 3, tem->ctr_pos.y + tem->ctr_ang.vy * 3}, 2);
+			+ tem->ctr_ang.vx * 3, tem->ctr_pos.y + tem->ctr_ang.vy * 3}, 2); //borrar
 		img_end_draw (info);
 	}
 }
@@ -96,7 +105,7 @@ int	key_press(int keycode, void *info)
 	t_info	*tem;
 
 	tem = (t_info *)info;
-	if (keycode == 53)// Esc key to quit
+	if (keycode == 53)
 		exit(0);
 	if (keycode == W_CODE)
 		tem->key.up = 1;
@@ -123,9 +132,9 @@ int	key_release(int keycode, void *info)
 	if (keycode == W_CODE)
 		tem->key.up = 0;
 	if (keycode == S_CODE)
- 		tem->key.down = 0;
+		tem->key.down = 0;
 	if (keycode == L_ARROW)
- 		tem->key.to_left = 0;
+		tem->key.to_left = 0;
 	if (keycode == R_ARROW)
 		tem->key.to_right = 0;
 	if (keycode == A_CODE)

@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 02:51:23 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/06 01:12:46 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/07 21:12:49 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,13 @@ void	graph_thick_line(void *info, t_pos p1, t_pos p2, double thick)
 void	graph_square(void *info, t_pos p_center, int len_side)
 {
 	if (len_side % 2 == 0)
-		graph_thick_line (info, (t_pos){p_center.x, p_center.y -
-			(int)(len_side / 2 + 0.5)}, (t_pos){p_center.x,
+		graph_thick_line (info, (t_pos){p_center.x, p_center.y
+			- (int)(len_side / 2 + 0.5)}, (t_pos){p_center.x,
 			p_center.y + (int)(len_side / 2 + 0.5)}, len_side);
 	else
-		graph_thick_line (info, (t_pos){p_center.x, p_center.y -
-			len_side / 2}, (t_pos){p_center.x, p_center.y +
-			len_side - len_side / 2}, len_side);
+		graph_thick_line (info, (t_pos){p_center.x, p_center.y
+			- len_side / 2}, (t_pos){p_center.x, p_center.y
+			+ len_side - len_side / 2}, len_side);
 }
 
 //画一个长方形, 这里需要提供左下角和右上角的坐标
@@ -104,8 +104,8 @@ void	graph_rectangle(void *info, t_pos p_low_left, t_pos p_up_right)
 	i = p_low_left.x;
 	while (i <= p_up_right.x)
 	{
-		graph_thick_line (info, (t_pos){p_low_left.x +
-			i, p_low_left.y}, (t_pos){p_low_left.x + i, p_up_right.y}, 1);
+		graph_thick_line (info, (t_pos){p_low_left.x
+			+ i, p_low_left.y}, (t_pos){p_low_left.x + i, p_up_right.y}, 1);
 		i ++;
 	}
 }

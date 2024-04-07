@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 19:35:36 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/06 01:09:42 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/07 21:07:16 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,8 +129,8 @@ t_posx	biu_hit_pos(void *info, int setoff_ang)
 	t_pos	hori;
 	t_pos	veri;
 	t_pos	ctr;
-	double	dis_hori = 0;
-	double	dis_veri = 0;
+	double	dis_hori;
+	double	dis_veri;
 
 	hori = biu_hit_pos_hori (info, setoff_ang);
 	veri = biu_hit_pos_veri (info, setoff_ang);

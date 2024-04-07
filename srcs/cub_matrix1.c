@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 19:33:20 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/07 19:41:40 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/07 21:11:18 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_mtx	matrix_init(t_vec size)
 	x = -1;
 	while (++x < size.vx)
 	{
-		new[x] = malloc (sizeof (t_node*) * (((int)size.vy) + 1));
+		new[x] = malloc (sizeof (t_node *) * (((int)size.vy) + 1));
 		if (!new[x])
 			return (NULL);
 		y = -1;

@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 04:45:47 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/07 19:56:55 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/07 20:52:37 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,6 +191,7 @@ void		init_info(t_info *info, t_parse prase, t_vec ori_ang, t_map map);
 void		init_is_valid(t_parse *parse);
 int			init_elements(t_parse *parse, char *filename);
 t_pos		init_ctr_pos(t_mtx matrix);
+void		init_draw(t_info info);
 int			is_valid(char *line, t_parse *parse);
 //======cub_2d_bk.c========
 void		bk_map(void *info);
@@ -210,7 +211,7 @@ t_pos		trans_posx_to_pos(t_posx posx);
 t_pos		trans_2num_to_pos(double n1, double n2);
 t_posx		trans_pos_to_posx(t_pos pos, t_bool side);
 unsigned int	trans_rgb_to_dig(char *rgb_str);
-void	draw_ceiling_and_floor_from_middle(void *info, int colorCeiling, int colorFloor);
+void	draw_sky_and_floor(t_info *in, int sky, int floor);
 
 /*	------------------------- HASH LIST --------------------------*/
 t_node_hash	*list_init(void);
