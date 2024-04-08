@@ -6,7 +6,7 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 04:45:47 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/08 16:15:30 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/08 16:54:32 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,12 +201,13 @@ int				key_release(int keycode, void *info);
 void			init_info(t_info *info, t_parse prase,
 					t_vec ori_ang, t_map map);
 void			init_is_valid(t_parse *parse);
-int				init_elements(t_parse *parse, char *filename);
+int				init_elements(t_parse *parse);
 t_pos			init_ctr_pos(t_mtx matrix);
 void			init_draw(t_info info);
 int				is_valid(char *line, t_parse *parse);
 t_vec			init_vec(t_parse parse);
 void			keep_draw(t_info info);
+int				init_texture(t_info *info, t_parse parse);
 //======cub_2d_bk.c========
 void			bk_map(void *info);
 //======cub_matrix.c=======

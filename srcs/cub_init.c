@@ -6,7 +6,7 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 20:53:08 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/08 16:09:37 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/08 16:56:12 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,8 @@
 
 void	init_img(t_info *info, t_parse parse)
 {
-	info->tex_down.img = mlx_png_file_to_image (info->mlx,
-			hash_grep (parse.hs, "SO"),
-			&info->tex_down.tex_x, &info->tex_down.tex_y);
-	info->tex_up.img = mlx_png_file_to_image (info->mlx,
-			hash_grep (parse.hs, "NO"),
-			&info->tex_up.tex_x, &info->tex_up.tex_y);
-	info->tex_left.img = mlx_png_file_to_image (info->mlx,
-			hash_grep (parse.hs, "WE"),
-			&info->tex_left.tex_x, &info->tex_left.tex_y);
-	info->tex_right.img = mlx_png_file_to_image (info->mlx,
-			hash_grep (parse.hs, "EA"),
-			&info->tex_right.tex_x, &info->tex_right.tex_y);
+	if (init_texture(info, parse) == -1)
+		exit (2);
 	info->tex_down.addr = mlx_get_data_addr (info->tex_down.img,
 			&(info->tex_down.bits_per_pixel),
 			&(info->tex_down.len_line), &(info->tex_down.endian));
@@ -100,7 +90,7 @@ int	is_valid(char *line, t_parse *parse)
 	return (FALSE);
 }
 
-int	init_elements(t_parse *parse, char *filename)
+int	init_elements(t_parse *parse)
 {
 	char	*line;
 	char	*temp;

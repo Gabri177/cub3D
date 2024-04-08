@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_graph_ray.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
+/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 00:29:57 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/08 02:11:13 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/08 16:22:42 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	graph_ray_to_wall(t_info *info)
 	double		setoff_ang;
 
 	x = 0;
+	y = 0;
 	while (x < SCREENWITH)
 	{
 		setoff_ang = (x - SCREENWITH / 2.0) * (FOV / (double)SCREENWITH);

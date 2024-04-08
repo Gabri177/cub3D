@@ -6,7 +6,7 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 20:33:35 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/08 16:18:31 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/08 16:58:22 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,29 @@ t_vec	init_vec(t_parse parse)
 	if (parse.starting_position == 'W')
 		ang = 180;
 	return ((t_vec){parse.width - 1, parse.height, ang});
+}
+
+int	init_texture(t_info *info, t_parse parse)
+{
+	info->tex_down.img = mlx_png_file_to_image (info->mlx,
+			hash_grep (parse.hs, "SO"),
+			&info->tex_down.tex_x, &info->tex_down.tex_y);
+	if (info->tex_down.img == NULL)
+		return (-1);
+	info->tex_up.img = mlx_png_file_to_image (info->mlx,
+			hash_grep (parse.hs, "NO"),
+			&info->tex_up.tex_x, &info->tex_up.tex_y);
+	if (info->tex_up.img == NULL)
+		return (-1);
+	info->tex_left.img = mlx_png_file_to_image (info->mlx,
+			hash_grep (parse.hs, "WE"),
+			&info->tex_left.tex_x, &info->tex_left.tex_y);
+	if (info->tex_left.img == NULL)
+		return (-1);
+	info->tex_right.img = mlx_png_file_to_image (info->mlx,
+			hash_grep (parse.hs, "EA"),
+			&info->tex_right.tex_x, &info->tex_right.tex_y);
+	if (info->tex_right.img == NULL)
+		return (-1);
+	return (0);
 }
