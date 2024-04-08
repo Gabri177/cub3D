@@ -6,12 +6,11 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 02:31:39 by jjuarez-          #+#    #+#             */
-/*   Updated: 2024/04/07 18:44:17 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/08 16:15:48 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
 
 int	check_walls(t_parse *parse, char *map)
 {
@@ -25,10 +24,10 @@ int	check_walls(t_parse *parse, char *map)
 	while (new_map[i] && new_map[i + 1])
 	{
 		if (new_map[i] == '0' || new_map[i] == 'N' || new_map[i] == 'S'
-		|| new_map[i] == 'W' || new_map[i] == 'E')
+			|| new_map[i] == 'W' || new_map[i] == 'E')
 		{
 			if (new_map[i - 1] == ' ' || new_map[i + 1] == ' ')
-				return (free(space), free(new_map), hash_destory(parse->hash_elements), free(parse->map), -1);
+				return (free_three_hsh(parse, space, new_map, parse->map), -1);
 		}
 		i++;
 	}
@@ -41,8 +40,8 @@ int	get_dimension(t_parse *parse, char *filename)
 {
 	int		fd;
 	char	*line;
-	fd = open(filename, O_RDONLY);
 
+	fd = open(filename, O_RDONLY);
 	parse->height = 0;
 	parse->width = 0;
 	line = get_next_line(fd);
@@ -51,7 +50,6 @@ int	get_dimension(t_parse *parse, char *filename)
 		free (line);
 		if (check_invalid_characters(line, 0) == 0 && is_space(line) == -1)
 		{
-			printf("hola\n");
 			get_width(parse, line);
 			parse->height++;
 		}

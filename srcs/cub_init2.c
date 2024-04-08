@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_init2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
+/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 20:33:35 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/08 03:06:33 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/08 16:18:31 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,5 @@ t_vec	init_vec(t_parse parse)
 		ang = 90;
 	if (parse.starting_position == 'W')
 		ang = 180;
-	return ((t_vec){parse.width - 1, parse.height, ang}); // menos unos hay que corregir lo sobre parser
+	return ((t_vec){parse.width - 1, parse.height, ang});
 }

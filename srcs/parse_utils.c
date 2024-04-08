@@ -6,7 +6,7 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 04:40:59 by jjuarez-          #+#    #+#             */
-/*   Updated: 2024/04/06 22:19:44 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/08 16:17:45 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,32 @@ char	*add_space(t_parse *parse, char *line)
 	}
 	new_line[i] = '\0';
 	return (new_line);
+}
+
+void	free_three(char *s1, char *s2, char *s3)
+{
+	free(s1);
+	free(s2);
+	free(s3);
+}
+
+void	free_two(char *s1, char *s2)
+{
+	free(s1);
+	free(s2);
+}
+
+void	free_two_and_hash(t_parse *parse, char *s1, char *s2)
+{
+	free(s1);
+	free(s2);
+	hash_destory(parse->hs);
+}
+
+void	free_three_hsh(t_parse *parse, char *s1, char *s2, char *s3)
+{
+	free(s1);
+	free(s2);
+	free(s3);
+	hash_destory(parse->hs);
 }

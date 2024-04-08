@@ -6,13 +6,13 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 05:03:30 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/08 15:39:41 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/08 16:18:18 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	leaks(void)
+void	leaks(void)		//	Borrar esta
 {
 	system("leaks -q cub3d");
 }
@@ -97,11 +97,10 @@ int	main(int argc, char **argv)
 	init_info(&info, parse, init_vec (parse), (t_map){TEM_MAP_LEN, 510});
 	if (map_check (info.mtx, info.mtx_size) == FALSE)
 	{
-		printf ("Cub3d: no cerrar con 1\n");
+		printf ("Cub3d: is not close by walls(1)\n");
 		destory_all (&info, &parse);
 		exit (0);
 	}
-	//matrix_display (info.mtx, TRUE);
 	init_draw (info);
 	mlx_hook (info.win, 2, 1L << 0, key_press, &info);
 	mlx_hook (info.win, 3, 1L << 1, key_release, &info);

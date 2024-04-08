@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
+/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 04:45:47 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/08 02:52:21 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/08 16:15:30 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@
 // # define TEM_MAP_LEN 1024
 # define TEM_SETOFF 0
 # define TEM_MAP_LEN 530
-
 
 typedef int			t_bool;
 
@@ -103,7 +102,7 @@ typedef struct s_key
 	t_bool	to_right;
 }					t_key;
 
-typedef	struct s_ray
+typedef struct s_ray
 {
 	t_pos	start;
 	t_pos	end;
@@ -149,15 +148,21 @@ typedef struct s_hash
 
 typedef struct s_parse
 {
-	char	*map;	// Con ft_strdup
+	char	*map;
 	int		width;
 	int		height;
 	char	starting_position;
-	t_hash	*hash_elements;	//Para los valores del mapa NO, SO, WE, EA, F, C. El key es el NO y el value: ./path_to_the_north_texture
+	t_hash	*hs;	// Hash_elements, name change for norminette
 	char	*is_valid[ELEMENTS_MAP + 1];
-	int		num;	// Este número representa los elementos encontrados en el mapa, en cuanto es 6 lo siguiente es el mapa
+	int		num;
+	int		fd;
+	int		len_to_space;	//Just for norminette
+	char	*line;
+	char	*join;
+	char	*temp;
+	char	*out_nl;
+	char	*with_spaces;
 }					t_parse;
-
 
 //======cub_graph.c=======
 void			graph_thick_line(void *info, t_pos p1, t_pos p2, double thick);
@@ -211,8 +216,10 @@ void			matrix_destory(t_mtx *matrix);
 void			matrix_push(t_mtx *mtx_ori, char *context);
 t_bool			matrix_range_check(void *info, int x, int y);
 //======cub_biubiu.c=======
-t_posx			apoyo_biu1(t_info *info, t_pos hori, t_pos veri, int setoff_ang);
-t_posx			apoyo_biu2(t_info *info, t_pos hori, t_pos veri, t_bool isveri_big);
+t_posx			apoyo_biu1(t_info *info, t_pos hori, t_pos veri,
+					int setoff_ang);
+t_posx			apoyo_biu2(t_info *info, t_pos hori, t_pos veri,
+					t_bool isveri_big);
 t_posx			biu_hit_pos(void *info, int setoff_ang);
 //======cub_graph_ray.c====
 void			graph_draw_ray(void *info, t_pos end);
@@ -255,6 +262,12 @@ int				map_parsing(t_parse *parse, char *filename);
 int				check_cub_extension_and_file(char *filename);
 int				map_read(t_parse *parse, int fd);
 int				check_invalid_characters(char *line, int print);
+
+/*	------------------------ PARSE_UTILS ---------------------------*/
+void			free_three(char *s1, char *s2, char *s3);
+void			free_two(char *s1, char *s2);
+void			free_two_and_hash(t_parse *parse, char *s1, char *s2);
+void			free_three_hsh(t_parse *parse, char *s1, char *s2, char *s3);
 
 /*	-------------------------- DIMENSIONS --------------------------*/
 int				get_dimension(t_parse *parse, char *filename);

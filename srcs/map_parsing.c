@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
+/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 19:57:42 by jjuarez-          #+#    #+#             */
-/*   Updated: 2024/04/07 19:52:01 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/08 16:12:46 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	check_duplicated_starting_position(t_parse *parse)
 	while (parse->map[i])
 	{
 		if (parse->map[i] == 'N' || parse->map[i] == 'S'
-		|| parse->map[i] == 'E' || parse->map[i] == 'W')
+			|| parse->map[i] == 'E' || parse->map[i] == 'W')
 		{
 			count++;
 			parse->starting_position = parse->map[i];
@@ -67,44 +67,35 @@ int	check_invalid_characters(char *line, int print)
 			return (-1);
 		}
 	}
-	// Llamar a una función que comprueebe que esta rodeado de 1
 	return (0);
 }
 
 int	map_read(t_parse *parse, int fd)
 {
-	char	*line;
-	char	*join;
-	char	*temp;
-	char	*out_nl;
-	char	*with_spaces;
-
-	join = ft_strdup("");
-	line = get_next_line(fd);
-	while (line && *line == '\n')
+	parse->join = ft_strdup("");
+	parse->line = get_next_line(fd);
+	while (parse->line && *parse->line == '\n')
 	{
-		free (line);
-		line = get_next_line(fd);
+		free (parse->line);
+		parse->line = get_next_line(fd);
 	}
-	while (line != NULL)
+	while (parse->line != NULL)
 	{
-		if (check_invalid_characters(line, 1) == -1)
-			return (free(line), free(join), hash_destory(parse->hash_elements), -1);
-		out_nl = ft_strtrim(line, "\n");
-		with_spaces = add_space(parse, out_nl);
-		free(out_nl);
-		temp = ft_strjoin(join, with_spaces);
-		free(with_spaces);
-		free (join);
-		join = ft_strdup(temp);
-		free (temp);
-		free(line);
-		line = get_next_line(fd);
+		if (check_invalid_characters(parse->line, 1) == -1)
+			return (free_two_and_hash(parse, parse->line, parse->join), -1);
+		parse->out_nl = ft_strtrim(parse->line, "\n");
+		parse->with_spaces = add_space(parse, parse->out_nl);
+		free(parse->out_nl);
+		parse->temp = ft_strjoin(parse->join, parse->with_spaces);
+		free_two(parse->with_spaces, parse->join);
+		parse->join = ft_strdup(parse->temp);
+		free_two(parse->temp, parse->line);
+		parse->line = get_next_line(fd);
 	}
-	parse->map = ft_strdup(join);
-	free(join);
+	parse->map = ft_strdup(parse->join);
+	free(parse->join);
 	if (check_duplicated_starting_position(parse) == -1)
-		return (hash_destory(parse->hash_elements), free(parse->map), -1);
+		return (hash_destory(parse->hs), free(parse->map), -1);
 	return (0);
 }
 
@@ -114,18 +105,12 @@ int	map_parsing(t_parse *parse, char *filename)
 		return (perror("Error: file extension of the map isn't .cub"), -1);
 	if (check_cub_extension_and_file(filename) == -2)
 		return (perror("Error: map file doesn't exist"), -1);
+	init_is_valid(parse);
+	parse->fd = open(filename, O_RDONLY);
 	if (init_elements(parse, filename) == -1)
 		return (perror("Erorr: invalid element on the map"), -1);
+	close(parse->fd);
 	if (check_walls(parse, parse->map) == -1)
 		return (perror("Error: map not closed by 1"), -1);
-	// Borrar desde aquí
-	printf("--------------------- T_PARSE ---------------------\n\n");
-	printf("Map:%s\n\n", parse->map);
-	hash_display(*parse->hash_elements);
-	//hash_destory(parse->hash_elements);
-	printf("Player starting position: %c\n", parse->starting_position);
-	printf("HEIGHT :.%d.\n", parse->height);
-	printf("WIDTH :.%d.\n", parse->width);
-	// Borrar hasta aquí
 	return (0);
 }

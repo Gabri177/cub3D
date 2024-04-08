@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
+/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 20:53:08 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/07 20:59:16 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/08 16:09:37 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 void	init_img(t_info *info, t_parse parse)
 {
 	info->tex_down.img = mlx_png_file_to_image (info->mlx,
-			hash_grep (parse.hash_elements, "SO"),
+			hash_grep (parse.hs, "SO"),
 			&info->tex_down.tex_x, &info->tex_down.tex_y);
 	info->tex_up.img = mlx_png_file_to_image (info->mlx,
-			hash_grep (parse.hash_elements, "NO"),
+			hash_grep (parse.hs, "NO"),
 			&info->tex_up.tex_x, &info->tex_up.tex_y);
 	info->tex_left.img = mlx_png_file_to_image (info->mlx,
-			hash_grep (parse.hash_elements, "WE"),
+			hash_grep (parse.hs, "WE"),
 			&info->tex_left.tex_x, &info->tex_left.tex_y);
 	info->tex_right.img = mlx_png_file_to_image (info->mlx,
-			hash_grep (parse.hash_elements, "EA"),
+			hash_grep (parse.hs, "EA"),
 			&info->tex_right.tex_x, &info->tex_right.tex_y);
 	info->tex_down.addr = mlx_get_data_addr (info->tex_down.img,
 			&(info->tex_down.bits_per_pixel),
@@ -62,13 +62,13 @@ void	init_info(t_info *info, t_parse prase,
 	info->img_info.img = NULL;
 	init_img (info, prase);
 	info->color = 0xFFFFFF;
-	info->color_sky = trans_rgb_to_dig (hash_grep (prase.hash_elements, "C"));
-	info->color_floor = trans_rgb_to_dig (hash_grep (prase.hash_elements, "F"));
+	info->color_sky = trans_rgb_to_dig (hash_grep (prase.hs, "C"));
+	info->color_floor = trans_rgb_to_dig (hash_grep (prase.hs, "F"));
 }
 
 void	init_is_valid(t_parse *parse)
 {
-	parse->hash_elements = hash_init();
+	parse->hs = hash_init();
 	parse->is_valid[0] = "NO";
 	parse->is_valid[1] = "SO";
 	parse->is_valid[2] = "WE";
@@ -77,6 +77,13 @@ void	init_is_valid(t_parse *parse)
 	parse->is_valid[5] = "C";
 	parse->is_valid[6] = NULL;
 	parse->num = 0;
+	parse->fd = -1;
+	parse->len_to_space = 0;
+	parse->line = NULL;
+	parse->join = NULL;
+	parse->temp = NULL;
+	parse->out_nl = NULL;
+	parse->with_spaces = NULL;
 }
 
 int	is_valid(char *line, t_parse *parse)
@@ -97,34 +104,27 @@ int	init_elements(t_parse *parse, char *filename)
 {
 	char	*line;
 	char	*temp;
-	int		len_to_space;
-	int		fd;
 	char	*value;
+	char	*valfin;
 
-	init_is_valid(parse);
-	fd = open(filename, O_RDONLY);
 	while (parse->num != ELEMENTS_MAP)
 	{
-		line = get_next_line(fd);
+		line = get_next_line(parse->fd);
 		if (line == NULL)
-			return (close(fd), -1);
-		len_to_space = ft_strchrlen(line, ' ');
-		temp = ft_substr(line, 0, len_to_space);
+			return (close(parse->fd), -1);
+		parse->len_to_space = ft_strchrlen(line, ' ');
+		temp = ft_substr(line, 0, parse->len_to_space);
 		if (is_valid(temp, parse) == TRUE)
 			parse->num++;
-		value = ft_substr(line, len_to_space, ft_strlen(line));
-		char *valfin = ft_strtrim (value, " \n");
-		hash_push(parse->hash_elements, temp, valfin);
-		free (valfin);
-		free (value);
-		free(temp);
+		value = ft_substr(line, parse->len_to_space, ft_strlen(line));
+		valfin = ft_strtrim (value, " \n");
+		hash_push(parse->hs, temp, valfin);
+		free_three(valfin, value, temp);
 		if (is_valid(temp, parse) == FALSE && is_space(line) != 0)
-			return (close(fd), free(line), hash_destory(parse->hash_elements), -1);
+			return (close(parse->fd), free(line), hash_destory(parse->hs), -1);
 		free(line);
 	}
-	if (map_read(parse, fd) == -1)
-		return (close(fd) , -1);
-	// despues si todo esta bien que esta función llame a otracomo is_valid pero que vaya guardando en la estrucutra
-	close (fd);
+	if (map_read(parse, parse->fd) == -1)
+		return (close(parse->fd), -1);
 	return (TRUE);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_over.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
+/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 01:48:37 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/08 01:49:14 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/08 16:03:04 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	destory_all(t_info *info, t_parse *parse)
 {
 	free (parse->map);
 	matrix_destory (&info->mtx);
-	hash_destory(parse->hash_elements);
+	hash_destory(parse->hs);
 	mlx_destroy_image (info->mlx, info->tex_down.img);
 	mlx_destroy_image (info->mlx, info->tex_up.img);
 	mlx_destroy_image (info->mlx, info->tex_left.img);
