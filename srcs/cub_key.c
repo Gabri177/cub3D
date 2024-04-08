@@ -120,6 +120,8 @@ int	key_press(int keycode, void *info)
 		tem->key.left = 1;
 	if (keycode == D_CODE)
 		tem->key.right = 1;
+	if (keycode == 46)
+		tem->key.show = 1;
 	return (0);
 }
 
@@ -142,5 +144,7 @@ int	key_release(int keycode, void *info)
 		tem->key.left = 0;
 	if (keycode == D_CODE)
 		tem->key.right = 0;
+	if (keycode == 46)
+		tem->key.show = 0;
 	return (0);
 }

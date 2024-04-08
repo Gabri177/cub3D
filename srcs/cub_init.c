@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: javgao <yugao@student.42madrid.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 20:53:08 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/08 16:56:12 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/08 19:43:07 by javgao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	init_info(t_info *info, t_parse prase,
 	info->key.right = 0;
 	info->key.to_left = 0;
 	info->key.to_right = 0;
+	info->key.show = 0;
 	info->img_info.img = NULL;
 	init_img (info, prase);
 	info->color = 0xFFFFFF;

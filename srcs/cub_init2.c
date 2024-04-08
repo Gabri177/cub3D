@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_init2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: javgao <yugao@student.42madrid.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 20:33:35 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/08 16:58:22 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/08 19:46:03 by javgao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,6 @@ void	init_draw(t_info info)
 	draw_sky_and_floor ((t_info *)&info,
 		info.color_sky, info.color_floor);
 	graph_ray_to_wall (&info);
-	bk_map (&info);
-	img_set_color ((void *)&info, 0x000000);
-	graph_square((void *)&info, (t_pos){info.ctr_pos.x / 64
-		* 10, info.ctr_pos.y / 64 * 10}, 4);
-	img_set_color (&info, 0x006400);
-	graph_thick_line (&info, (t_pos){info.ctr_pos.x / 64 * 10,
-		info.ctr_pos.y / 64 * 10}, (t_pos){info.ctr_pos.x / 64 * 10
-		+ info.ctr_ang.vx / 2, info.ctr_pos.y / 64 * 10
-		+ info.ctr_ang.vy / 2}, 2);
 	img_end_draw (&info);
 }
 
@@ -36,15 +27,18 @@ void	keep_draw(t_info info)
 	draw_sky_and_floor ((t_info *)&info,
 		info.color_sky, info.color_floor);
 	graph_ray_to_wall (&info);
-	bk_map (&info);
-	img_set_color ((void *)&info, 0x000000);
-	graph_square((void *)&info, (t_pos){info.ctr_pos.x / 64
-		* 10, info.ctr_pos.y / 64 * 10}, 4);
-	img_set_color (&info, 0x006400);
-	graph_thick_line (&info, (t_pos){info.ctr_pos.x / 64 * 10,
-		info.ctr_pos.y / 64 * 10}, (t_pos){info.ctr_pos.x / 64 * 10
-		+ info.ctr_ang.vx * 3 / 2, info.ctr_pos.y / 64 * 10
-		+ info.ctr_ang.vy * 3 / 2}, 2);
+	if (info.key.show == 1)
+	{
+		bk_map (&info);
+		img_set_color ((void *)&info, 0x000000);
+		graph_square((void *)&info, (t_pos){info.ctr_pos.x / 64
+			* 10, info.ctr_pos.y / 64 * 10}, 4);
+		img_set_color (&info, 0x006400);
+		graph_thick_line (&info, (t_pos){info.ctr_pos.x / 64 * 10,
+			info.ctr_pos.y / 64 * 10}, (t_pos){info.ctr_pos.x / 64 * 10
+			+ info.ctr_ang.vx * 3 / 2, info.ctr_pos.y / 64 * 10
+			+ info.ctr_ang.vy * 3 / 2}, 2);
+	}
 	img_end_draw (&info);
 }
 
