@@ -96,18 +96,7 @@ void	key_move(void *info)
 		tem->ctr_ang = math_projection_vec (tem->ctr_ang, +5, 5);
 	if (tem->key.up || tem->key.down || tem->key.left || tem->key.right
 		|| tem->key.to_left || tem->key.to_right)
-	{
-		img_start_draw (info);
-		bk_map (info); //borrar
-		img_set_color (info, 0xF08080); //borrar
-		graph_square(info, tem->ctr_pos, 10); //borrar
-		draw_sky_and_floor ((t_info *)info, tem->color_sky, tem->color_floor);
-		graph_ray_to_wall ((t_info *)info);
-		img_set_color (info, 0xFFCC00); //borrar
-		graph_thick_line (info, tem->ctr_pos, (t_pos){tem->ctr_pos.x
-			+ tem->ctr_ang.vx * 3, tem->ctr_pos.y + tem->ctr_ang.vy * 3}, 2); //borrar
-		img_end_draw (info);
-	}
+		keep_draw (*tem);
 }
 
 //触发按下的事件

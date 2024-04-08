@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 23:11:55 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/06 01:01:35 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/08 02:30:42 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	bk_map(void *info)
 				img_set_color (info, 0xF0FFF0);
 			else
 				img_set_color (info, 0x000000);
-			graph_square (info, (t_pos){x * UNI + UNI / 2,
-				y * UNI + UNI / 2}, UNI - 1);
+			graph_square (info, (t_pos){(x * 10 + 10 / 2),
+				(y * 10 + 10 / 2)}, 9);
 		}
 	}
 }

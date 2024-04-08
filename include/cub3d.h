@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 04:45:47 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/08 02:12:47 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/08 02:52:21 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,6 +201,7 @@ t_pos			init_ctr_pos(t_mtx matrix);
 void			init_draw(t_info info);
 int				is_valid(char *line, t_parse *parse);
 t_vec			init_vec(t_parse parse);
+void			keep_draw(t_info info);
 //======cub_2d_bk.c========
 void			bk_map(void *info);
 //======cub_matrix.c=======
