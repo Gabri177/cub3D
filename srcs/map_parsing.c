@@ -6,7 +6,7 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 19:57:42 by jjuarez-          #+#    #+#             */
-/*   Updated: 2024/04/08 17:58:59 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/09 01:45:29 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,13 @@ int	map_parsing(t_parse *parse, char *filename)
 	close(parse->fd);
 	if (check_walls(parse, parse->map) == -1)
 		return (perror("Error: map not closed by 1"), -1);
+	parse->f = hash_grep(parse->hs, "F");
+	if (check_colors_f(parse) == -1)
+		return (perror("Error: not a valid color in F"),
+			hash_destory(parse->hs), free(parse->map), -1);
+	parse->c = hash_grep(parse->hs, "C");
+	if (check_colors_c(parse) == -1)
+		return (perror("Error: not a valid color in C"),
+			hash_destory(parse->hs), free(parse->map), -1);
 	return (0);
 }

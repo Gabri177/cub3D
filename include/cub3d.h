@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: javgao <yugao@student.42madrid.com>        +#+  +:+       +#+        */
+/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 04:45:47 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/08 19:42:38 by javgao           ###   ########.fr       */
+/*   Updated: 2024/04/09 01:24:21 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,8 @@ typedef struct s_parse
 	char	*temp;
 	char	*out_nl;
 	char	*with_spaces;
+	char	*f;
+	char	*c;
 }					t_parse;
 
 //======cub_graph.c=======
@@ -264,6 +266,8 @@ int				map_parsing(t_parse *parse, char *filename);
 int				check_cub_extension_and_file(char *filename);
 int				map_read(t_parse *parse, int fd);
 int				check_invalid_characters(char *line, int print);
+int				check_colors_f(t_parse *parse);
+int				check_colors_c(t_parse *parse);
 
 /*	------------------------ PARSE_UTILS ---------------------------*/
 void			free_three(char *s1, char *s2, char *s3);

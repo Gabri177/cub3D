@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strcountchars.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 12:41:48 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/09 01:21:14 by jjuarez-         ###   ########.fr       */
+/*   Created: 2024/04/09 00:26:56 by jjuarez-          #+#    #+#             */
+/*   Updated: 2024/04/09 00:27:07 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isnum(int c)
+size_t	ft_strcountchars(const char *str, char c)
 {
-	if ((c >= '0' && c <= '9') || c == ',')
-		return (1);
-	return (0);
+	int	i;
+	int	ch;
+
+	i = 0;
+	ch = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == c)
+			ch++;
+		i++;
+	}
+	return (ch);
 }

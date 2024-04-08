@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: javgao <yugao@student.42madrid.com>        +#+  +:+       +#+         #
+#    By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/16 21:42:20 by yugao             #+#    #+#              #
-#    Updated: 2024/04/08 19:40:15 by javgao           ###   ########.fr        #
+#    Updated: 2024/04/09 00:40:46 by jjuarez-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= cub3d
-PARSE	= map_parsing.c dimensions.c parse_utils.c
+PARSE	= map_parsing.c dimensions.c parse_utils.c color.c
 HASH	= hash_list.c hash_utils.c hash.c arr_utils.c arr_utils2.c
 CFILE	= $(addprefix ./srcs/, $(PARSE)) $(addprefix ./srcs/hash_map/, $(HASH)) \
 			$(addprefix ./srcs/, cub_2d_bk.c cub_fix.c cub_graph_base.c cub_init2.c cub_biu_apoyo.c\

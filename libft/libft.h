@@ -6,7 +6,7 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:38:26 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/03 09:52:54 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/09 01:20:45 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_list
 int				ft_atoi(const char *str);
 void			ft_bzero(void *s, size_t n);
 void			*ft_calloc(size_t num_elements, size_t element_size);
-int				ft_isalnum(int c);
+int				ft_isnum(int c);
 int				ft_isalpha(int c);
 int				ft_isascii(int c);
 int				ft_isdigit(int c);
@@ -99,4 +99,6 @@ int				ft_printf(char const *str, ...);
 int				ft_strcmp(char *s1, char *s2);
 size_t			ft_strchrlen(const char *len, char c);
 int				is_space(char *str);
+size_t			ft_strcountchars(const char *str, char c);
+
 #endif
