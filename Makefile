@@ -6,7 +6,7 @@
 #    By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/16 21:42:20 by yugao             #+#    #+#              #
-#    Updated: 2024/04/07 20:33:46 by yugao            ###   ########.fr        #
+#    Updated: 2024/04/08 01:48:42 by yugao            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME	= cub3d
 PARSE	= map_parsing.c dimensions.c parse_utils.c
 HASH	= hash_list.c hash_utils.c hash.c arr_utils.c arr_utils2.c
 CFILE	= $(addprefix ./srcs/, $(PARSE)) $(addprefix ./srcs/hash_map/, $(HASH)) \
-				$(addprefix ./srcs/, cub_2d_bk.c cub_fix.c cub_graph_base.c cub_init2.c\
-				cub_img.c cub_transfer.c cub_math2.c  cub_matrix1.c cub_biubiu.c cub_matrix2.c \
+				$(addprefix ./srcs/, cub_2d_bk.c cub_fix.c cub_graph_base.c cub_init2.c cub_biu_apoyo.c\
+				cub_img.c cub_transfer.c cub_math2.c  cub_matrix1.c cub_biubiu.c cub_matrix2.c cub_over.c \
 				cub_graph_ray.c cub_init.c cub_key.c cub_main.c cub_math1.c cub_vec.c)
 					
 OFILE	= $(CFILE:.c=.o)

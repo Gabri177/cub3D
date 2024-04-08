@@ -20,7 +20,7 @@ void	draw_sky_and_floor(t_info *in, int sky, int floor)
 	y = 0;
 	while (y < in->map_info.y)
 	{
-		x = 530;
+		x = TEM_SETOFF;
 		while (x < in->map_info.x)
 		{
 			img_put_pixel((void *)in, x, y, sky);
@@ -31,7 +31,7 @@ void	draw_sky_and_floor(t_info *in, int sky, int floor)
 	y = in->map_info.y / 2;
 	while (y < in->map_info.y)
 	{
-		x = 530;
+		x = TEM_SETOFF;
 		while (x < in->map_info.x)
 		{
 			img_put_pixel((void *)in, x, y, floor);
@@ -47,8 +47,20 @@ void	draw_sky_and_floor(t_info *in, int sky, int floor)
 static t_pos	key_check_wall(void *info, t_vec v, t_bool is_ahead)
 {
 	t_info	*tem;
+	t_pos	ori;
+	t_pos	fin;
 
 	tem = (t_info *)info;
+	ori = tem->ctr_pos;
+	fin = vec_trans (tem->ctr_pos, v, is_ahead);
+	if (tem->mtx[(int)((fin.x + 10) / UNI)][(int)(fin.y) / UNI]->obj == '1')
+		return (ori);
+	if (tem->mtx[(int)((fin.x - 10) / UNI)][(int)(fin.y) / UNI]->obj == '1')
+		return (ori);
+	if (tem->mtx[(int)((fin.x) / UNI)][(int)(fin.y + 10) / UNI]->obj == '1')
+		return (ori);
+	if (tem->mtx[(int)((fin.x) / UNI)][(int)(fin.y - 10) / UNI]->obj == '1')
+		return (ori);
 	if (is_ahead && tem->mtx[(int)((tem->ctr_pos.x + v.vx * 3)
 			/ UNI)][(int)((tem->ctr_pos.y +
 				v.vy * 3) / UNI)]->obj == '1')
@@ -57,7 +69,7 @@ static t_pos	key_check_wall(void *info, t_vec v, t_bool is_ahead)
 				- v.vx * 3) / UNI)][(int)((tem->ctr_pos.y
 			- v.vy * 3) / UNI)]->obj == '1')
 		return (tem->ctr_pos);
-	return (vec_trans (tem->ctr_pos, v, is_ahead));
+	return (fin);
 }
 
 //上下左右箭头 左右箭头控制视角, 上下箭头控制前进和后退
@@ -90,7 +102,7 @@ void	key_move(void *info)
 		img_set_color (info, 0xF08080); //borrar
 		graph_square(info, tem->ctr_pos, 10); //borrar
 		draw_sky_and_floor ((t_info *)info, tem->color_sky, tem->color_floor);
-		graph_ray_to_wall (info);
+		graph_ray_to_wall ((t_info *)info);
 		img_set_color (info, 0xFFCC00); //borrar
 		graph_thick_line (info, tem->ctr_pos, (t_pos){tem->ctr_pos.x
 			+ tem->ctr_ang.vx * 3, tem->ctr_pos.y + tem->ctr_ang.vy * 3}, 2); //borrar

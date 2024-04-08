@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 20:33:35 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/07 20:53:22 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/08 01:48:06 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,18 @@ void	init_draw(t_info info)
 	graph_thick_line (&info, info.ctr_pos, (t_pos){info.ctr_pos.x
 		+ info.ctr_ang.vx * 1.5, info.ctr_pos.y + info.ctr_ang.vy * 1.5}, 2);
 	img_end_draw (&info);
+}
+
+t_vec	init_vec(t_parse parse)
+{
+	int	ang;
+
+	ang = 0;
+	if (parse.starting_position == 'N')
+		ang = 270;
+	if (parse.starting_position == 'S')
+		ang = 90;
+	if (parse.starting_position == 'W')
+		ang = 180;
+	return ((t_vec){parse.width - 1, parse.height, ang}); // menos unos hay que corregir lo sobre parser
 }
