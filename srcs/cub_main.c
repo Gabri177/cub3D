@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_main.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
+/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 05:03:30 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/08 03:32:49 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/08 15:39:41 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 void	leaks(void)
 {
 	system("leaks -q cub3d");
+}
+
+static int	close_win(void)
+{
+	exit(2);
+	return (2);
 }
 
 t_pos	init_ctr_pos(t_mtx matrix)
@@ -100,6 +106,7 @@ int	main(int argc, char **argv)
 	mlx_hook (info.win, 2, 1L << 0, key_press, &info);
 	mlx_hook (info.win, 3, 1L << 1, key_release, &info);
 	mlx_loop_hook (info.mlx, (void *)key_move, &info);
+	mlx_hook(info.win, 17, 0, close_win, NULL);
 	mlx_loop(info.mlx);
 	destory_all (&info, &parse);
 	return (0);
