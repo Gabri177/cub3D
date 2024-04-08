@@ -6,7 +6,7 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 02:31:39 by jjuarez-          #+#    #+#             */
-/*   Updated: 2024/04/08 16:15:48 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/08 18:58:44 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ int	get_dimension(t_parse *parse, char *filename)
 	line = get_next_line(fd);
 	while (line)
 	{
-		free (line);
 		if (check_invalid_characters(line, 0) == 0 && is_space(line) == -1)
 		{
 			get_width(parse, line);
 			parse->height++;
 		}
+		free (line);
 		line = get_next_line(fd);
 	}
 	close (fd);

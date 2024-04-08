@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_matrix1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
+/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 19:33:20 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/07 21:11:18 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/08 19:31:15 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,6 @@ void	matrix_push(t_mtx *mtx_ori, char *context)
 	lenx = 0;
 	while (mtx[lenx])
 		lenx ++;
-	printf ("%d %d \n", lenx, leny);
 	i = 0;
 	while (context[i])
 	{

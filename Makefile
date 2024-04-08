@@ -6,7 +6,7 @@
 #    By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/16 21:42:20 by yugao             #+#    #+#              #
-#    Updated: 2024/04/08 16:46:36 by jjuarez-         ###   ########.fr        #
+#    Updated: 2024/04/08 19:29:52 by jjuarez-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CFILE	= $(addprefix ./srcs/, $(PARSE)) $(addprefix ./srcs/hash_map/, $(HASH)) \
 			cub_graph_ray.c cub_init.c cub_key.c cub_main.c cub_math1.c cub_vec.c)
 			
 OFILE	= $(CFILE:.c=.o)
-CFLAG	= -Wall -Werror -Wextra #-g3 -fsanitize=address
+CFLAG	= -Wall -Werror -Wextra
 LDFLAGS	= -framework OpenGL -framework AppKit 
 LIBS	= -L minilibx -lmlx -lz
 LIBFT	= libft/libft.a
@@ -28,8 +28,6 @@ INCLUDE	= ./include/
 all: $(NAME)
 
 $(NAME): $(OFILE) libft
-# fsanitize
-#	gcc $(OFILE) $(LIBS) -g3 -fsanitize=address -L libft -lft $(LDFLAGS)  -o $@
 	gcc $(OFILE) $(LIBFT) $(LIBS) $(LDFLAGS) -I $(INCLUDE) -o $(NAME) -v
 
 %.o:%.c

@@ -6,16 +6,11 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 05:03:30 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/08 16:25:02 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/08 19:30:20 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-/*void	leaks(void)		//	Borrar esta
-{
-	system("leaks -q cub3d");
-}*/
 
 static int	close_win(void)
 {
@@ -88,7 +83,6 @@ int	main(int argc, char **argv)
 	t_info	info;
 	t_parse	parse;
 
-	//atexit(leaks);		//Borrar
 	if (argc != 2)
 		return (printf("Error: Wrong number of arguments, only 1 expected\n"));
 	get_dimension(&parse, argv[1]);

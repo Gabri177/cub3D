@@ -1,0 +1,21 @@
+
+EA ./texture/redbrick.png
+
+
+NO ./texture/wood.png
+
+
+	
+SO ./texture/purplestone.png
+
+
+
+WE ./texture/colorstone.png
+
+
+F 0,50,100
+C 0,0,255
+
+111
+1N1
+111
