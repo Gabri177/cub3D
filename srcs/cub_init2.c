@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 20:33:35 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/08 02:52:09 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/08 03:06:33 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	init_draw(t_info info)
 		info.color_sky, info.color_floor);
 	graph_ray_to_wall (&info);
 	bk_map (&info);
-	img_set_color ((void *)&info, 0x0000FF);
+	img_set_color ((void *)&info, 0x000000);
 	graph_square((void *)&info, (t_pos){info.ctr_pos.x / 64
 		* 10, info.ctr_pos.y / 64 * 10}, 4);
-	img_set_color (&info, 0x2F4F4F);
+	img_set_color (&info, 0x006400);
 	graph_thick_line (&info, (t_pos){info.ctr_pos.x / 64 * 10,
 		info.ctr_pos.y / 64 * 10}, (t_pos){info.ctr_pos.x / 64 * 10
 		+ info.ctr_ang.vx / 2, info.ctr_pos.y / 64 * 10
@@ -37,9 +37,10 @@ void	keep_draw(t_info info)
 		info.color_sky, info.color_floor);
 	graph_ray_to_wall (&info);
 	bk_map (&info);
-	img_set_color ((void *)&info, 0x0000FF);
+	img_set_color ((void *)&info, 0x000000);
 	graph_square((void *)&info, (t_pos){info.ctr_pos.x / 64
 		* 10, info.ctr_pos.y / 64 * 10}, 4);
+	img_set_color (&info, 0x006400);
 	graph_thick_line (&info, (t_pos){info.ctr_pos.x / 64 * 10,
 		info.ctr_pos.y / 64 * 10}, (t_pos){info.ctr_pos.x / 64 * 10
 		+ info.ctr_ang.vx * 3 / 2, info.ctr_pos.y / 64 * 10
