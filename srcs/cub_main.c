@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 05:03:30 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/08 02:11:57 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/08 03:32:49 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_pos	init_ctr_pos(t_mtx matrix)
 
 static t_bool	ap_map_check(t_mtx mtx, int x, int y)
 {
-	if (!mtx[x][y] || mtx[x][y]->obj != '1' && mtx[x][y]->obj != '0')
+	if (mtx[x][y]->obj != '1' && mtx[x][y]->obj != '0')
 		return (FALSE);
 	return (TRUE);
 }
@@ -59,15 +59,15 @@ t_bool	map_check(t_mtx mtx, t_size size)
 		x = 0;
 		while (x < size.x)
 		{
-			if (mtx[x][y]->obj == '0')
+			if (mtx[x][y] && mtx[x][y]->obj == '0')
 			{
-				if (!ap_map_check (mtx, x, y - 1))
+				if (!(y - 1 >= 0) || !ap_map_check (mtx, x, y - 1))
 					return (FALSE);
-				if (!ap_map_check (mtx, x, y + 1))
+				if (!(y + 1 < size.y) || !ap_map_check (mtx, x, y + 1))
 					return (FALSE);
-				if (!ap_map_check (mtx, x - 1, y))
+				if (!(x - 1 >= 0) || !ap_map_check (mtx, x - 1, y))
 					return (FALSE);
-				if (!ap_map_check (mtx, x + 1, y))
+				if (!(x + 1 < size.x) || !ap_map_check (mtx, x + 1, y))
 					return (FALSE);
 			}
 			x ++;
