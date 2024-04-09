@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 04:45:47 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/09 01:24:21 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/09 02:29:52 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 # define S_CODE 1
 # define A_CODE 0
 # define D_CODE 2
+# define TAB_CODE 48
 # define L_ARROW 123
 # define R_ARROW 124
 // # define TEM_SETOFF 530

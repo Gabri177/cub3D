@@ -6,7 +6,7 @@
 /*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 19:35:36 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/08 01:10:12 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/09 02:26:38 by yugao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@
 static t_pos	apoyo_biu_hit_pos_veri(t_pos start_pos, int ang)
 {
 	double	n_tan;
-	double	s_tan;
 
 	ang = fix_ang (ang);
 	n_tan = tan (fix_ang_to_rad (ang));
-	s_tan = 1.0 / n_tan;
 	if (cos(fix_ang_to_rad (ang)) > 0.001)
 		return ((t_pos){(int)(start_pos.x) / UNI * UNI + UNI + 0.001,
 			(((int)(start_pos.x) / UNI * UNI + UNI + 0.001) - start_pos.x)
