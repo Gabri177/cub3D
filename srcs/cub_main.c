@@ -6,16 +6,16 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 05:03:30 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/09 00:53:10 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/09 02:25:15 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void leaks()
+/*void leaks()
 {
 	system("leaks -q cub3d");
-}
+}*/
 
 static int	close_win(void)
 {
@@ -87,7 +87,7 @@ int	main(int argc, char **argv)
 {
 	t_info	info;
 	t_parse	parse;
-	atexit(leaks); //Borrar antes de entregar
+
 	if (argc != 2)
 		return (printf("Error: Wrong number of arguments, only 1 expected\n"));
 	get_dimension(&parse, argv[1]);
@@ -106,6 +106,5 @@ int	main(int argc, char **argv)
 	mlx_loop_hook (info.mlx, (void *)key_move, &info);
 	mlx_hook(info.win, 17, 0, close_win, NULL);
 	mlx_loop(info.mlx);
-//	destory_all (&info, &parse);
 	return (0);
 }

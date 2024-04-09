@@ -1,17 +1,10 @@
+EA ./texture/red_brick.xpm
 
-EA ./texture/redbrick.png
+NO ./texture/wood.xpm
 
+SO ./texture/purple_stone.xpm
 
-NO ./texture/wood.png
-
-
-	
-SO ./texture/purplestone.png
-
-
-
-WE ./texture/colorstone.png
-
+WE ./texture/color_stone.xpm
 
 F 112,112,112
 C 56,56,56

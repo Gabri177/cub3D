@@ -1,16 +1,11 @@
 
-EA ./texture/redbrick.png
+EA ./texture/red_brick.xpm
 
+NO ./texture/wood.xpm
 
-NO ./texture/wood.png
+SO ./texture/purple_stone.xpm
 
-
-	
-SO ./texture/purplestone.png
-
-
-
-WE ./texture/colorstone.png
+WE ./texture/color_stone.xpm
 
 F 220,100,0
 C 225,30,0

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: javgao <yugao@student.42madrid.com>        +#+  +:+       +#+        */
+/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 20:53:08 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/08 19:43:07 by javgao           ###   ########.fr       */
+/*   Updated: 2024/04/09 02:21:21 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 void	init_img(t_info *info, t_parse parse)
 {
 	if (init_texture(info, parse) == -1)
+	{
+		perror("Error: Not a valid .xpm file");
 		exit (2);
+	}
 	info->tex_down.addr = mlx_get_data_addr (info->tex_down.img,
 			&(info->tex_down.bits_per_pixel),
 			&(info->tex_down.len_line), &(info->tex_down.endian));
