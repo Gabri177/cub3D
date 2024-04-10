@@ -149,5 +149,7 @@ int	key_release(int keycode, void *info)
 		tem->key.right = 0;
 	if (keycode == TAB_CODE)
 		tem->key.show = 0;
+	if (keycode == SPACE)
+		change_doors(info);
 	return (0);
 }

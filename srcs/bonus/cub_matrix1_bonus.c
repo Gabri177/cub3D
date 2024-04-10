@@ -6,11 +6,12 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 19:33:20 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/10 18:10:41 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/10 21:46:05 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d_bonus.h"
+
 static void	apoyo_matrix_init(t_node *node)
 {
 	node->obj = '#';

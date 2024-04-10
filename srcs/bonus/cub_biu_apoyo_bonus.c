@@ -6,11 +6,12 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 01:07:41 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/10 18:10:41 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/10 21:46:40 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d_bonus.h"
+
 t_posx	apoyo_biu1(t_info *info, t_pos hori, t_pos veri, int setoff_ang)
 {
 	t_pos	ctr;

@@ -6,11 +6,12 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 01:48:37 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/10 18:10:41 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/10 21:45:59 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d_bonus.h"
+
 void	destory_all(t_info *info, t_parse *parse)
 {
 	free (parse->map);

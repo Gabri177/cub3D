@@ -6,11 +6,12 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 19:57:42 by jjuarez-          #+#    #+#             */
-/*   Updated: 2024/04/10 19:42:15 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/10 21:32:43 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d_bonus.h"
+
 int	check_cub_extension_and_file(char *filename)
 {
 	char	*extension;

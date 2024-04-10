@@ -6,11 +6,12 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 20:33:35 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/10 20:12:10 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/10 21:46:27 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d_bonus.h"
+
 void	init_draw(t_info info)
 {
 	img_start_draw (&info);

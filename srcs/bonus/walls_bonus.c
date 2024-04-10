@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse_bonus.c                                      :+:      :+:    :+:   */
+/*   walls_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/10 16:08:51 by jjuarez-          #+#    #+#             */
-/*   Updated: 2024/04/10 21:32:28 by jjuarez-         ###   ########.fr       */
+/*   Created: 2024/04/10 21:30:45 by jjuarez-          #+#    #+#             */
+/*   Updated: 2024/04/10 22:39:40 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d_bonus.h"
 
-int	mouse_move_hook(int x, int y, t_info *info)
+void	change_doors(t_mtx matrix)
 {
-	(void)y;
-	mlx_mouse_move(info->win, info->map_info.x / 2, info->map_info.y / 2);
-	if (info->map_info.x / 2 > x)
-		info->ctr_ang = math_projection_vec (info->ctr_ang, -5, 5);
-	if (info->map_info.x / 2 < x)
-		info->ctr_ang = math_projection_vec (info->ctr_ang, +5, 5);
-	keep_draw (*info);
-	return (0);
+	int	x;
+	int	y;
+
+	if (!matrix)
+		return ;
+	y = 0;
+	while (matrix[0][y])
+	{
+		x = 0;
+		while (matrix[x] && matrix[x][y])
+		{
+			if (matrix[x][y]->obj == 'D')
+				matrix[x][y]->obj = 'O';
+			else if (matrix[x][y]->obj == 'O')
+				matrix[x][y]->obj = 'D';
+			x ++;
+		}
+		y ++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 17:48:59 by jjuarez-          #+#    #+#             */
-/*   Updated: 2024/04/10 20:07:10 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/10 22:39:49 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 # define S_CODE 1
 # define A_CODE 0
 # define D_CODE 2
+# define SPACE 49
 # define TAB_CODE 48
 # define L_ARROW 123
 # define R_ARROW 124
@@ -288,5 +289,6 @@ void			destory_all(t_info *info, t_parse *parse);
 
 /*	-------------------------- BONUS --------------------------*/
 int				mouse_move_hook(int x, int y, t_info *info);
+void			change_doors(t_mtx matrix);
 
 #endif

@@ -6,11 +6,12 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 20:53:08 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/10 20:11:23 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/10 21:46:18 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d_bonus.h"
+
 void	init_img(t_info *info, t_parse parse)
 {
 	if (init_texture(info, parse) == -1)
