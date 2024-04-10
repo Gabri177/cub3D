@@ -6,11 +6,11 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 00:29:57 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/08 16:22:42 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/10 19:21:32 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 //画一条射线, 需要提供结束点的坐标, 因为起始点的坐标就是人物坐标ctr_pos
 // draw a ray, need to provide the coordinates of the end point,

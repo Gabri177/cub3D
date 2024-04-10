@@ -6,11 +6,11 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 00:19:26 by jjuarez-          #+#    #+#             */
-/*   Updated: 2024/04/09 01:45:09 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/10 19:21:32 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 int	check_colors_f(t_parse *parse)
 {

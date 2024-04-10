@@ -6,7 +6,7 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 17:48:26 by jjuarez-          #+#    #+#             */
-/*   Updated: 2024/04/10 17:55:01 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/10 19:28:49 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int	main(int argc, char **argv)
 		destory_all (&info, &parse);
 		exit (0);
 	}
-	//mlx_mouse_hide();
+	mlx_mouse_hide();
 	init_draw (info);
 	mlx_mouse_move(info.win, 500, 500);
 	mlx_hook (info.win, 2, 1L << 0, key_press, &info);
@@ -108,14 +108,6 @@ int	main(int argc, char **argv)
 	mlx_hook(info.win, 6, 1L << 0, mouse_move_hook, &info);
 	mlx_loop_hook (info.mlx, (void *)key_move, &info);
 	mlx_hook(info.win, 17, 0, close_win, NULL);
-//	while (1)
-//	{
-//		int	x;
-//		int	y;
-//		usleep(10000);
-//		mlx_mouse_get_pos(info.win, &x, &y);
-//		printf("x:%d\n, y:%d\n", x, y);
-	
 	mlx_loop(info.mlx);
 	return (0);
 }

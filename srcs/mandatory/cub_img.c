@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cub_img.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
+/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 19:56:09 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/06 01:17:57 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/10 19:21:32 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 //这个是初始化t_info参数中的img_info类型的函数 
 //This is the function that initializes the 

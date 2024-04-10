@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   hash_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
+/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 08:22:04 by jjuarez-          #+#    #+#             */
-/*   Updated: 2024/04/07 19:08:52 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/10 19:22:25 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "../../../include/cub3d.h"
 
 int	hash_func(char *key)
 {

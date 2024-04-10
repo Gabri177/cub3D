@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cub_2d_bk.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
+/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 23:11:55 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/08 02:30:42 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/10 19:21:32 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 // Draw a small 2d background, based on the incoming 
 //matrix data  (t_info *)info->mtx.

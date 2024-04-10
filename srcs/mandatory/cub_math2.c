@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cub_math2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
+/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 00:20:44 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/06 01:22:20 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/10 19:21:32 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 //计算非单位向量在x和y轴上的分向量
 // Calculate the component vectors of non-unit vectors on the x and y axes

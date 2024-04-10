@@ -6,11 +6,11 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 08:22:00 by jjuarez-          #+#    #+#             */
-/*   Updated: 2024/04/03 14:10:56 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/10 19:22:25 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "../../../include/cub3d.h"
 
 t_node_hash	*list_init(void)
 {

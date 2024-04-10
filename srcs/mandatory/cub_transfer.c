@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cub_transfer.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
+/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 02:16:05 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/07 18:17:14 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/10 19:21:32 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 //将t_posx类型的变量转换为t_pos类型
 // Convert a variable of type t_posx to t_pos

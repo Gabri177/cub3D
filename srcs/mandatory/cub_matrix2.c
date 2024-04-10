@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cub_matrix2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
+/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 23:40:20 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/07 21:13:21 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/10 19:21:32 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 // 用在条件判断中, 查看x , y 是不是超过数组下标, 从而避免seg问题
 // Used in conditional judgment to see if x , y 

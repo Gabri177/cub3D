@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cub_biu_apoyo.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yugao <yugao@student.42madrid.com>         +#+  +:+       +#+        */
+/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 01:07:41 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/08 01:10:43 by yugao            ###   ########.fr       */
+/*   Updated: 2024/04/10 19:21:32 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 t_posx	apoyo_biu1(t_info *info, t_pos hori, t_pos veri, int setoff_ang)
 {
