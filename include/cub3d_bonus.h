@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/20 04:45:47 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/10 17:49:37 by jjuarez-         ###   ########.fr       */
+/*   Created: 2024/04/10 17:48:59 by jjuarez-          #+#    #+#             */
+/*   Updated: 2024/04/10 18:09:21 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
+
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -283,5 +284,8 @@ char			*add_space(t_parse *parse, char *line);
 int				check_walls(t_parse *parse, char *map);
 
 void			destory_all(t_info *info, t_parse *parse);
+
+/*	-------------------------- BONUS --------------------------*/
+int				mouse_move_hook(int x, int y, t_info *info);
 
 #endif

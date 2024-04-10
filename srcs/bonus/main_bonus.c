@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_main.c                                         :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/20 05:03:30 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/10 17:55:20 by jjuarez-         ###   ########.fr       */
+/*   Created: 2024/04/10 17:48:26 by jjuarez-          #+#    #+#             */
+/*   Updated: 2024/04/10 17:55:01 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d_bonus.h"
 
 /*void leaks()
 {
@@ -100,11 +100,22 @@ int	main(int argc, char **argv)
 		destory_all (&info, &parse);
 		exit (0);
 	}
+	//mlx_mouse_hide();
 	init_draw (info);
+	mlx_mouse_move(info.win, 500, 500);
 	mlx_hook (info.win, 2, 1L << 0, key_press, &info);
 	mlx_hook (info.win, 3, 1L << 1, key_release, &info);
+	mlx_hook(info.win, 6, 1L << 0, mouse_move_hook, &info);
 	mlx_loop_hook (info.mlx, (void *)key_move, &info);
 	mlx_hook(info.win, 17, 0, close_win, NULL);
+//	while (1)
+//	{
+//		int	x;
+//		int	y;
+//		usleep(10000);
+//		mlx_mouse_get_pos(info.win, &x, &y);
+//		printf("x:%d\n, y:%d\n", x, y);
+	
 	mlx_loop(info.mlx);
 	return (0);
 }
