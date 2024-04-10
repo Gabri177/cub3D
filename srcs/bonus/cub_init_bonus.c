@@ -6,7 +6,7 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 20:53:08 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/10 21:46:18 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/11 00:12:42 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void	init_img(t_info *info, t_parse parse)
 	info->tex_right.addr = mlx_get_data_addr (info->tex_right.img,
 			&(info->tex_right.bits_per_pixel),
 			&(info->tex_right.len_line), &(info->tex_right.endian));
-	info->door.addr = mlx_get_data_addr (info->door.img,
-			&(info->door.bits_per_pixel),
-			&(info->door.len_line), &(info->door.endian));
+	//info->door.addr = mlx_get_data_addr (info->door.img,
+	//		&(info->door.bits_per_pixel),
+	//		&(info->door.len_line), &(info->door.endian));
 }
 
 void	init_info(t_info *info, t_parse prase,
