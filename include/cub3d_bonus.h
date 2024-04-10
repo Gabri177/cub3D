@@ -6,7 +6,7 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 17:48:59 by jjuarez-          #+#    #+#             */
-/*   Updated: 2024/04/10 18:09:21 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/10 20:07:10 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ typedef struct s_info
 	t_img_info	tex_down;
 	t_img_info	tex_left;
 	t_img_info	tex_right;
+	t_img_info	door;
 	int			color;
 	int			color_sky;
 	int			color_floor;

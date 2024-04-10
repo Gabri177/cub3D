@@ -6,7 +6,7 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 19:57:42 by jjuarez-          #+#    #+#             */
-/*   Updated: 2024/04/10 18:10:41 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/10 19:42:15 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	check_invalid_characters(char *line, int print)
 	{
 		if (line[i] == '1' || line[i] == '0' || line[i] == 'N' || line[i] == 'S'
 			|| line[i] == 'E' || line[i] == 'W' || line[i] == ' '
-			|| (line[i] >= 9 && line[i] <= 13))
+			|| line[i] == 'D' || (line[i] >= 9 && line[i] <= 13))
 			i++;
 		else
 		{

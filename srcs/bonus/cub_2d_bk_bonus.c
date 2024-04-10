@@ -6,7 +6,7 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 23:11:55 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/10 18:10:41 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/10 19:46:47 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	bk_map(void *info)
 				img_set_color (info, 0x2E8B57);
 			else if (((t_info *)info)->mtx[x][y]->obj == '0')
 				img_set_color (info, 0xF0FFF0);
+			else if (((t_info *)info)->mtx[x][y]->obj == 'D')
+				img_set_color (info, 0xFF0000);
 			else
 				img_set_color (info, 0x000000);
 			graph_square (info, (t_pos){(x * 10 + 10 / 2),

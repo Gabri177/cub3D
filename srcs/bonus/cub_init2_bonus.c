@@ -6,7 +6,7 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 20:33:35 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/10 18:10:41 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/10 20:12:10 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,9 @@ int	init_texture(t_info *info, t_parse parse)
 			hash_grep (parse.hs, "EA"),
 			&info->tex_right.tex_x, &info->tex_right.tex_y);
 	if (info->tex_right.img == NULL)
+		return (-1);
+	info->door.img =  mlx_xpm_file_to_image(info->mlx, "./texture/eagle.xpm", &info->door.tex_x, &info->door.tex_y);		//door
+	if (info->door.img == NULL)
 		return (-1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 02:31:39 by jjuarez-          #+#    #+#             */
-/*   Updated: 2024/04/10 18:10:41 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/10 19:59:43 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	check_walls(t_parse *parse, char *map)
 	while (new_map[i] && new_map[i + 1])
 	{
 		if (new_map[i] == '0' || new_map[i] == 'N' || new_map[i] == 'S'
-			|| new_map[i] == 'W' || new_map[i] == 'E')
+			|| new_map[i] == 'W' || new_map[i] == 'E' || new_map[i]  == 'D')
 		{
 			if (new_map[i - 1] == ' ' || new_map[i + 1] == ' ')
 				return (free_three_hsh(parse, space, new_map, parse->map), -1);
