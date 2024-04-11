@@ -147,9 +147,6 @@ int	key_release(int keycode, void *info)
 	if (keycode == TAB_CODE)
 		tem->key.show = 0;
 	if (keycode == SPACE)
-	{
 		change_doors(tem->mtx);
-		dispara (tem);
-	}
 	return (0);
 }

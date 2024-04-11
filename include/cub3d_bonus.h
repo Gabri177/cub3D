@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: javgao <yugao@student.42madrid.com>        +#+  +:+       +#+        */
+/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 17:48:59 by jjuarez-          #+#    #+#             */
-/*   Updated: 2024/04/11 22:40:27 by javgao           ###   ########.fr       */
+/*   Updated: 2024/04/11 23:03:06 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,7 +236,7 @@ t_mtx			matrix_init(t_vec size);
 void			matrix_display(t_mtx matrix, t_bool	is_obj);
 void			matrix_destory(t_mtx *matrix);
 void			matrix_push(t_mtx *mtx_ori, char *context);
-t_bool			matrix_range_check(void *info, int x, int y);
+t_bool			m(void *info, int x, int y);
 //======cub_biubiu.c=======
 t_posx			apoyo_biu1(t_info *info, t_pos hori, t_pos veri,
 					int setoff_ang);
@@ -307,4 +307,7 @@ void			change_doors(t_mtx matrix);
 void			init_img_tex(t_info *info);
 void			dispara(t_info *info);
 int				norminette_aux(t_info *tem, t_vec v, t_bool is_ahead);
+int				mouse_shoot(int button, int x, int y, t_info *info);
+int				second_aux(t_info *info);
+
 #endif

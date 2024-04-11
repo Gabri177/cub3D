@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_init_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: javgao <yugao@student.42madrid.com>        +#+  +:+       +#+        */
+/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 20:53:08 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/11 22:38:09 by javgao           ###   ########.fr       */
+/*   Updated: 2024/04/11 22:54:36 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	init_img(t_info *info, t_parse parse)
 void	init_info(t_info *info, t_parse prase,
 	t_vec ori_ang, t_map map)
 {
+	mlx_mouse_hide();
 	info->mlx = mlx_init ();
 	info->win = mlx_new_window (info->mlx, map.x, map.y, "cub3D");
 	info->mtx = matrix_init (ori_ang);

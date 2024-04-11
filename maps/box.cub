@@ -7,7 +7,7 @@ SO ./texture/background/background_2.xpm
 WE ./texture/background/background_1.xpm
 
 C 150,0,0
-F 81,4,4
+F 81,4,0
 
 111111111
 100000001

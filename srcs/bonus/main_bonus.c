@@ -6,16 +6,11 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 17:48:26 by jjuarez-          #+#    #+#             */
-/*   Updated: 2024/04/11 21:47:55 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/11 22:55:57 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d_bonus.h"
-
-/*void leaks()
-{
-	system("leaks -q cub3d_bonus");
-}*/
 
 static int	close_win(void)
 {
@@ -100,9 +95,9 @@ int	main(int argc, char **argv)
 		destory_all (&info, &parse);
 		exit (0);
 	}
-	mlx_mouse_hide();
 	init_draw (info);
 	mlx_mouse_move(info.win, 500, 500);
+	mlx_mouse_hook(info.win, mouse_shoot, &info);
 	mlx_hook (info.win, 2, 1L << 0, key_press, &info);
 	mlx_hook (info.win, 3, 1L << 1, key_release, &info);
 	mlx_hook(info.win, 6, 1L << 0, mouse_move_hook, &info);

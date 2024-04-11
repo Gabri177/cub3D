@@ -6,7 +6,7 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 19:35:36 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/11 21:45:26 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/11 22:58:54 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static t_pos	biu_hit_pos_hori(void *info, int setoff_ang)
 	i = 0;
 	if (sin(fix_ang_to_rad (ang)) > 0.001 || sin(fix_ang_to_rad (ang)) < -0.001)
 	{
-		while (i < ((t_info *)info)->mtx_size.x && matrix_range_check (info,
+		while (i < ((t_info *)info)->mtx_size.x && m (info,
 				(int)(p_mtx.x), (int)(p_mtx.y)) &&
 				((t_info *)info)->mtx[(int)(p_mtx.x)][(int)(p_mtx.y)]->obj
 					!= '1')
@@ -100,7 +100,7 @@ static t_pos	biu_hit_pos_veri(void *info, int setoff_ang)
 	if (cos(fix_ang_to_rad (ang)) > 0.001 || cos(fix_ang_to_rad (ang)) < -0.001)
 	{
 		while (i < ((t_info *)info)->mtx_size.y
-			&& matrix_range_check (info, (int)(p_mtx.x), (int)(p_mtx.y)) &&
+			&& m (info, (int)(p_mtx.x), (int)(p_mtx.y)) &&
 				((t_info *)info)->mtx[(int)(p_mtx.x)][(int)(p_mtx.y)]->obj
 					!= '1')
 		{

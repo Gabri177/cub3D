@@ -6,7 +6,7 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 04:45:47 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/10 17:49:37 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/11 22:58:54 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,7 +219,7 @@ t_mtx			matrix_init(t_vec size);
 void			matrix_display(t_mtx matrix, t_bool	is_obj);
 void			matrix_destory(t_mtx *matrix);
 void			matrix_push(t_mtx *mtx_ori, char *context);
-t_bool			matrix_range_check(void *info, int x, int y);
+t_bool			m(void *info, int x, int y);
 //======cub_biubiu.c=======
 t_posx			apoyo_biu1(t_info *info, t_pos hori, t_pos veri,
 					int setoff_ang);
