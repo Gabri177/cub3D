@@ -149,7 +149,7 @@ int	key_release(int keycode, void *info)
 	if (keycode == SPACE)
 	{
 		change_doors(tem->mtx);
-		dispara (*tem);
+		dispara (tem);
 	}
 	return (0);
 }

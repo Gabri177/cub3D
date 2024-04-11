@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: javgao <yugao@student.42madrid.com>        +#+  +:+       +#+        */
+/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 17:48:59 by jjuarez-          #+#    #+#             */
-/*   Updated: 2024/04/11 22:20:01 by javgao           ###   ########.fr       */
+/*   Updated: 2024/04/11 22:40:48 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -303,6 +303,8 @@ void			destory_all(t_info *info, t_parse *parse);
 int				mouse_move_hook(int x, int y, t_info *info);
 void			change_doors(t_mtx matrix);
 void			init_img_tex(t_info *info);
-void			dispara(t_info info);
+void			dispara(t_info *info);
 int				norminette_aux(t_info *tem, t_vec v, t_bool is_ahead);
+int				init_second_tex(t_info *info);
+
 #endif

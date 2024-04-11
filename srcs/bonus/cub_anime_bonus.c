@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_anime_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: javgao <yugao@student.42madrid.com>        +#+  +:+       +#+        */
+/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 21:03:58 by javgao            #+#    #+#             */
-/*   Updated: 2024/04/11 22:26:04 by javgao           ###   ########.fr       */
+/*   Updated: 2024/04/11 22:45:18 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ int	init_tex_anime(t_info *info)
 	info->anime.ani5.img = mlx_xpm_file_to_image (info->mlx,
 			"./texture/gun/gun_5.xpm",
 			&info->anime.ani5.tex_x, &info->anime.ani5.tex_y);
-	if (info->anime.ani5.img == NULL)
-		return (-1);
 	return (0);
 }
 
@@ -71,8 +69,6 @@ void	init_img_tex(t_info *info)
 
 void	dispara(t_info *info)
 {
-	t_posx hit;
-	
 	info->key.up = 0;
 	info->key.down = 0;
 	info->key.left = 0;
@@ -80,10 +76,14 @@ void	dispara(t_info *info)
 	info->key.to_left = 0;
 	info->key.to_right = 0;
 	info->key.show = 0;
-	mlx_put_image_to_window (info->mlx, info->win, info->anime.ani1.img, 300, 390);
-	mlx_put_image_to_window (info->mlx, info->win, info->anime.ani2.img, 300, 390);
-	mlx_put_image_to_window (info->mlx, info->win, info->anime.ani3.img, 300, 390);
-	mlx_put_image_to_window (info->mlx, info->win, info->anime.ani4.img, 300, 390);
-	mlx_put_image_to_window (info->mlx, info->win, info->anime.ani5.img, 300, 390);
+	mlx_put_image_to_window (info->mlx, info->win, info->anime.ani1.img,
+		300, 390);
+	mlx_put_image_to_window (info->mlx, info->win, info->anime.ani2.img,
+		300, 390);
+	mlx_put_image_to_window (info->mlx, info->win, info->anime.ani3.img,
+		300, 390);
+	mlx_put_image_to_window (info->mlx, info->win, info->anime.ani4.img,
+		300, 390);
+	mlx_put_image_to_window (info->mlx, info->win, info->anime.ani5.img,
+		300, 390);
 }
-
