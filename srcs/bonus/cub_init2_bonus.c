@@ -6,7 +6,7 @@
 /*   By: javgao <yugao@student.42madrid.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 20:33:35 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/11 22:19:34 by javgao           ###   ########.fr       */
+/*   Updated: 2024/04/11 22:45:36 by javgao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,10 @@ int	init_texture(t_info *info, t_parse parse)
 	info->door.img = mlx_xpm_file_to_image(info->mlx,
 			IMG_DOOR, &info->door.tex_x, &info->door.tex_y);
 	if (info->door.img == NULL)
+		return (-1);
+	info->emp.img = mlx_xpm_file_to_image(info->mlx,
+			IMG_EMP, &info->emp.tex_x, &info->emp.tex_y);
+	if (info->emp.img == NULL)
 		return (-1);
 	return (0);
 }

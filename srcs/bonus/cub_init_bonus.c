@@ -6,7 +6,7 @@
 /*   By: javgao <yugao@student.42madrid.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 20:53:08 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/11 22:17:16 by javgao           ###   ########.fr       */
+/*   Updated: 2024/04/11 22:38:09 by javgao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ void	init_img(t_info *info, t_parse parse)
 	info->door.addr = mlx_get_data_addr (info->door.img,
 			&(info->door.bits_per_pixel),
 			&(info->door.len_line), &(info->door.endian));
+	info->emp.addr = mlx_get_data_addr (info->emp.img,
+			&(info->emp.bits_per_pixel),
+			&(info->emp.len_line), &(info->emp.endian));
 }
 
 void	init_info(t_info *info, t_parse prase,

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_biubiu_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: javgao <yugao@student.42madrid.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 19:35:36 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/11 21:46:23 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/11 22:43:48 by javgao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ static t_pos	biu_hit_pos_hori(void *info, int setoff_ang)
 				(int)(p_mtx.x), (int)(p_mtx.y)) &&
 				((t_info *)info)->mtx[(int)(p_mtx.x)][(int)(p_mtx.y)]->obj
 					!= '1' && ((t_info *)info)->mtx[(int)(p_mtx.x)]
-					[(int)(p_mtx.y)]->obj != 'D')
+					[(int)(p_mtx.y)]->obj != 'D' && ((t_info *)info)->mtx[(int)(p_mtx.x)]
+					[(int)(p_mtx.y)]->obj != 'M')
 		{
 			fin = bi_hit_pos_hori (fin, ang);
 			p_mtx = math_coordinate (fin);
@@ -103,7 +104,8 @@ static t_pos	biu_hit_pos_veri(void *info, int setoff_ang)
 			&& matrix_range_check (info, (int)(p_mtx.x), (int)(p_mtx.y)) &&
 				((t_info *)info)->mtx[(int)(p_mtx.x)][(int)(p_mtx.y)]->obj
 					!= '1' && ((t_info *)info)->mtx[(int)(p_mtx.x)]
-					[(int)(p_mtx.y)]->obj != 'D')
+					[(int)(p_mtx.y)]->obj != 'D' && ((t_info *)info)->mtx[(int)(p_mtx.x)]
+					[(int)(p_mtx.y)]->obj != 'M')
 		{
 			fin = apoyo_biu_hit_pos_veri (fin, ang);
 			p_mtx = math_coordinate (fin);

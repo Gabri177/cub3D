@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: javgao <yugao@student.42madrid.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 17:48:59 by jjuarez-          #+#    #+#             */
-/*   Updated: 2024/04/11 22:40:48 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/11 22:40:27 by javgao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@
 # define L_ARROW 123
 # define R_ARROW 124
 # define IMG_DOOR "./texture/background/background_door.xpm"
+# define IMG_EMP "./texture/background/background_empty.xpm"
 // # define TEM_SETOFF 530
 // # define TEM_MAP_LEN 1024
 # define TEM_SETOFF 0
@@ -145,6 +146,7 @@ typedef struct s_info
 	t_img_info	tex_left;
 	t_img_info	tex_right;
 	t_img_info	door;
+	t_img_info	emp;
 	t_ani		anime;
 	int			color;
 	int			color_sky;
@@ -305,6 +307,4 @@ void			change_doors(t_mtx matrix);
 void			init_img_tex(t_info *info);
 void			dispara(t_info *info);
 int				norminette_aux(t_info *tem, t_vec v, t_bool is_ahead);
-int				init_second_tex(t_info *info);
-
 #endif

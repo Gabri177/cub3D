@@ -6,7 +6,7 @@
 /*   By: javgao <yugao@student.42madrid.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 00:29:57 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/11 15:01:24 by javgao           ###   ########.fr       */
+/*   Updated: 2024/04/11 22:39:56 by javgao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,12 @@ void	graph_ray_to_wall(t_info *info)
 	{
 		setoff_ang = (x - SCREENWITH / 2.0) * (FOV / (double)SCREENWITH);
 		hit = biu_hit_pos(info, setoff_ang);
-		if (info->mtx[(int)(hit.x / UNI)][(int)(hit.y / UNI)]->obj != 'D')
-			tex = pick_tex (info, hit.side);
-		else
+		if (info->mtx[(int)(hit.x / UNI)][(int)(hit.y / UNI)]->obj == 'D')
 			tex = info->door;
+		else if (info->mtx[(int)(hit.x / UNI)][(int)(hit.y / UNI)]->obj == 'M')
+			tex = info->emp;
+		else
+			tex = pick_tex (info, hit.side);
 		graph_texture (info, hit, tex, (t_vec){x, y, setoff_ang});
 		x ++;
 	}
