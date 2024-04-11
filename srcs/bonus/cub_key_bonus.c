@@ -52,13 +52,11 @@ static t_pos	key_check_wall(void *info, t_vec v, t_bool is_ahead)
 	tem = (t_info *)info;
 	ori = tem->ctr_pos;
 	fin = vec_trans (tem->ctr_pos, v, is_ahead);
-	matrix_push (&tem->mtx, tem->parse);
+	//matrix_push (&tem->mtx, tem->parse);
 	if (is_ahead && (tem->mtx[(int)((tem->ctr_pos.x + v.vx * 3)
 			/ UNI)][(int)((tem->ctr_pos.y +
 				v.vy * 3) / UNI)]->obj == 'D'))
-		tem->mtx[(int)((tem->ctr_pos.x + v.vx * 3)
-			/ UNI)][(int)((tem->ctr_pos.y +
-				v.vy * 3) / UNI)]->obj = '0';
+		return (ori);
 	if (tem->mtx[(int)((fin.x + 10) / UNI)][(int)(fin.y) / UNI]->obj == '1')
 		return (ori);
 	if (tem->mtx[(int)((fin.x - 10) / UNI)][(int)(fin.y) / UNI]->obj == '1')

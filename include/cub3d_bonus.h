@@ -6,7 +6,7 @@
 /*   By: javgao <yugao@student.42madrid.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 17:48:59 by jjuarez-          #+#    #+#             */
-/*   Updated: 2024/04/11 15:30:30 by javgao           ###   ########.fr       */
+/*   Updated: 2024/04/11 21:11:42 by javgao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,15 @@ typedef struct s_size
 	int	y;
 }					t_size;
 
+typedef struct s_anime
+{
+	t_img_info	ani1;
+	t_img_info	ani2;
+	t_img_info	ani3;
+	t_img_info	ani4;
+	t_img_info	ani5;
+}					t_ani;
+
 typedef struct s_info
 {
 	void		*mlx;
@@ -136,6 +145,7 @@ typedef struct s_info
 	t_img_info	tex_left;
 	t_img_info	tex_right;
 	t_img_info	door;
+	t_ani		anime;
 	int			color;
 	int			color_sky;
 	int			color_floor;
