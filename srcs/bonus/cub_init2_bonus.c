@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_init2_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: javgao <yugao@student.42madrid.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 20:33:35 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/11 00:12:30 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/11 15:09:06 by javgao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,9 @@ int	init_texture(t_info *info, t_parse parse)
 			&info->tex_right.tex_x, &info->tex_right.tex_y);
 	if (info->tex_right.img == NULL)
 		return (-1);
-	//info->door.img =  mlx_xpm_file_to_image(info->mlx, "./texture/eagle.xpm", &info->door.tex_x, &info->door.tex_y);		//door
-	//if (info->door.img == NULL)
-	//	return (-1);
+	info->door.img =  mlx_xpm_file_to_image(info->mlx,
+			IMG_DOOR, &info->door.tex_x, &info->door.tex_y);
+	if (info->door.img == NULL)
+		return (-1);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: javgao <yugao@student.42madrid.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 17:48:59 by jjuarez-          #+#    #+#             */
-/*   Updated: 2024/04/10 22:39:49 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/11 15:30:30 by javgao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@
 # define TAB_CODE 48
 # define L_ARROW 123
 # define R_ARROW 124
+# define IMG_DOOR "./texture/background/background_door.xpm"
 // # define TEM_SETOFF 530
 // # define TEM_MAP_LEN 1024
 # define TEM_SETOFF 0
@@ -122,6 +123,7 @@ typedef struct s_info
 {
 	void		*mlx;
 	void		*win;
+	char		*parse;
 	t_vec		ctr_ang;
 	t_pos		ctr_pos;
 	t_map		map_info;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_graph_ray_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: javgao <yugao@student.42madrid.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 00:29:57 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/10 18:10:41 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/11 15:01:24 by javgao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,10 @@ void	graph_ray_to_wall(t_info *info)
 	{
 		setoff_ang = (x - SCREENWITH / 2.0) * (FOV / (double)SCREENWITH);
 		hit = biu_hit_pos(info, setoff_ang);
-		tex = pick_tex (info, hit.side);
+		if (info->mtx[(int)(hit.x / UNI)][(int)(hit.y / UNI)]->obj != 'D')
+			tex = pick_tex (info, hit.side);
+		else
+			tex = info->door;
 		graph_texture (info, hit, tex, (t_vec){x, y, setoff_ang});
 		x ++;
 	}
