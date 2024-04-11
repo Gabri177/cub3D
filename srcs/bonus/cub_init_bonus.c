@@ -6,7 +6,7 @@
 /*   By: javgao <yugao@student.42madrid.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 20:53:08 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/11 15:30:35 by javgao           ###   ########.fr       */
+/*   Updated: 2024/04/11 22:17:16 by javgao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	init_info(t_info *info, t_parse prase,
 	info->key.show = 0;
 	info->img_info.img = NULL;
 	init_img (info, prase);
+	init_img_tex(info);
 	info->color = 0xFFFFFF;
 	info->color_sky = trans_rgb_to_dig (hash_grep (prase.hs, "C"));
 	info->color_floor = trans_rgb_to_dig (hash_grep (prase.hs, "F"));

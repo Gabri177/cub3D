@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+         #
+#    By: javgao <yugao@student.42madrid.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/16 21:42:20 by yugao             #+#    #+#              #
-#    Updated: 2024/04/10 22:27:10 by jjuarez-         ###   ########.fr        #
+#    Updated: 2024/04/11 21:30:49 by javgao           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ BONUS	= main_bonus.c mouse_bonus.c
 CBONUS	= $(addprefix ./srcs/bonus/, $(BONUS)) \
 			$(addprefix ./srcs/bonus/hash_map/, hash_list.c hash_utils.c hash.c arr_utils.c arr_utils2.c) \
 			$(addprefix ./srcs/bonus/, map_parsing_bonus.c dimensions_bonus.c parse_utils_bonus.c color_bonus.c \
-			cub_2d_bk_bonus.c cub_fix_bonus.c cub_graph_base_bonus.c cub_init2_bonus.c cub_biu_apoyo_bonus.c\
+			cub_2d_bk_bonus.c cub_fix_bonus.c cub_graph_base_bonus.c cub_init2_bonus.c cub_biu_apoyo_bonus.c cub_anime_bonus.c\
 			cub_img_bonus.c cub_transfer_bonus.c cub_math2_bonus.c  cub_matrix1_bonus.c cub_biubiu_bonus.c cub_matrix2_bonus.c cub_over_bonus.c \
 			cub_graph_ray_bonus.c cub_init_bonus.c cub_key_bonus.c cub_math1_bonus.c cub_vec_bonus.c walls_bonus.c)
 OFILE	= $(CFILE:.c=.o)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_init2_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: javgao <yugao@student.42madrid.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 20:33:35 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/11 21:48:11 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/11 22:19:34 by javgao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	init_draw(t_info info)
 		info.color_sky, info.color_floor);
 	graph_ray_to_wall (&info);
 	img_end_draw (&info);
+	mlx_put_image_to_window (info.mlx, info.win, info.anime.ani1.img, 300, 390);
 }
 
 void	keep_draw(t_info info)
@@ -40,6 +41,7 @@ void	keep_draw(t_info info)
 			+ info.ctr_ang.vy * 3 / 2}, 2);
 	}
 	img_end_draw (&info);
+	mlx_put_image_to_window (info.mlx, info.win, info.anime.ani1.img, 300, 390);
 }
 
 t_vec	init_vec(t_parse parse)
