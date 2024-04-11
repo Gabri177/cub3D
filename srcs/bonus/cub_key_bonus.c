@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../../include/cub3d_bonus.h"
+
 void	draw_sky_and_floor(t_info *in, int sky, int floor)
 {
 	int		x;
@@ -52,10 +53,8 @@ static t_pos	key_check_wall(void *info, t_vec v, t_bool is_ahead)
 	tem = (t_info *)info;
 	ori = tem->ctr_pos;
 	fin = vec_trans (tem->ctr_pos, v, is_ahead);
-	//matrix_push (&tem->mtx, tem->parse);
 	if (is_ahead && (tem->mtx[(int)((tem->ctr_pos.x + v.vx * 3)
-			/ UNI)][(int)((tem->ctr_pos.y +
-				v.vy * 3) / UNI)]->obj == 'D'))
+				/ UNI)][(int)((tem->ctr_pos.y + v.vy * 3) / UNI)]->obj == 'D'))
 		return (ori);
 	if (tem->mtx[(int)((fin.x + 10) / UNI)][(int)(fin.y) / UNI]->obj == '1')
 		return (ori);
@@ -65,15 +64,10 @@ static t_pos	key_check_wall(void *info, t_vec v, t_bool is_ahead)
 		return (ori);
 	if (tem->mtx[(int)((fin.x) / UNI)][(int)(fin.y - 10) / UNI]->obj == '1')
 		return (ori);
-	if (is_ahead && ((tem->mtx[(int)((tem->ctr_pos.x + v.vx * 3)
-			/ UNI)][(int)((tem->ctr_pos.y +
-				v.vy * 3) / UNI)]->obj == '1')))
+	if (is_ahead && ((tem->mtx[(int)((tem->ctr_pos.x + v.vx * 3) / UNI)]
+			[(int)((tem->ctr_pos.y + v.vy * 3) / UNI)]->obj == '1')))
 		return (tem->ctr_pos);
-	if (!is_ahead && ((tem->mtx[(int)((tem->ctr_pos.x
-				- v.vx * 3) / UNI)][(int)((tem->ctr_pos.y
-			- v.vy * 3) / UNI)]->obj == '1') || (tem->mtx[(int)((tem->ctr_pos.x
-				- v.vx * 3) / UNI)][(int)((tem->ctr_pos.y
-			- v.vy * 3) / UNI)]->obj == 'D')))
+	if (norminette_aux(tem, v, is_ahead) == -1)
 		return (tem->ctr_pos);
 	return (fin);
 }

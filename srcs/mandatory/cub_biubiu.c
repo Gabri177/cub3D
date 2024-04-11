@@ -6,7 +6,7 @@
 /*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 19:35:36 by yugao             #+#    #+#             */
-/*   Updated: 2024/04/10 19:55:53 by jjuarez-         ###   ########.fr       */
+/*   Updated: 2024/04/11 21:45:26 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static t_pos	apoyo_biu_hit_pos_veri(t_pos start_pos, int ang)
 }
 
 //no importante
-static t_pos	apoyo_biu_hit_pos_hori(t_pos start_pos, int ang)
+static t_pos	bi_hit_pos_hori(t_pos start_pos, int ang)
 {
 	double	n_tan;
 	double	s_tan;
@@ -64,7 +64,7 @@ static t_pos	biu_hit_pos_hori(void *info, int setoff_ang)
 	int		i;
 
 	ang = fix_ang(((t_info *)info)->ctr_ang.ang + setoff_ang);
-	fin = apoyo_biu_hit_pos_hori (((t_info *)info)->ctr_pos, ang);
+	fin = bi_hit_pos_hori (((t_info *)info)->ctr_pos, ang);
 	p_mtx = math_coordinate (fin);
 	i = 0;
 	if (sin(fix_ang_to_rad (ang)) > 0.001 || sin(fix_ang_to_rad (ang)) < -0.001)
@@ -74,14 +74,14 @@ static t_pos	biu_hit_pos_hori(void *info, int setoff_ang)
 				((t_info *)info)->mtx[(int)(p_mtx.x)][(int)(p_mtx.y)]->obj
 					!= '1')
 		{
-			fin = apoyo_biu_hit_pos_hori (fin, ang);
+			fin = bi_hit_pos_hori (fin, ang);
 			p_mtx = math_coordinate (fin);
 			i ++;
 		}
 		return (fin);
 	}
 	else
-		return (apoyo_biu_hit_pos_hori (((t_info *)info)->ctr_pos, ang));
+		return (bi_hit_pos_hori (((t_info *)info)->ctr_pos, ang));
 }
 
 //这里有必要对循环的深度做限制, 一般是纵向探查地图高度减一的深度 防止死循环

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_anime.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: javgao <yugao@student.42madrid.com>        +#+  +:+       +#+        */
+/*   By: jjuarez- <jjuarez-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 21:03:58 by javgao            #+#    #+#             */
-/*   Updated: 2024/04/11 21:16:25 by javgao           ###   ########.fr       */
+/*   Updated: 2024/04/11 21:43:45 by jjuarez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	init_anime(t_info *info)
 			&info->tex_right.tex_x, &info->tex_right.tex_y);
 	if (info->tex_right.img == NULL)
 		return (-1);
-	info->door.img =  mlx_xpm_file_to_image(info->mlx,
+	info->door.img = mlx_xpm_file_to_image(info->mlx,
 			IMG_DOOR, &info->door.tex_x, &info->door.tex_y);
 	if (info->door.img == NULL)
 		return (-1);
